@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Numbas Developer Update - EAMS 2018</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/clp.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +24,201 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section id="start">
+                    <h1>Numbas <br> Developer Update</h1>
+                    <p>Christian Lawson-Perfect, Newcastle University</p>
+				</section>
+                <section id="localisation">
+                    <h2>Localisation</h2>
+                    <img src="images/languages.png">
+                </section>
+                <section id="code-contributors">
+                    <h2>Contributors</h2>
+                    <div>
+                        <b>Translation</b>
+                        <p style="font-size:0.6em;line-height:1.5em">Arve Seljebu, Axel Hederstedt, Benon Paloka, Carolijn Tacken, Daniele Passalacqua, Faisal al-Malki, Florent Cayré, Frank Podborski, Helge Münnich, Hugo Ribeiro, José Klenner, Julio Mosquera, Lionel F., Marlon Arcila, Michele Passante, Moafak Mkhallalati, Pascal Renauld, Pedro A. García-Sánchez, Ricardo Monge, S. Y. Lee, Takahiro Nakahara, Tore Gaupseth, Welton Vaz, Yasuyuki Nakamura</p>
+                        <b>Code</b>
+                        <p style="font-size:0.6em;line-height:1.5em">Christian Lawson-Perfect, Bill Foster, Anthony Youd, Chris Graham, Stacey Aston, George Stagg, Helen Ashton, Dave Gabrielson, Gerlou Shyy, Jake Steele, Mohit Jayanti Gurumukhani, James Ndegwa Maringa, Anbarasi U, Kaustubh Mallik, VSN Reddy Janga, Pablo Roldan, Mohit Jayanti Gurumukhani</p>
+                    </div>
+                </section>
+                <section id="input-state-hint">
+                    <h2>Input feedback</h2>
+                    <video src="images/input-answer-state.mp4" autoplay loop></video>
+                </section>
+                <section id="number-notation">
+                    <h2>Number notation</h2>
+                    <img src="images/number-notation.jpg">
+                </section>
+                <section id="feedback-always-visible">
+                    <h2>Part feedback is always visible</h2>
+                    <img src="images/feedback-out-of-date.png">
+                </section>
+                <section id="group-questions">
+                    <h2>Group questions</h2>
+                    <img src="images/question-groups.png">
+                </section>
+                <section id="preview-content">
+                    <h2>Preview content areas</h2>
+                    <video src="images/preview-content-area.mp4" autoplay loop></video>
+                </section>
+                <section id="json-data">
+                    <h2>JSON data</h2>
+                    <img src="images/json-data.jpg">
+                </section>
+                <section id="random-person-1">
+                    <h2>Generate random names</h2>
+                    <div>
+                        <p>Extension which provides functions to generate random names and associated pronouns</p>
+                        <pre>{name} puts {their} things where {they} like{s}.
+                        
+When people show things to {them}, 
+{they} want{s} them for {themself}.</pre>
+                        <blockquote>    
+                            Zak puts his things where he likes.
+                            When people show things to him, he wants them for himself.
+                        </blockquote>
+                    </div>
+                </section>
+                <section id="random-person-2">
+                    <h2>Generate random names</h2>
+                    <div>
+                        <p>Extension which provides functions to generate random names and associated pronouns</p>
+                        <pre>{name} puts {their} things where {they} like{s}.
+
+When people show things to {them}, 
+{they} want{s} them for {themself}.</pre>
+                        <blockquote>    
+                            Eabha puts her things where she likes.
+                            When people show things to her, she wants them for herself.
+                        </blockquote>
+                    </div>
+                </section>
+                <section id="taxonomy">
+                    <h2>Mathcentre taxonomy</h2>
+                    <img src="images/mathcentre-taxonomy.png">
+                </section>
+                <section id="lti-provider-1">
+                    <h2>LTI provider</h2>
+                    <div>
+                        <p>SCORM is unloved by VLEs.</p>
+                        <p>Most VLEs support LTI now.</p>
+                        <p>We can add more Numbas-specific features.</p>
+                    </div>
+                </section>
+                <section id="lti-provider-2">
+                    <h2>LTI provider</h2>
+                    <img src="images/lti-provider.png">
+                </section>
+                <section id="lti-provider-3">
+                    <h2>LTI provider</h2>
+                    <div>
+                        <ul>
+                            <li>You run the software on your server.</li>
+                            <li>You connect to it from your VLE.</li>
+                            <li>When a student opens an LTI activity, they're sent to your LTI instance.</li>
+                            <li>It manages attempt data, and reports scores back to VLE.</p>
+                        </ul>
+                    </div>
+                </section>
+                <section id="lti-provider-4">
+                    <h2>LTI provider</h2>
+                    <div>
+                        <p>Used at Newcastle for all Numbas assessment for two years.</p>
+                        <p>Instructions:</p>
+                        <p class="center"><a href="https://numbas-lti-provider.readthedocs.io">numbas-lti-provider.readthedocs.io</a></p>
+                    </div>
+                </section>
+                <section id="marking-algorithms-1">
+                    <h2>Marking algorithms</h2>
+                    <div>
+                        <p>Complete rewrite of marking algorithms.</p>
+                        <p>All in JME, easier to understand than JavaScript.</p>
+                        <p>Feedback is constructed in stages, from notes that work like question variables.</p>
+                    </div>
+                </section>
+                <section id="marking-algorithms-2">
+                    <h2>An example</h2>
+                        <pre><code data-trim>
+...
+valid_numbers:
+    if(all(map(not isnan(parsenumber(x,"en")),x,bits)),
+        true,
+        let(wrong,filter(isnan(parsenumber(x,"en")),x,bits)[0],
+          warn(wrong+" is not a valid number");
+          fail(wrong+" is not a valid number.")
+        )
+      )
+
+no_extras:
+    if(all(map(x in expected_numbers, x, interpreted_answer)),
+        true
+      ,
+        let(extra,filter(not (x in expected_numbers),x,interpreted_answer)[0],
+            incorrect(extra+" is not in the list.");
+        )
+        false
+      )
+
+mark:
+    if(studentanswer="",fail("You have not entered an answer"),false);
+    apply(valid_numbers);
+    apply(included);
+    apply(no_extras);
+    correctif(all_included and no_extras)</code></pre>
+                </section>
+                <section id="custom-feedback">
+                    <h2>Student Feedback</h2>
+                    <img src="images/custom-feedback.png">
+                </section>
+                <section id="editor-feedback">
+                    <h2>In the editor</h2>
+                    <img src="images/editor-marking-feedback.png">
+                </section>
+                <section id="unit-tests">
+                    <h2>Unit tests</h2>
+                    <img src="images/unit-tests.png">
+                </section>
+                <section id="custom-part-types-1">
+                    <h2>Custom part types</h2>
+                    <div>
+                        <p><strong>Aim:</strong> Make marking algorithms reusable and easily configured.</p>
+                        <p>Combination of input widget, settings, and marking algorithm.</p>
+                        <p>For question authors, they appear like the built-in part types.</p>
+                    </div>
+                </section>
+                <section id="custom-part-types-2">
+                    <h2>Custom part types</h2>
+                    <img src="images/cpt-editor.png">
+                </section>
+                <section id="custom-part-types-3">
+                    <h2>Custom part types</h2>
+                    <img src="images/cpt-question-editor.png">
+                </section>
+                <section id="custom-part-types-4">
+                    <h2>Custom part types</h2>
+                    <img src="images/cpt-correct.png">
+                </section>
+                <section id="custom-part-types-5">
+                    <h2>Custom part types</h2>
+                    <img src="images/cpt-incorrect.png">
+                </section>
+                <section id="documentation">
+                    <h2>Documentation</h2>
+                    <div>
+                        <p>Now lives at </p>
+                        <p class="center" style="margin:0.5em 0;font-size:1.5em"><a href="https://docs.numbas.org.uk">docs.numbas.org.uk</a></p>
+                    </div>
+                </section>
+                <section id="to-do">
+                    <h2>The to-do list</h2>
+                    <div>
+                        <p>As ever, more things than I have time to do.</p>
+                        <p style="font-size:0.9em">Runtime: 74 open issues, 43 "wishlist", 9 "good first issue".</p>
+                        <p style="font-size:0.9em">Editor: 39 open issues, 14 "wishlist", 5 "good first issue".</p>
+                        <p style="font-size:1.5em;font-weight:bold;margin-top:0.3em;margin-bottom:0.3em">Help is very welcome!</h3>
+                        <p class="center" style="margin:0.5em 0;font-size:1.5em"><a href="https://github.com/numbas">github.com/numbas</a></p>
+                    </div>
+                </section>
 			</div>
 		</div>
 
@@ -37,6 +230,13 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+                controls: false,
+                progress: false,
+                history: true,
+                fragmentInURL: true,
+                display: 'grid',
+                center: false,
+                transition: 'fade',
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
