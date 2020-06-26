@@ -1,6 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Patua+One:400,700);
 @import url(theme/simple.css);
+
+body {
+    background: #000;
+}
+
+.reveal {
+    color: #fff;
+}
+
+.reveal section img {
+    border-color: #fff;
+}
+.reveal a {
+    color: hsl(240, 100%, 82%);
+}
+
 .slides section {
     grid-template-rows: auto;
     grid-auto-rows: 1fr;
@@ -18,7 +34,7 @@ p {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #000;
+  color: #fff;
   font-family: "Patua One", serif;
 }
 .reveal {
