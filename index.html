@@ -28,106 +28,181 @@
                     <h1>
                         Numbas <br> Developer Update
                         <br>
-                    2020</h1>
+                        2021
+                    </h1>
                     <p>Christian Lawson-Perfect, Newcastle University</p>
 				</section>
+                <section>
+                    <img src="images/numbas-dev-2021.png">
+                </section>
                 <section id="localisation">
                     <h2>Localisation</h2>
-                    <p>English, German, Chinese, Vietnamese, Spanish, French, Portuguese, Swedish, Dutch, Norwegian Bokmål, Italian, Albanian, Japanese, Arabic, Hebrew, Polish, Turkish.
-                </section>
-                <section id="code-contributors">
-                    <h2>Contributors</h2>
-                    <div>
-                        <p style="line-height:1.5em">
-                            Christian Lawson-Perfect, Chris Graham, Mohit Jayanti Gurumukhani, RingoKid, Johan Forslund, Joshua Capel, Adarsh Shetty, David Hadas, Grant Gollier, Danil Sergeev, tpilewicz
-                        </p>
-                    </div>
+                    <p>Albanian, Arabic, Chinese, Dutch, English, French, German, Hebrew, <b>Indonesian</b>, Italian, Japanese, Norwegian Bokmål, Polish, Portuguese, Spanish, Swedish, Turkish, Vietnamese</p>
                 </section>
                 <section>
-                    <h2>
-                        Used in SCHOLAR
-                    </h2>
+                    <h2>Increased use</h2>
+                    <p>935 more users (+37%)</p>
+                    <p>~200 more institutions (+30%)</p>
+                    <p>2,180 items published (+24%)</p>
+                </section>
+                <section>
+                    <h2>GeoGebra</h2>
+                    <p><a href="https://numbas.mathcentre.ac.uk/question/68262/mark-a-part-as-correct-if-the-student-moves-a-point-to-the-right-position/">Query GeoGebra in a marking algorithm</a></p>
+<pre>
+pos:
+  value(app,"A")
 
-                    <img src="images/scholar.png">
-                </section>
-                <section>
-                    <h2>
-                        Pattern-matching
-                    </h2>
+mark:
+  feedback("The point is at $"+latex(app,'A')+"$.");
+  correctif(pos=target_position)
 
-                    <img src="images/pattern.png">
+interpreted_answer:
+  pos
+</pre>
+                    <p><a href="https://numbas.mathcentre.ac.uk/question/68256/create-a-geogebra-worksheet-entirely-in-numbas/">Create a GeoGebra worksheet from JME</a></p>
+                </section>
+                <section>
+                    <h2>JSXGraph</h2>
+                    <p><a href="https://numbas.mathcentre.ac.uk/question/68491/create-a-jsxgraph-diagram-using-jessiecode-three-triangle-centres-lie-on-a-line/">Create a diagram with JessieCode</a></p>
+<pre style="height: 500px; overflow-y: scroll">
+jessiecode(
+  600,600,
+  """
+    A = point(-2,-2);
+    B = point(2,-2);
+    C = point(1,2);
+  
+    circumcenter = circumcenter(A,B,C) << name: "circumcenter" >>;
+    circle(A,B,C) << strokeOpacity: 0.3 >>;
+  
+    side_a = segment(B,C) << visible: false >>;
+    side_b = segment(A,C) << visible: false >>;
+    side_c = segment(B,A) << visible: false >>;
+  
+    polygon(A,B,C);
+    
+    M_a = midpoint(B,C) << visible: false >>;
+    M_b = midpoint(A,C) << visible: false >>;
+    M_c = midpoint(B,A) << visible: false >>;
+  
+    median_a = line(A,M_a) << dash: 4, color: "gray", strokeOpacity: 0.3 >>;
+    median_b = line(B,M_b) << dash: 4, color: "gray", strokeOpacity: 0.3 >>;
+    median_c = line(C,M_c) << dash: 4, color: "gray", strokeOpacity: 0.3 >>;
+    
+    centroid = intersection(median_a,median_b) << name: "centroid" >>;
+  
+    p_a = perpendicular(side_a,A) << dash: 1, color: "gray", strokeOpacity: 0.3 >>;
+    p_b = perpendicular(side_b,B) << dash: 1, color: "gray", strokeOpacity: 0.3 >>;
+    p_c = perpendicular(side_c,C) << dash: 1, color: "gray", strokeOpacity: 0.3 >>;
+  
+    orthocenter = intersection(p_a,p_b) << name: "orthocenter" >>;
+  
+    euler_line = line(orthocenter, centroid);
+  """,
+  [
+    "axis": false
+  ]
+)
+</pre>
+                </section>
+                <section>
+                    <h2>Other extensions</h2>
+                    <p><a href="https://numbas.mathcentre.ac.uk/extensions/207/documentation">Download a text file</a></p>
+                    <p><a href="https://numbas.mathcentre.ac.uk/extensions/180/documentation">Written number</a> (54 → "fifty-four")</p>
+                    <p>USA and France data for <a href="https://numbas.mathcentre.ac.uk/extensions/46/documentation">Random person</a></p>
+                </section>
+                <section>
+                    <h2>JME</h2>
+                    <p>Chained relations</p>
+                    <pre style="font-size: 1em; text-align: center;">a &lt; b &lt; c</pre>
+                    <p>Destructure variables</p>
+                    <pre style="font-size: 1em; text-align: center;">a,b,c = shuffle(1..9)</pre>
                 </section>
                 <section>
                     <h2>
-                        More precise numbers
+                        Theme and extension editors
                     </h2>
-
-                    <img src="images/numbers.png">
+                    <img src="images/theme-editor.png">
                 </section>
                 <section>
                     <h2>
-                        Easy embedding
+                        <a href="https://numbas.mathcentre.ac.uk/exam/21108/getting-started/">New "Getting Started"</a>
                     </h2>
-                    <iframe sandbox="allow-scripts" security="restricted" src="https://numbas.mathcentre.ac.uk/question/22484/percentages-and-ratios-box-of-chocolates/embed/#?secret=k7lvM5DTCz" data-secret="k7lvM5DTCz" width="800" height="600"></iframe>
+                    <iframe width="800" height="500" src="https://numbas.mathcentre.ac.uk/exam/21108/getting-started/embed/"></iframe>
                 </section>
                 <section>
                     <h2>
-                        Eukleides
+                        Diagnostic testing
                     </h2>
-
-                    <img src="images/eukleides.png">
+                    <p>(or adaptive assessment)</p>
+                    <p>A script chooses which questions to show.</p>
+                    <p><a href="https://numbas.mathcentre.ac.uk/exam/22135/diagnosys/preview/">DIAGNOSYS</a></p>
+                    <p>More on this tomorrow</p>
                 </section>
                 <section>
                     <h2>
-                        Eukleides
+                        Constants and case-sensitivity
                     </h2>
-
-                    <video autoplay loop style="width:500px" src="images/draggable.webm"></video>
+                    <img src="images/constants.png">
                 </section>
                 <section>
                     <h2>
-                        Explore mode
+                        Variable overrides
                     </h2>
-
-                    <iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" src="https://numbas.mathcentre.ac.uk/question/63521/find-the-root-s-of-a-quadratic-equation/embed/#?secret=k7lvM5DTCz" data-secret="k7lvM5DTCz" width="800" height="600"></iframe>
-                </section>
-                <section>
-                    <h2>
-                        Alternative answers
-                    </h2>
-
-                    <img src="images/alternatives.png">
-                </section>
-                <section>
-                    <h2>
-                        Menu mode
-                    </h2>
-
-                    <img src="images/menu.png">
-                </section>
-                <section>
-                    <h2>
-                        Folders
-                    </h2>
-
-                    <img src="images/folders.png">
+                    <img src="images/variable-overrides.png">
                 </section>
                 <section>
                     <h2>Accessibility</h2>
-                    <ul>
-                        <li><a href="https://docs.numbas.org.uk/en/latest/accessibility/index.html">Accessibility statements</a></li>
-                        <li><code>aria-live</code> for changing text</li>
-                        <li>WCAG AAA colour and contrast</li>
-                    </ul>
+                    <p><a href="https://docs.numbas.org.uk/en/latest/accessibility/exam.html#accessibility-guide">Accessibility guide for students</a></p>
+                    <p>More little changes</p>
+                </section>
+                <section>
+                    <h2>Display options</h2>
+                    <img src="images/display-options.png">
+                </section>
+                <section>
+                    <h2>
+                        LTI provider dashboard and global search
+                    </h2>
+                    <img src="images/dashboard.png">
+                </section>
+                <section>
+                    <h2>
+                        LTI provider dashboard and global search
+                    </h2>
+                    <img src="images/lti-search.png">
+                </section>
+                <section>
+                    <h2>
+                        Better package handling
+                    </h2>
+                    <img src="images/replace-package.png">
+                </section>
+                <section>
+                    <h2>
+                        Auto remark
+                    </h2>
+                    <img src="images/remark-attempts.png">
+                </section>
+                <section>
+                    <h2>
+                        Access changes
+                    </h2>
+                    <img src="images/access-changes.png">
+                </section>
+                <section>
+                    <h2>
+                        <a href="https://numbas-lti-provider.readthedocs.io/en/latest/installation/docker.html">Run in Docker</a>
+                    </h2>
                 </section>
                 <section id="to-do">
                     <h2>The to-do list</h2>
                     <div>
                         <p>As ever, more things than I have time to do.</p>
-                        <p style="font-size:0.9em">Runtime: 75 open issues, 43 "wishlist", 3 "good first issue".</p>
-                        <p style="font-size:0.9em">Editor: 36 open issues, 13 "wishlist", 1 "good first issue".</p>
+                        <p style="font-size:0.9em">Runtime: 141 open issues (+66), 61 "wishlist" (+18), 7 "good first issue" (+4).</p>
+                        <p style="font-size:0.9em">Editor: 80 open issues (+44), 26 "wishlist" (+13), 8 "good first issue" (+7).</p>
                         <p style="font-size:1.5em;font-weight:bold;margin-top:0.3em;margin-bottom:0.3em">Help is very welcome!</h3>
-                        <p class="center" style="margin:0.5em 0;font-size:1.5em"><a href="https://github.com/numbas">github.com/numbas</a></p>
+                        <p class="center" style="margin:0.5em 0;font-size:1.3em"><a href="https://www.numbas.org.uk/contributing-to-numbas/">numbas.org.uk/contributing-to-numbas</a></p>
                     </div>
                 </section>
 			</div>
