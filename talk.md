@@ -1,45 +1,10 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>Diagnostic testing in Numbas</title>
-
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/clp.css">
-
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section id="start">
-                    <h1>
-                        Diagnostic testing in Numbas
-                    </h1>
-                    <div>
-                        <p>Christian Lawson-Perfect, Newcastle University</p>
-                        <p><small>E-Assessment in Mathematical Sciences 2021</small></p>
-                    </div>
-				</section>
-                <!-- markdown content -->
-<section data-markdown><textarea data-template>**Goal**: Implement a model of adaptive assessment in Numbas, for:
+**Goal**: Implement a model of adaptive assessment in Numbas, for:
 
 * diagnostic tests
 * assessment for learning
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## DIAGNOSYS
 
 * A _knowledge graph_ of topics, linked by dependency.
@@ -49,26 +14,33 @@
 * Learning objectives are subsets of the nodes, e.g. "Algebra", "Calculus".
 * Use student's qualifications to estimate starting point.
 * Limited "lives" for retrying a question.
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![A graph of 7 nodes. Each is labelled with a question mark. There are lines linking some of the nodes](images/diagnosys-1.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![The same graph. One of the nodes is now highlighted.](images/diagnosys-2.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![The highlighted node has been marked with a tick.](images/diagnosys-3.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![All nodes linked to the highlighted node on the left are marked with a tick.](images/diagnosys-4.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![Instead, the highlighted node is marked with a cross. All other nodes are still labelled with question marks.](images/diagnosys-5.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![All nodes linked to the highlighted node on the right are marked with a cross.](images/diagnosys-6.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## "Mastery"
 
 Inspired by Duolingo.
@@ -77,20 +49,25 @@ Inspired by Duolingo.
 * Each topic has several questions.
 * All questions must be answered correctly.
 * Failed questions are put back on the end of a queue.
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![A graph of 6 nodes. The third and fourth node both link to the second and fifth nodes. The fifth node is highlighted and an arrow from it points to a list of items numbered 1 to 4.](images/mastery-1.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![Item number 1 is marked with a tick and shaded out.](images/mastery-2.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![Item number 2 is marked with a cross.](images/mastery-3.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![Item number 2 moves to the end of the list. Now item number 3 is at the top.](images/mastery-4.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Mathspace
 
 [Talk by Mo Jebara at EAMS 2018](https://eams.ncl.ac.uk/archive/2018/sessions/keynote-mo-jebara/)
@@ -98,24 +75,28 @@ Inspired by Duolingo.
 * Inner loop: immediate question feedback
 * Middle loop: pick a question within a topic
 * Outer loop: pick a topic
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![The Mathspace knowledge graph - nodes linked by edges](images/mathspace-graph.png)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Item response theory
 
 * Update P(pass topic) after each answer.
 * Stop asking questions when confidence is high.
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Another model (Möbius?)
 
 * Estimate student's knowledge level on a linear scale.
 * Move up or down based on answers.
 * Ask N questions, chosen based on student's level.
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Implementation in Numbas
 
 * Exam author defines topics and learning objectives.
@@ -125,28 +106,33 @@ Inspired by Duolingo.
 * Some built-in, can extend or write your own.
 
 (See the [documentation](https://docs.numbas.org.uk/en/latest/exam/diagnostic.html))
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![A flow chart. First node labelled "Initialise state", leads to a node labelled "Pick a question". That leads in a circle to "Student answers", then "Produce options". The path then branches. Following round the circle leads to "Update state", then back to "Pick a question". The other branch leads to a final node labelled "Test ends".](images/loop.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ![The same flowchart, with annotations describing feedback at each stage. After "pick a question", feedback is "% completion, estimate of level, current topic". After "Student answers", feedback is "Usual part feedback". After "Produce options" and before "Update state", feedback is "Correct/incorrect; suggested next step". After "Test ends", feedback is "Scores for objectives; summary text."](images/loop-with-feedback.svg)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Success
 
 I've reimplemented DIAGNOSYS in Numbas.
 
 [numbas.mathcentre.ac.uk/exam/22135/diagnosys](https://numbas.mathcentre.ac.uk/exam/22135/diagnosys/)
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Writing an adaptive test is hard
 
 Need to write _lots_ of questions.
 
 Must think hard about model of knowledge, and relations between topics.
-</textarea></section>
-<section data-markdown><textarea data-template>
+
+---
+
 ## Partial success!
 
 To do:
@@ -156,34 +142,3 @@ To do:
 * Implement some other models
 
 **Your input is very welcome!**
-</textarea></section>
-<!-- /markdown content -->
-			</div>
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-                controls: false,
-                progress: false,
-								autoplayMedia: true,
-                history: true,
-                fragmentInURL: true,
-                display: 'grid',
-                center: false,
-                transition: 'none',
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
-</html>

@@ -10,19 +10,20 @@ body {
     color: #fff;
 }
 
+.reveal li ~ li {
+    margin-top: 0.3em;
+}
+
 .reveal section img {
-    border-color: #fff;
+    border: none;
+    background: none;
+    max-height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .reveal a {
     color: hsl(240, 100%, 82%);
-}
-
-.slides section {
-    grid-template-rows: auto;
-    grid-auto-rows: 1fr;
-    align-items: center;
-    justify-items: center;
-    height: 100%;
 }
 p {
     text-align: left;
@@ -36,6 +37,12 @@ p {
   margin: 0 0 20px 0;
   color: #fff;
   font-family: "Patua One", serif;
+}
+.reveal h2 {
+    font-size: 1.5em;
+}
+.reveal h3 {
+    font-size: 1.3em;
 }
 .reveal {
   font-family: "Source Sans Pro", sans-serif;
