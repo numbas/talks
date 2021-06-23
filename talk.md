@@ -133,6 +133,10 @@ Must think hard about model of knowledge, and relations between topics.
 
 ---
 
+![Two tweets. First is by Howie Hua: Your brain throwing out the definition of a derivative once you learn the power rule. Below is a picture of Indiana Jones replacing an idol labelled with the limit definition of a derivative with a sandbag labelled with the standard derivative of a power of x. Second tweet by David Butler: But did you know the definition before you learned the power rule?](images/howie-david.png)
+
+---
+
 ## Partial success!
 
 To do:
