@@ -1,0 +1,79 @@
+:root {
+    --header-font: 'M Plus 1p',sans-serif;
+    --text-font: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 4vh;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: var(--text-font);
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--header-font);
+}
+
+main {
+    overflow: hidden;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+main > section {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    padding: 0px 1em;
+    scroll-snap-align: center;
+    grid-auto-rows: max-content;
+    align-content: center;
+    overflow-y: hidden;
+    /*! grid-template-rows: auto; */
+}
+main > section:focus {
+    outline: none;
+}
+main > section > p {
+    line-height: 1.5em;
+}
+main > section > h1,
+main > section > h2
+{
+    align-self: start;
+}
+main > section > ul {
+    text-align: left;
+}
+main > section > ul > li ~ li {
+    margin-top: 0.5em;
+}
+
+main > section img,
+main > section svg {
+    max-width: 100%;
+    max-height: 60vh;
+    width: 100vw;
+    object-fit: contain;
+}
+
+main > section img {
+  border-radius: 0.3em;
+}
+
+a {
+    color: white;
+    text-decoration-color: #555;
+}
