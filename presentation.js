@@ -31,3 +31,7 @@ setTimeout(() => {
     })
 
 },100);
+
+const url_footer = document.querySelector('body > footer > a#url');
+url_footer.setAttribute('href',window.location+'');
+url_footer.textContent = window.location.host + window.location.pathname;
