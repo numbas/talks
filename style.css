@@ -7,10 +7,11 @@
 
 * {
     box-sizing: border-box;
+    word-break: break-word;
 }
 
 html {
-    font-size: 4vh;
+    font-size: 4vmin;
     font-family: sans-serif;
 }
 
@@ -22,6 +23,7 @@ body {
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--header-font);
+    margin: 0 0 1rem 0;
 }
 h2 {
     margin: 0;
@@ -54,6 +56,19 @@ main > section {
     overflow-y: hidden;
     /*! grid-template-rows: auto; */
 }
+
+@media (orientation: portrait) {
+    main > section {
+        height: auto;
+        scroll-snap-align: none;
+    }
+    main > section + section {
+        margin-top: 5em;
+        padding-top: 5em;
+        border-top: 0.5vh dashed white;
+    }
+}
+
 main > section:focus {
     outline: none;
 }
@@ -80,10 +95,24 @@ main > section video
     max-height: 60vh;
     width: 100vw;
     object-fit: contain;
+    margin: 1rem 0;
+    border-radius: 0.3em;
+}
+
+main > section figure,
+main > section p {
+    margin: 0;
+}
+
+main > section p + p {
+    margin-top: 1em;
 }
 
 main > section img {
-  border-radius: 0.3em;
+}
+
+main > section .full-height {
+    max-height: 90vh;
 }
 
 main > section blockquote {

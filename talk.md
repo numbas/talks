@@ -1,6 +1,6 @@
 > “In the coming year, I’m going to focus less on developing new features in Numbas, and more on organising the content we’ve already got.”
 
-<span style="font-size:3em">🙄</span>
+<img class="reveal" alt="Not so much" src="images/not-so-much.gif" style="height: 30vh">
 
 ---
 
@@ -16,9 +16,16 @@
 # Community stats
 
 * Runtime [translated](https://www.numbas.org.uk/contributing-to-numbas/#numbas-in-your-own-language) to 18 languages (LTI tool only 2!)
-* ~20 pull requests in the last year
-* No stats on LTI use
+* ~ 20 pull requests in the last year
 * ~ [A dozen papers mentioning Numbas](https://scholar.google.co.uk/scholar?as_ylo=2021&q=%22numbas%22&hl=en&as_sdt=0,5)
+
+---
+
+# Numbas user meeting
+
+![Screenshot of people talking](images/numbas-user-meeting.png)
+
+[numbas.org.uk/numbas-user-meeting-spring-2022/](https://www.numbas.org.uk/numbas-user-meeting-spring-2022/)
 
 ---
 
@@ -29,6 +36,8 @@
 * Managing versions better
 
 [numbas.org.uk/blog/2021/11/numbas-lti-provider-v3-0/](https://www.numbas.org.uk/blog/2021/11/numbas-lti-provider-v3-0/)
+
+We're taking on more hosting contracts (talk to us if interested!)
 
 ---
 
@@ -44,8 +53,6 @@
 
 [In progress](https://numbas.mathcentre.ac.uk/project/17986/)
 
-Please join in on Thursday morning!
-
 ---
 
 # Behind the design of Numbas
@@ -58,13 +65,7 @@ Please join in on Thursday morning!
 
 # Custom input methods
 
-## Motivation
-
-I want an interaction that isn't possible with one of the built-ins.
-
-## Solution
-
-Extensions can define new input methods, and custom part types can use them.
+![A Numbas question with a code editor as the answer widget](images/code-editor.png)
 
 [documentation](https://docs.numbas.org.uk/en/latest/extensions/writing-extensions.html#adding-a-new-answer-input-method)
 
@@ -72,36 +73,35 @@ Extensions can define new input methods, and custom part types can use them.
 
 # Pre-submit tasks
 
-## Motivation
-
-Something long-running or asynchronous needs to happen before marking.
-
-## Solution
-
-`pre_submit` marking note is evaluated before the rest of the marking algorithm.
+<img alt="Give me one moment please" src="images/hold-on.webp">
 
 [documentation](https://docs.numbas.org.uk/en/latest/marking-algorithm.html#pre-submit-tasks)
 
 ---
 
-# Extensions
+# [Graph theory](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-graph-theory-extension)
 
-* [Programming](https://www.numbas.org.uk/blog/2022/02/assess-programming-in-python-and-r-with-numbas/) - more on Wednesday
-* [Graph theory](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-graph-theory-extension) ([demo](https://numbas.mathcentre.ac.uk/exam/27245/graph-theory-questions/preview/))
-* [Improvements to JSXGraph](https://www.numbas.org.uk/blog/2021/10/improvements-to-the-jsxgraph-extension/)
+![A Numbas question with some graphs drawn above their adjacency matrices](images/graph-theory.png)
+
+([demo](https://numbas.mathcentre.ac.uk/exam/27245/graph-theory-questions/preview/))
+
+---
+
+# [Improvements to JSXGraph](https://www.numbas.org.uk/blog/2021/10/improvements-to-the-jsxgraph-extension/)
+
+<video src="images/jsxgraph.mp4" autoplay loop/>
 
 ---
 
 # Queues
 
-## Motivation
+![An item being submitted to a queue, commented on, then approved](images/queue.svg)
 
-* Manage submissions to the [Open Resource Library](https://numbas.mathcentre.ac.uk/queue/1/)
-* Better tools for checking workflow
+[documentation](https://docs.numbas.org.uk/en/latest/project/reference.html#queues)
 
-## Solution 
+---
 
-_Queues_ attached to projects, with checklists and comment threads.
+<img alt="An item being reviewed: there's a link to the item, a checklist, then a comments thread" src="images/queues.png" class="full-height">
 
 ---
 
@@ -111,9 +111,18 @@ _Queues_ attached to projects, with checklists and comment threads.
 
 ---
 
-# Goals for the immediate future
+# Aims for the next year: Producing [working-out](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-working-out)
 
-* Producing [working-out](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-working-out)
-* Lock-down app
-* Improve diagnostic mode
-* More contributors! ([173](https://github.com/numbas/Numbas/issues) + [101](https://github.com/numbas/editor/issues) + [73](https://github.com/numbas/numbas-lti-provider/issues) = 346 open issues!)
+![Working-out for the Euclidean algorithm](images/working-out.png)
+
+---
+
+# Aims for the next year: Lockdown app
+
+![Screenshots showing the lockdown app flow: "this resource must run in the Numbas lockdown app" → "Please enter the password for this link" → a Numbas exam](images/lockdown-app.svg)
+
+---
+
+# Aims for the next year: More contributors!
+
+([177](https://github.com/numbas/Numbas/issues) + [108](https://github.com/numbas/editor/issues) + [81](https://github.com/numbas/numbas-lti-provider/issues) = 366 open issues!)

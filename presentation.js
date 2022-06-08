@@ -22,10 +22,32 @@ setTimeout(() => {
 
     sections.forEach((section,i) => {
         section.addEventListener('click', e => {
+            if(e.target.nodeName=='A') {
+                return;
+            }
             const box = section.getBoundingClientRect();
-            const d = i + (e.pageX < (box.left+box.right)/2 ? -1 : 1);
-            if(d>=0 && d<sections.length) {
-                sections[d].scrollIntoView();
+            const qx = Math.floor(4*(e.pageX - box.left)/(box.width));
+            const qy = Math.floor(4*(e.pageY - box.top)/(box.height));
+            if(qy<3) {
+                return;
+            }
+            const d = qx==0 ? -1 : qx==3 ? 1 : 0;
+            if(d<0) {
+                const revealed = section.querySelectorAll('.reveal.revealed');
+                if(revealed.length) {
+                    revealed[revealed.length-1].classList.remove('revealed');
+                    return;
+                }
+            } else if(d>0) {
+                const revealable = section.querySelectorAll('.reveal:not(.revealed)');
+                if(revealable.length) {
+                    revealable[0].classList.add('revealed');
+                    return;
+                }
+            }
+            const to_section = sections[i+d];
+            if(to_section) {
+                to_section.scrollIntoView();
             }
         })
     })
