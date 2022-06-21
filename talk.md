@@ -1,128 +1,152 @@
-> “In the coming year, I’m going to focus less on developing new features in Numbas, and more on organising the content we’ve already got.”
+# Plan for today
 
-<img class="reveal" alt="Not so much" src="images/not-so-much.gif" style="height: 30vh">
+Numbas is capable of a lot more than I can show in an hour!
 
----
-
-# [numbas.mathcentre.ac.uk/stats](https://numbas.mathcentre.ac.uk/stats/):
-
-* 100,000+ questions
-* ~9,500 published items
-* ~8,000 users
-* ~1,500 institutions
+* Introduce Numbas and demo
+* Find out what's wanted
+* Explore the Numbas editor
+* Q&A
 
 ---
 
-# Community stats
+Numbas is an open-source web-based e-assessment tool.
 
-* Runtime [translated](https://www.numbas.org.uk/contributing-to-numbas/#numbas-in-your-own-language) to 18 languages (LTI tool only 2!)
-* ~ 20 pull requests in the last year
-* ~ [A dozen papers mentioning Numbas](https://scholar.google.co.uk/scholar?as_ylo=2021&q=%22numbas%22&hl=en&as_sdt=0,5)
+It is aimed at numerate disciplines.
 
----
-
-# Numbas user meeting
-
-![Screenshot of people talking](images/numbas-user-meeting.png)
-
-[numbas.org.uk/numbas-user-meeting-spring-2022/](https://www.numbas.org.uk/numbas-user-meeting-spring-2022/)
+Developed by the e-learning unit in Newcastle University's School of Mathematics, Statistics and Physics.
 
 ---
 
-# LTI tool v3.0
+# Key features
 
-* Getting a grip on async tasks!
-* [Docker](https://docs.numbas.org.uk/lti/en/latest/installation/docker.html)
-* Managing versions better
-
-[numbas.org.uk/blog/2021/11/numbas-lti-provider-v3-0/](https://www.numbas.org.uk/blog/2021/11/numbas-lti-provider-v3-0/)
-
-We're taking on more hosting contracts (talk to us if interested!)
-
----
-
-# .exam schema
-
-[numbas.org.uk/schema](https://www.numbas.org.uk/schema/)
+* Scalable, reliable and accessible to a broad range of users.
+* Easy to use.
+* Used by question authors who aren't experts.
+* Feedback is important.
+* Customisable everywhere.
+* Delivered through VLE or standalone.
+* Lots of maths features.
 
 ---
 
-# Numbas Open Resource Library
+# Applications of Numbas
 
-**Aim:** Collect good, reliable open-access material in a moderated library.
+At Newcastle, we use Numbas for:
 
-[In progress](https://numbas.mathcentre.ac.uk/project/17986/)
-
----
-
-# Behind the design of Numbas
-
-[numbas.org.uk/behind-the-design/](https://www.numbas.org.uk/behind-the-design/)
-
-~ 13,000 words so far
+* Formative use in a pre-entry course.
+* Diagnostic tests in week 1.
+* Banks of practice material to supplement lecture material.
+* In-course assessment.
+* Lab exercises.
+* Final exams.
 
 ---
 
-# Custom input methods
+# Subjects using Numbas
 
-![A Numbas question with a code editor as the answer widget](images/code-editor.png)
-
-[documentation](https://docs.numbas.org.uk/en/latest/extensions/writing-extensions.html#adding-a-new-answer-input-method)
-
----
-
-# Pre-submit tasks
-
-<img alt="Give me one moment please" src="images/hold-on.webp">
-
-[documentation](https://docs.numbas.org.uk/en/latest/marking-algorithm.html#pre-submit-tasks)
+* Mathematics and statistics
+* Physics
+* Engineering
+* Chemistry
+* Business studies
+* Psychology
+* Biomedical science
+* Sports science
+* ... and more
 
 ---
 
-# [Graph theory](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-graph-theory-extension)
+# Outside of Newcastle
 
-![A Numbas question with some graphs drawn above their adjacency matrices](images/graph-theory.png)
+* 1,500+ institutions in the UK and around the world.
+* 8,000+ users registered on public editor.
+* 9,500+ questions and exams released for free reuse under an open access licence.
 
-([demo](https://numbas.mathcentre.ac.uk/exam/27245/graph-theory-questions/preview/))
-
----
-
-# [Improvements to JSXGraph](https://www.numbas.org.uk/blog/2021/10/improvements-to-the-jsxgraph-extension/)
-
-<video src="images/jsxgraph.mp4" autoplay loop/>
+(as of June 2022, as far as we can tell)
 
 ---
 
-# Queues
+# A quick demo
 
-![An item being submitted to a queue, commented on, then approved](images/queue.svg)
-
-[documentation](https://docs.numbas.org.uk/en/latest/project/reference.html#queues)
+[Numbas demo exam](https://numbas.mathcentre.ac.uk/exam/1973/numbas-website-demo/embed/)
 
 ---
 
-<img alt="An item being reviewed: there's a link to the item, a checklist, then a comments thread" src="images/queues.png" class="full-height">
+# The mathcentre editor
+
+* Open to everyone.
+* Collect ready-made questions into a custom test
+* Or write your own.
+
+[numbas.mathcentre.ac.uk](https://numbas.mathcentre.ac.uk)
 
 ---
 
-# Autocompletion in the editor
+# [docs.numbas.org.uk](https://docs.numbas.org.uk)
 
-<video src="images/numbas-editor-autocomplete.mp4" autoplay loop>
-
----
-
-# Aims for the next year: Producing [working-out](https://www.numbas.org.uk/blog/2022/03/development-update-march-2022/#h-working-out)
-
-![Working-out for the Euclidean algorithm](images/working-out.png)
+![The Numbas documentation](images/docs.png)
 
 ---
 
-# Aims for the next year: Lockdown app
+# Planning a question
 
-![Screenshots showing the lockdown app flow: "this resource must run in the Numbas lockdown app" → "Please enter the password for this link" → a Numbas exam](images/lockdown-app.svg)
+![A list of prompts for planning a question](images/planning-a-question.png)
 
 ---
 
-# Aims for the next year: More contributors!
+# Use projects
 
-([177](https://github.com/numbas/Numbas/issues) + [108](https://github.com/numbas/editor/issues) + [81](https://github.com/numbas/numbas-lti-provider/issues) = 366 open issues!)
+![](images/project.png)
+
+---
+
+# Organise material into folders
+
+![](images/folders.png)
+
+---
+
+# Use editing history to leave editing comments and set checkpoints
+
+![](images/editing-history.png)
+
+---
+
+# Write good variable descriptions
+
+![](images/variable-descriptions.png)
+
+---
+
+# Use the "random person" extension
+
+![](images/random-person.png)
+
+---
+
+# Create printable exams with the "printed worksheet" theme
+
+![](images/worksheet.png)
+
+---
+
+# Extensions add functionality
+
+![](images/extensions.png)
+
+# Custom part types allow different kinds of interaction
+
+![](images/custom-part-types.png)
+
+---
+
+# Thanks!
+
+Website: [numbas.org.uk](https://www.numbas.org.uk)
+
+Email: [numbas@ncl.ac.uk](mailto:numbas@ncl.ac.uk)
+
+Twitter: [@NclNumbas](https://twitter.com/nclnumbas)
+
+Source code: [github.com/numbas](https://github.com/numbas)
+
