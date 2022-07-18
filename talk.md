@@ -1,68 +1,86 @@
 # Plan for today
 
-Numbas is capable of a lot more than I can show in an hour!
+## Morning (10:00 - 12:00)
 
 * Introduce Numbas and demo
-* Find out what's wanted
-* Explore the Numbas editor
-* Q&A
+* Write a first question
+
+<hr>
+
+## Afternoon (12:30 - 14:00)
+* Advanced features
+
+<aside>
+around the world
+lots of subjects
+used for over a decade
+students rate
+randomisation
+explore mode
+diagnostic mode
+adaptive marking
+alternative answers
+graphics, videos, interactives
+CC material
+works offline / client side
+automatic immediate marking
+translations
+lots of maths features
+accessibility
+LTI, SCORM, standalone
+extensions
+themes
+open source
+graphical editor
+</aside>
 
 ---
 
-Numbas is an open-source web-based e-assessment tool.
-
-It is aimed at numerate disciplines.
-
-Developed by the e-learning unit in Newcastle University's School of Mathematics, Statistics and Physics.
+![The world](images/world.svg)
 
 ---
 
-# Key features
-
-* Scalable, reliable and accessible to a broad range of users.
-* Easy to use.
-* Used by question authors who aren't experts.
-* Feedback is important.
-* Customisable everywhere.
-* Delivered through VLE or standalone.
-* Lots of maths features.
+![Maths](images/maths.svg)
 
 ---
 
-# Applications of Numbas
-
-At Newcastle, we use Numbas for:
-
-* Formative use in a pre-entry course.
-* Diagnostic tests in week 1.
-* Banks of practice material to supplement lecture material.
-* In-course assessment.
-* Lab exercises.
-* Final exams.
+![Randomisation](images/dice.svg)
 
 ---
 
-# Subjects using Numbas
-
-* Mathematics and statistics
-* Physics
-* Engineering
-* Chemistry
-* Business studies
-* Psychology
-* Biomedical science
-* Sports science
-* ... and more
+![Adaption](images/adaptive.svg)
 
 ---
 
-# Outside of Newcastle
+![Diagrams](images/diagrams.svg)
 
-* 1,500+ institutions in the UK and around the world.
-* 8,000+ users registered on public editor.
-* 9,500+ questions and exams released for free reuse under an open access licence.
+---
 
-(as of June 2022, as far as we can tell)
+![Part types](images/part-types.svg)
+
+---
+
+![Offline](images/offline.svg)
+
+---
+
+![Sharing](images/sharing.svg)
+
+---
+
+![Accessibility](images/accessibility.svg)
+
+---
+
+![LTI](images/lti.svg)
+
+---
+
+![Customisation](images/customisation.svg)
+
+---
+
+![Open source](images/open-source.svg)
 
 ---
 
@@ -133,6 +151,8 @@ At Newcastle, we use Numbas for:
 # Extensions add functionality
 
 ![](images/extensions.png)
+
+---
 
 # Custom part types allow different kinds of interaction
 

@@ -30,6 +30,15 @@ h2 {
     font-size: 1.1em;
 }
 
+hr {
+    width: 5em;
+    border: 1px solid white;
+}
+
+aside {
+    display: none;
+}
+
 a {
     color: var(--text-color);
     text-decoration-color: #555;
@@ -91,7 +100,7 @@ main > section img,
 main > section svg,
 main > section video
 {
-    max-width: 100%;
+    max-width: 90%;
     max-height: 60vh;
     width: 100vw;
     object-fit: contain;
