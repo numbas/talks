@@ -1,14 +1,8 @@
 # Plan for today
 
-## Morning (10:00 - 12:00)
-
 * Introduce Numbas and demo
 * Write a first question
-
-<hr>
-
-## Afternoon (12:30 - 14:00)
-* Advanced features
+* Look at advanced features
 
 <aside>
 around the world
@@ -108,7 +102,14 @@ graphical editor
 
 # Planning a question
 
-![A list of prompts for planning a question](images/planning-a-question.png)
+* What does the question assess?
+* What does the student have to do?
+* How might the student get the answer wrong?
+* Sketch the structure of the question
+* Implement the question in Numbas
+* Pay attention to detail
+* Think about randomisation
+* Do the boring admin bits
 
 ---
 
@@ -162,11 +163,16 @@ graphical editor
 
 # Thanks!
 
-Website: [numbas.org.uk](https://www.numbas.org.uk)
+<dl>
+<dt>Website</dt>
+<dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
 
-Email: [numbas@ncl.ac.uk](mailto:numbas@ncl.ac.uk)
+<dt>Email</dt>
+<dd><a href="mailto:numbas@ncl.ac.uk">numbas@ncl.ac.uk</a></dd>
 
-Twitter: [@NclNumbas](https://twitter.com/nclnumbas)
+<dt>Fediverse</dt>
+<dd><a href="https://mathstodon.xyz/@numbas">@numbas@mathstodon.xyz</a></dd>
 
-Source code: [github.com/numbas](https://github.com/numbas)
-
+<dt>Source code</dt>
+<dd><a href="https://github.com/numbas">github.com/numbas</a></dd>
+</dl>

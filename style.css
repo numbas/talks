@@ -133,6 +133,17 @@ main > section > iframe {
   height: 60vh;
 }
 
+main > section dl {
+    text-align: left;
+}
+main > section dt {
+    font-weight: bold;
+}
+main > section dd ~ dt {
+    margin-top: 1em;
+}
+
+
 footer {
     position: absolute;
     bottom: 0.5em;
