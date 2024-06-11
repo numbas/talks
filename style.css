@@ -1,8 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
     --bg: #a2d1f0;
-    --header-font: 'M Plus 1p',sans-serif;
-    --text-font: 'Inter', sans-serif;
+    --header-font: Atkinson Hyperlegible,sans-serif;
+    --text-font: 'Atkinson Hyperlegible', sans-serif;
     --text-color: black;
+    --text-decoration-color: #555;
+    --rule-color: white;
+    --border-color: black;
+    --border-radius: 0.2em;
+    --more-border-radius: calc(2 * var(--border-radius));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: hsl(203.8, 72.2%, 8%);
+        --text-color: white;
+        --text-decoration-color: #aaa;
+        --rule-color: black;
+        --border-color: white;
+    }
 }
 
 * {
@@ -12,7 +29,6 @@
 
 html {
     font-size: 4vmin;
-    font-family: sans-serif;
 }
 
 body {
@@ -20,11 +36,14 @@ body {
     background: var(--bg);
     color: var(--text-color);
     font-family: var(--text-font);
+    padding: 0 1svw;
 }
+
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--header-font);
     margin: 0 0 1rem 0;
 }
+
 h2 {
     margin: 0;
     font-size: 1.1em;
@@ -32,7 +51,7 @@ h2 {
 
 hr {
     width: 5em;
-    border: 1px solid white;
+    border: 1px solid var(--rule-color);
 }
 
 aside {
@@ -41,106 +60,180 @@ aside {
 
 a {
     color: var(--text-color);
-    text-decoration-color: #555;
+    text-decoration-color: var(--text-decoration-color);
+}
+
+header {
+    padding: 1rem;
+    & #uni svg {
+        width: 100%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    body {
+        display: grid;
+        grid-template:
+            "main header" / 1fr 15svw;
+        
+        & > header {
+            grid-area: header;
+            padding: 1svw 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        gap: 1em;
+    }
+    
 }
 
 main {
-    overflow: hidden;
+    overflow: hidden scroll;
     height: 100vh;
-    overflow-y: scroll;
     scroll-snap-type: y mandatory;
+
+    & > section {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        padding: 0;
+        scroll-snap-align: center;
+        grid-auto-rows: max-content;
+        align-content: center;
+        overflow-y: hidden;
+        
+        & * {
+            line-height: 1.5em;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        & > :is(h1, h2) {
+            align-self: start;
+        }
+
+        & > :is(ul,ol) {
+            text-align: left;
+
+            &:has(li > img.bullet) {
+                list-style: none;
+                padding-left: 0;
+                
+                
+                & li {
+                    position: relative;
+                    padding-left: 6em;
+                    min-height: 2em;
+                    
+                    & img.bullet {
+                        height: 3em;
+                        width: calc(16 / 9 * 3em);
+                        position: absolute;
+                        left: 0;
+                        top: -0.5em;
+                    }
+                }
+            }
+
+
+            & > li ~ li {
+                margin-top: 0.5em;
+            }
+        }
+
+        & p:has(img, svg, video, iframe) {
+            max-width: 90%;
+            max-height: 60vh;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            margin: 1rem 0;
+            
+            grid-template: 1fr / auto;
+        }
+        & :is(img, svg, video, iframe):not(.inline, .bullet) {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: var(--border-radius) var(--more-border-radius) var(--border-radius) var(--more-border-radius);
+            border: medium solid var(--border-color);
+        }
+
+        & .inline {
+            height: 2ex;
+        }
+        
+        & :is(figure, p) {
+            margin: 0;
+        }
+        
+        & figure {
+            width: 100%;
+        }
+
+        & p {
+            text-wrap: balance;
+        }
+        & p + p {
+            margin-top: 1em;
+        }
+
+        & .full-height {
+            max-height: 90vh;
+        }
+
+        & blockquote {
+            max-width: 20em;
+            line-height: 1.8em;
+        }
+        & iframe {
+          width: 80%;
+          height: 60vh;
+        }
+
+        & dl {
+            text-align: left;
+
+            & dt {
+                font-weight: bold;
+            }
+            & dd ~ dt {
+                margin-top: 1em;
+            }
+        }
+    }
+
+    & #start {
+        & > * {
+            margin: 1rem 0;
+        }
+        & img {
+            border-radius: 0;
+            border: none;
+        }
+        
+        & #logo {
+            width: 50%;
+        }
+    }
 }
 
-main > section {
-    width: 100vw;
-    height: 100vh;
+dl.grid {
     display: grid;
-    align-items: center;
-    justify-items: center;
-    text-align: center;
-    padding: 0px 1em;
-    scroll-snap-align: center;
-    grid-auto-rows: max-content;
-    align-content: center;
-    overflow-y: hidden;
-    /*! grid-template-rows: auto; */
-}
-
-@media (orientation: portrait) {
-    main > section {
-        height: auto;
-        scroll-snap-align: none;
+    
+    & dt {
+        grid-row: 1;
+        justify-self: center;
+        align-self: end;
     }
-    main > section + section {
-        margin-top: 5em;
-        padding-top: 5em;
-        border-top: 0.5vh dashed white;
+    & dd {
+        grid-row: 2;
     }
-}
-
-main > section:focus {
-    outline: none;
-}
-main > section > p {
-    line-height: 1.5em;
-}
-main > section > h1,
-main > section > h2
-{
-    align-self: start;
-}
-main > section > ul {
-    text-align: left;
-}
-main > section > ul > li ~ li {
-    margin-top: 0.5em;
-}
-
-main > section img,
-main > section svg,
-main > section video
-{
-    max-width: 90%;
-    max-height: 60vh;
-    width: 100vw;
-    object-fit: contain;
-    margin: 1rem 0;
-    border-radius: 0.3em;
-}
-
-main > section figure,
-main > section p {
-    margin: 0;
-}
-
-main > section p + p {
-    margin-top: 1em;
-}
-
-main > section img {
-}
-
-main > section .full-height {
-    max-height: 90vh;
-}
-
-main > section blockquote {
-    max-width: 20em;
-    line-height: 1.8em;
-}
-main > section > iframe {
-  width: 80%;
-  height: 60vh;
-}
-
-main > section dl {
-    text-align: left;
-}
-main > section dt {
-    font-weight: bold;
-}
-main > section dd ~ dt {
-    margin-top: 1em;
 }
 
 
@@ -156,3 +249,85 @@ footer #url {
     color: #333;
     text-decoration: none;
 }
+
+@media print {
+    main {
+        & > section {
+            page-break-before: always;
+        }
+    }
+}
+
+@media (orientation: portrait), print {
+    header {
+        margin-bottom: 10vh;
+        justify-content: center;
+        
+        & svg {
+            width: 50vw;
+            max-height: 30vh;
+        }
+        & #qrcode {
+            display: none;
+        }
+        
+        display: flex;
+        flex-direction: column;
+    }
+    
+    main {
+        overflow: initial;
+        height: auto;
+
+        & > section {
+            height: auto;
+            scroll-snap-align: none;
+            padding: 5em 1em;
+
+            & + section {
+                border-top: 0.5vh dashed white;
+            }
+
+        }
+        
+        & dl.grid {
+            grid-auto-flow: row;
+            gap: 1em;
+
+            & dt {
+                grid-row: initial;
+                grid-column: 1;
+                justify-self: end;
+                align-self: center;
+                margin: 0;
+            }
+            & dd {
+                grid-row: initial;
+                grid-column: 2;
+                margin: 0;
+                & :is(img, svg, video) {
+                    max-width: 30vw;
+                }
+            }
+        }        
+    }
+    
+    footer {
+        position: initial;
+        padding: 1em;
+        margin-top: 10vh;
+    }
+}
+
+@media print {
+    main {
+        & section {
+            height: 100vh;
+        }
+        & section + section {
+            padding: 0;
+        }
+    }
+}
+
+

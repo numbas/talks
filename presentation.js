@@ -1,12 +1,44 @@
+import QRCode from './qrcode.js';
+
+window.QRCode = QRCode;
+
 setTimeout(() => {
-    const sections = Array.from(document.querySelectorAll('main > section'));
-    function scroll_update(scrollPos) {
+    const qrcode = new QRCode('qrcode', {
+        width: 512,
+        height: 512
+    });
+
+    function update_qrcode() {
+        qrcode.makeCode(window.location+'');
     }
+
+    function restart_videos(section) {
+        for(let video of section.querySelectorAll('video')) {
+            video.currentTime = 0;
+            video.pause();
+        }
+    }
+
+    const sections = Array.from(document.querySelectorAll('main > section'));
+    function scroll_update() {
+        const section = sections.toReversed().find(s => s.getBoundingClientRect().top <= 10);
+        if(!section) {
+            return;
+        }
+        const hash = `#${section.id}`;
+        if(location.hash != hash) {
+            history.replaceState('','',hash);
+            restart_videos(section);
+        }
+        update_qrcode();
+    }
+
+    scroll_update();
 
     let lastKnownScrollPosition = 0;
     let ticking = false;
 
-    main = document.querySelector('main');
+    const main = document.querySelector('main');
     main.addEventListener('scroll', function(e) {
         lastKnownScrollPosition = main.scrollTop;
 
@@ -45,6 +77,12 @@ setTimeout(() => {
                     return;
                 }
             }
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.getSelection().collapseToStart()
+
             const to_section = sections[i+d];
             if(to_section) {
                 to_section.scrollIntoView();

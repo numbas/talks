@@ -2,6 +2,7 @@ import re
 from markdown import markdown
 from markdown.extensions import Extension
 from markdown.inlinepatterns import ImageInlineProcessor, IMAGE_LINK_RE, LINK_RE, LinkInlineProcessor
+import tomli
 import xml.etree.ElementTree as etree
 
 class SVGProcessor(ImageInlineProcessor):
@@ -14,20 +15,23 @@ class SVGProcessor(ImageInlineProcessor):
         if not handled:
             return None, None, None
 
+        alt_text = self.unescape(text)
+
         if src.endswith('.svg'):
             print(src)
             el = etree.Element("figure")
+            el.set('aria-label', alt_text)
             with open(src) as f:
                 el.text = self.md.htmlStash.store(f.read())
         else:
             el = etree.Element("img")
 
             el.set("src", src)
+            el.set('alt', alt_text)
 
         if title is not None:
             el.set("title", title)
 
-        el.set('alt', self.unescape(text))
         return el, m.start(0), index
 
 class LinkInlineTargetProcessor(LinkInlineProcessor):
@@ -43,19 +47,21 @@ class MyExtension(Extension):
 
 if __name__ == '__main__':
     with open('talk.md') as f:
-        slides = re.split(r'\n-{3,}\n',f.read())
+        source = f.read()
+        metadata_toml, body = re.split(r'\n\+{3,}\n', source)
 
-    slides = [f'<section>{slide}</section>' for slide in [markdown(t, extensions=[MyExtension()]) for t in slides]]
+    metadata = tomli.loads(metadata_toml)
+    slides = re.split(r'\n-{3,}\n', body)
 
-    starter = '<!-- markdown content -->'
-    ender = '<!-- /markdown content -->'
-    with open('index.html') as f:
-        html = f.read()
+    slides = [f'<section id="slide-{i}">{slide}</section>' for i, slide in enumerate([markdown(t, extensions=[MyExtension()]) for t in slides]+['<p>This slide intentionally left blank</p>'])]
 
-    start = html.find(starter)
-    end = html.find(ender)
+    with open('template.html') as f:
+        template_html = f.read()
 
-    ohtml = html[:start]+starter+'\n'+'\n'.join(slides)+'\n'+ender+html[end+len(ender):]
+    metadata['markdown content'] = '\n'.join(slides)
+
+    # Extremely weak templating system: replace ``{{key}}`` with the value of ``key`` in ``metadata``.
+    ohtml = re.sub(r'\{\{(?P<key>[^}]+)\}\}', lambda m: metadata.get(m.group('key'),''), template_html)
 
     with open('index.html','w') as f:
         f.write(ohtml)

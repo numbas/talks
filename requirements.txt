@@ -1,0 +1,2 @@
+Markdown==3.6
+tomli==2.0.1
