@@ -1,7 +1,7 @@
 import re
 from markdown import markdown
 from markdown.extensions import Extension
-from markdown.inlinepatterns import ImageInlineProcessor, IMAGE_LINK_RE, LINK_RE, LinkInlineProcessor
+from markdown.inlinepatterns import ImageInlineProcessor, IMAGE_LINK_RE, LINK_RE, LinkInlineProcessor, InlineProcessor
 import tomli
 import xml.etree.ElementTree as etree
 
@@ -40,10 +40,30 @@ class LinkInlineTargetProcessor(LinkInlineProcessor):
         el.set('target','_blank')
         return el, start, index
 
+class inlineMathProcessor( InlineProcessor ):
+    def handleMatch( self, m, data ):
+        # MathJAX handles all the math. Just set the uses_math flag, and
+        # protect the contents from markdown expansion.
+        self.md.uses_math = True
+        return m.group(0), m.start(0), m.end(0)
+
 class MyExtension(Extension):
     def extendMarkdown(self, md):
         md.inlinePatterns.register(SVGProcessor(IMAGE_LINK_RE,md),'svg',151)
         md.inlinePatterns.register(LinkInlineTargetProcessor(LINK_RE,md),'link',161)
+
+        self.add_math_extension(md)
+
+    def add_math_extension(self, md):
+        mathRegExps = [
+            r'(?<!\\)\\\((.+?)\\\)',    # \( ... \)
+            r'(?<!\\)\\\[.+?\\\]',      # \[ ... \]
+            r'(?<!\\)\\begin{([a-z]+?\*?)}.+?\\end{\1}',
+        ]
+        for i, pattern in enumerate(mathRegExps):
+            # we should have higher priority than 'escape' which has 180
+            md.inlinePatterns.register(
+                inlineMathProcessor( pattern, md ), f'math-inline-{i}', 185)
 
 if __name__ == '__main__':
     with open('talk.md') as f:

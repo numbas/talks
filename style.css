@@ -1,15 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@font-face {
+  font-family: "Luciole";
+  src: url("fonts/Luciole-Math/Luciole-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Luciole";
+  src: url("fonts/Luciole-Math/Luciole-Italic.woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Luciole";
+  src: url("fonts/Luciole-Math/Luciole-Bold.woff2");
+  font-weight: bold;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Luciole";
+  src: url("fonts/Luciole-Math/Luciole-BoldItalic.woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Luciole Math";
+  src: url("fonts/Luciole-Math/Luciole-Math.otf") format("opentype");
+  font-display: swap;
+}
 
 :root {
     --bg: #a2d1f0;
-    --header-font: Atkinson Hyperlegible,sans-serif;
-    --text-font: 'Atkinson Hyperlegible', sans-serif;
+    --header-font: 'Luciole Math',sans-serif;
+    --text-font: 'Luciole Math', sans-serif;
     --text-color: black;
     --text-decoration-color: #555;
     --rule-color: white;
     --border-color: black;
     --border-radius: 0.2em;
     --more-border-radius: calc(2 * var(--border-radius));
+    color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
