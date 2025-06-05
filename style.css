@@ -31,25 +31,34 @@
 }
 
 :root {
-    --bg: #a2d1f0;
-    --header-font: 'Luciole Math',sans-serif;
-    --text-font: 'Luciole Math', sans-serif;
+    --bg: white;
+    --bg-lum: 0.9;
+    --bg-chroma: 0.05;
+    --header-font: 'Luciole',sans-serif;
+    --text-font: 'Luciole', sans-serif;
     --text-color: black;
     --text-decoration-color: #555;
     --rule-color: white;
     --border-color: black;
     --border-radius: 0.2em;
     --more-border-radius: calc(2 * var(--border-radius));
+    --muted-color: #333;
     color-scheme: light dark;
+
+    --start-bg: oklch(var(--bg-lum) var(--bg-chroma) 210);
+    --end-bg: oklch(var(--bg-lum) var(--bg-chroma) 0);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --bg: hsl(203.8, 72.2%, 8%);
+        --bg-lum: 0.32;
+        --bg-chroma: 0.09;
         --text-color: white;
         --text-decoration-color: #aaa;
         --rule-color: black;
         --border-color: white;
+        --muted-color: #ddd;
     }
 }
 
@@ -67,7 +76,11 @@ body {
     background: var(--bg);
     color: var(--text-color);
     font-family: var(--text-font);
-    padding: 0 1svw;
+    padding: 0;
+}
+
+math {
+    font-family: 'Luciole Math', var(--text-font);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -109,25 +122,38 @@ header {
         
         & > header {
             grid-area: header;
-            padding: 1svw 0;
+            padding: 1svw;
             display: flex;
             flex-direction: column;
             gap: 1em;
         }
-        gap: 1em;
     }
     
+}
+
+* {
+    line-height: 1.5em;
 }
 
 main {
     overflow: hidden scroll;
     height: 100vh;
     scroll-snap-type: y mandatory;
+            border-left: min(1em, 1svw) solid;
+            border-image: 
+                linear-gradient(
+                    in oklch longer hue to bottom,
+                    var(--start-bg),
+                    var(--end-bg)
+                )
+                1 100%
+            ;
 
     & > section {
         width: 100%;
         height: 100vh;
         display: grid;
+        position: relative;
         align-items: center;
         justify-items: center;
         text-align: center;
@@ -136,9 +162,12 @@ main {
         grid-auto-rows: max-content;
         align-content: center;
         overflow-y: hidden;
-        
-        & * {
-            line-height: 1.5em;
+        --background-color: color-mix(in oklch longer hue,  var(--start-bg), var(--end-bg) calc(100% * var(--slide-number)));      
+        background-color: var(--background-color);
+        padding: 1svw;
+
+        & mjx-container * {
+            line-height: revert;
         }
 
         &:focus {
@@ -147,10 +176,79 @@ main {
 
         & > :is(h1, h2) {
             align-self: start;
+            padding: 0 1em;
+            line-height: 1.2em;
         }
 
-        & > :is(ul,ol) {
-            text-align: left;
+        &:not(#start):has(> h1:first-child) {
+            display: flex;
+            flex-direction: column;
+            & > h1:first-child {
+                flex-grow: 1;
+                align-self: center;
+            }
+            
+            &::after {
+                content: ' ';
+                flex-grow: 1;
+            }
+        }
+        
+        
+        & h2 {
+            margin: 1rem 0 0 0;
+        }
+
+        & math[display="block"] {
+            margin: 2em 0;
+        }
+
+        & > details {
+
+            & summary {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                text-align: start;
+                color: transparent;
+                margin-top: -2lh;
+                
+                &::marker {
+                    color: var(--text-color);
+                }
+            }
+        }
+
+
+        & pre {
+            padding: 0.5rem;
+            max-width: 100%;
+            text-align: start;
+            overflow: auto;
+            max-height: 8rem;
+            font-size: 0.8em;
+            background: color-mix(in oklab, var(--background-color), var(--bg) 50%);
+        }
+
+        & :is(ul,ol) {
+            width: 100%;
+            padding-left: 2em;
+
+            &.markers {
+                list-style-position: inside;
+
+                & li {
+                    list-style-type: var(--marker);
+
+                    &::marker {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+
+            & li {
+                text-align: left;
+            }
 
             &:has(li > img.bullet) {
                 list-style: none;
@@ -174,7 +272,7 @@ main {
 
 
             & > li ~ li {
-                margin-top: 0.5em;
+                margin-top: 0.5lh;
             }
         }
 
@@ -192,14 +290,13 @@ main {
             max-width: 100%;
             max-height: 60vh;
             border-radius: var(--border-radius) var(--more-border-radius) var(--border-radius) var(--more-border-radius);
-            border: medium solid var(--border-color);
         }
 
         & .inline {
             height: 2ex;
         }
         
-        & :is(figure, p) {
+        & :is(figure, p, blockquote) {
             margin: 0;
         }
         
@@ -209,9 +306,10 @@ main {
 
         & p {
             text-wrap: balance;
+            word-break: keep-all;
         }
-        & p + p {
-            margin-top: 1em;
+        & :is(figure, p, blockquote) + :is(figure, p, blockquote) {
+            margin-top: 1lh;
         }
 
         & .full-height {
@@ -219,7 +317,6 @@ main {
         }
 
         & blockquote {
-            max-width: 20em;
             line-height: 1.8em;
         }
         & iframe {
@@ -234,12 +331,14 @@ main {
                 font-weight: bold;
             }
             & dd ~ dt {
-                margin-top: 1em;
+                margin-top: 1lh;
             }
         }
     }
 
     & #start {
+        --slide-number: 0;
+
         & > * {
             margin: 1rem 0;
         }
@@ -250,6 +349,10 @@ main {
         
         & #logo {
             width: 50%;
+        }
+
+        & .event {
+            font-style: italic;
         }
     }
 }
@@ -270,14 +373,28 @@ dl.grid {
 
 footer {
     position: absolute;
-    bottom: 0.5em;
-    font-size: 0.6em;
+    bottom: 0;
+    font-size: min(1svw,0.6em);
     text-align: center;
-    left: 0.5em;
+    right: 0;
+    background: var(--bg);
+    padding: 0.5em;
+}
+
+header {
+    font-size: 0.5rem;
+
+    & hr {
+        flex-grow: 1;
+    }
+
+    & a {
+        text-decoration: none;
+    }
 }
 
 footer #url {
-    color: #333;
+    color: var(--muted-color);
     text-decoration: none;
 }
 
@@ -317,6 +434,10 @@ footer #url {
 
             & + section {
                 border-top: 0.5vh dashed white;
+            }
+
+            & details > summary {
+                display: none;
             }
 
         }

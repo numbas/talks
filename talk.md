@@ -1,219 +1,121 @@
-title = "Introduction to Numbas"
+title = "A tour of advanced mathematical assessment in Numbas"
 presenter = "<a href=\"https://www.staff.ncl.ac.uk/christian.perfect/\">Christian Lawson-Perfect</a>"
 affiliation = "Newcastle University"
+event = "<a href=\"https://pcwww.liv.ac.uk/~itho17/workshop2025/\">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025"
 
 +++
-# Plan for today
 
-* 2 hours
-* Please **interrupt** at any time!
+# Abstract
 
-<hr/>
+Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
 
-1. Introduce Numbas and demo
-2. Write a first question
-3. Look at advanced features
+I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.
 
 ---
 
-# <a href="https://numbas.org.uk"><img class="inline" alt="Numbas" src="images/numbas-logo.svg"></a>
+# Where are we starting from?
 
-* <img alt="" src="images/open-source.svg" class="bullet"> An open-source e-assessment system designed for mathematical subjects.
-* <img alt="" src="images/ncl-crest.svg" class="bullet"> Developed at Newcastle University since 2011.
-* <img alt="" src="images/world.svg" class="bullet"> Used around the world.
+The framing of this event suggests that most of the audience are using basic, possibly randomised, single-input questions automatically marked by comparison with an expected answer.
 
----
 
-# Key features
 
-* <img alt="" src="images/dice.svg" class="bullet"> Randomised questions.
-* <img alt="" src="images/accessibility.svg" class="bullet"> Easy to use and accessible.
-* <img alt="" src="images/adaptive.svg" class="bullet"> Adaptive behaviour.
-* <img alt="" src="images/customisation.svg" class="bullet"> Customisable everywhere.
-* <img alt="" src="images/maths.svg" class="bullet"> Lots of maths features.
-* <img alt="" src="images/offline.svg" class="bullet"> Runs standalone.
-* <img alt="" src="images/lti.svg" class="bullet"> LTI support.
+e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.
+
+More sophisticated assessment systems have existed for longer than I have!
+
+See Sangwin's book.
+
+So: do I show really whizz-bang, cutting-edge stuff, or stuff we've been doing for years but which this audience hasn't seen?
 
 ---
 
-# Question types
+# My position on assessment
 
-<dl class="grid">
-    <dt>Math notation</dt>
-    <dd><img alt="Prompt text says 'differentiate the following function: f(x) = minus 6 x squared minus 7 x minus 10'. An input box contains 'minus 12 x minus 7', and is followed by a rendering in mathematical notation and a green tick" src="images/jme.png"></dd>
-    <dt>Number</dt>
-    <dd><img alt="Prompt text says 'write 1234.567 in continental European style. An input box contains '1.234,567' and is followed by a green tick." src="images/numberentry.png"></dd>
-    <dt>Matrix</dt>
-    <dd><img alt="Prompt text says 'write a 3 × 3 identity matrix. Beneath are inputs labelled 'rows' and 'columns', and then a grid of inputs containing the entries of a 3×3 identity matrix, followed by a green tick." src="images/matrix.png"></dd>
-</dl>
+Formative assessment is useful.
+
+Summative assessment is a necessary evil.
 
 ---
 
-# Question types
+# Basics
 
-<dl class="grid">
-    <dt>Multiple choice</dt>
-    <dd><img alt="Prompt text says 'Tick each mammal'. Beneath are checkboxes labelled 'sparrow', 'shark', 'dog' (ticked) and 'cat' (ticked)', followed by a green tick." src="images/m_n_2.png">
-    <img alt="Prompt text says 'Select pairs of numbers that add up to 4. Beneath is a grid of checkboxes; the upper triangle is empty. The columns and rows are both labelled 1,2,3. 1,3 and 2,2 are ticked. The grid is followed by a green tick." src="images/m_n_x.png"></dd>
-    <dt>Short text</dt>
-    <dd><img alt="Prompt text says 'Write a headline in title case'. An input box contains 'Numbas Marks Answer Correctly', followed by a green tick." src="images/patternmatch.png"></dd>
-    <dt>Make your own</dt>
-    <dd><img alt="Prompt says 'Convert 240cm to metres'. An input box contains '2.4m', followed by text 'Include units in your answer' and a green tick." src="images/quantities.png"></dd>
-</dl>
+None of this is specific to advanced mathematics.
 
----
+## Parts
 
-# Question types
+Break up a long question into parts which are marked independently of each other.
 
-<dl class="grid">
-    <dt>Code</dt>
-    <dd><img alt="Prompt says 'Define a function called count_a which counts the number of times the letter 'a' appears in a string.' Beneath is a code editor containing Python code, followed by a green tick." src="images/code_part.png">
-    <dt>Spreadsheet</dt>
-    <dd><img alt="Prompt text says 'Before making a purchase, you always fill in a product fact sheet. Fill in the product fact sheet for the Autocomb Pro, using the information above'. Beneath is a spreadsheet interface with coloured areas headed 'Product name', 'Price', 'Running costs', 'Dimensions' and 'Reviews'. Numbers and text have been entered in the cells next to the headings. The spreadsheet is followed by a green tick." src="images/spreadsheet_part.png"></dd>
-</dl>
+## Steps
+
+Give an option to break up a longer calculation into smaller pieces: offer scaffolding.
 
 ---
 
-# Interactive diagrams
+# The user interface
 
-<dl class="grid">
-    <dt><a href="https://numbas.mathcentre.ac.uk/question/13914/geogebra-test-motion-on-a-slope/">GeoGebra</a></dt>
-    <dd><video controls src="videos/geogebra.webm" poster="videos/geogebra.png" alt="A question containing a diagram showing an object on a slope. The play button is clicked, and the object slides down the slope."></video></dd>
+We don't want to penalise students for small mistakes or misunderstandings.
 
-    <dt><a href="https://numbas.mathcentre.ac.uk/question/106801/jsxgraph-interactive-venn-diagram/">JSXGraph</a></dt>
-    <dd><video controls src="videos/jsxgraph.webm" poster="videos/jsxgraph.png" alt="A question showing a Venn diagram with points labelled by numbers. Below is a table showing the numbers, with checkboxes in columns 'Positive' and 'Even'. The mouse pointer drags some points into the right parts of the diagram, and then clicks on some checkboxes, which causes other points to move to the corresponding positions."></video></dd>
-</dl>
+* Don't accept unmarkable input, and always give immediate feedback so the student can fix it.
+* Always allow the student to change their answer.
+* Show how parts relate to each other, e.g. "this part's marking depends on your answer to the previous part."
 
 ---
 
-# Modes of use
+# Adaptive marking
 
-<dl>
-    <dt>Sequential</dt>
-    <dd>A fixed list of questions.</dd>
-    <dt>Menu</dt>
-    <dd>Student picks which questions they want to try.</dd>
-    <dt>Diagnostic</dt>
-    <dd>Adapts to student's performance.</dd>
-    <dt>Explore</dd>
-    <dd>Student picks their own path through an activity.</dd>
-</dl>
+Replace a question variable with the student's answer to a previous part.
+
+Allows "error carried forward" marking.
+
+Or, adventurously, allow the student to make up their own question. (more on that later)
 
 ---
 
-# How we use it
+# Alternative answers
 
-* Large banks of practice material.
-* In-course assessment: open for two weeks, worth 2% of module.
-* Labs: students enter measurements; Numbas marks calculations.
-* High-stakes assessments for many maths modules, as well as large service courses.
-* Hybrid exams: some automatically marked, some marked by hand.
+Mark against a few different expected answers / marking settings.
+
+Give tailored feedback; catch common errors; generally give some more wiggle room.
 
 ---
 
-# How to do it
+# Custom marking algorithms
 
-* Large question-writing team.
-* Think creatively about assessing hard topics.
-* Check everything very thoroughly *in advance*.
+Test the properties of the student's answer.
 
----
+Do several things with it.
 
-<figure>
-    <iframe src="https://numbas.mathcentre.ac.uk/exam/1973/numbas-website-demo/embed"></iframe>
-    <figcaption><a target="_blank" class="source" href="https://www.numbas.org.uk/demo">numbas.org.uk/demo</a></figcaption>
-</figure>
+Give detailed feedback.
 
----
+Branching decision trees.
 
-# The mathcentre editor
+Build up a series of feedback notes.
 
-* Open to everyone.
-* Collect ready-made questions into a custom test
-* Or write your own.
+Combine several answer inputs.
 
-[numbas.mathcentre.ac.uk](https://numbas.mathcentre.ac.uk)
+e.g. 
+
+* "Give an example of X"
+
+There's almost always more than one valid answer to a question.
 
 ---
 
-# Let's make this
+# Custom part types
 
-<figure>
-    <iframe src="https://numbas.mathcentre.ac.uk/question/144306/my-first-question/embed/"></iframe>
-    <figcaption><a target="_blank" class="source" href="https://numbas.mathcentre.ac.uk/question/144306/my-first-question/preview/">numbas.mathcentre.ac.uk/question/144306/my-first-question/preview/</a></figcaption>
-</figure>
+Use different input methods / formats.
 
 ---
 
-# Documentation
+# Explore mode
 
-<figure>
-    <img alt="The Numbas documentation" src="images/docs.png">
-    <figcaption>
-        <a href="https://docs.numbas.org.uk">docs.numbas.org.uk</a>
-    </figcaption>
-</figure>
+Allow more choice.
 
----
+Assess the student's choice of method.
 
-# Planning a question
+Let the student design their own question.
 
-* What does the question assess?
-* What does the student have to do?
-* How might the student get the answer wrong?
-* Sketch the structure of the question
-* Implement the question in Numbas
-* Pay attention to detail
-* Think about randomisation
-* Do the boring admin bits
-
----
-
-# Use projects
-
-![](images/project.png)
-
----
-
-# Organise material into folders
-
-![](images/folders.png)
-
----
-
-# Use editing history to leave editing comments and set checkpoints
-
-![](images/editing-history.png)
-
----
-
-# Write good variable descriptions
-
-![](images/variable-descriptions.png)
-
----
-
-# Use the "random person" extension
-
-![](images/random-person.png)
-
----
-
-# Create printable exams with the "printed worksheet" theme
-
-![](images/worksheet.png)
-
----
-
-# Extensions add functionality
-
-![](images/extensions.png)
-
----
-
-# Custom part types allow different kinds of interaction
-
-![](images/custom-part-types.png)
+Follow an algorithm.
 
 ---
 

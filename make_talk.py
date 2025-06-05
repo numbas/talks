@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import re
 from markdown import markdown
 from markdown.extensions import Extension
@@ -37,7 +38,8 @@ class SVGProcessor(ImageInlineProcessor):
 class LinkInlineTargetProcessor(LinkInlineProcessor):
     def handleMatch(self, *args, **kwargs):
         el, start, index = super().handleMatch(*args, **kwargs)
-        el.set('target','_blank')
+        if el is not None:
+            el.set('target','_blank')
         return el, start, index
 
 class inlineMathProcessor( InlineProcessor ):
@@ -65,6 +67,31 @@ class MyExtension(Extension):
             md.inlinePatterns.register(
                 inlineMathProcessor( pattern, md ), f'math-inline-{i}', 185)
 
+def slugify(value, v=0):
+    slug = re.sub(r'[\W_]+', '_', value).lower()[:20]
+    slug = re.sub(r'^_*(.*?)_*$', r'\1', slug)
+
+    if v > 0:
+        suffix = f'_{v}'
+        slug = slug[:-len(suffix)]
+        if slug.endswith('_'):
+            slug = slug[:-1]
+        slug = slug + suffix
+
+    return slug
+
+def slide_html(i, num_slides, html):
+    slide_id = f"slide-{i}"
+
+    soup = BeautifulSoup(html, features='lxml')
+    try:
+        header = soup.h1.text
+        slide_id = slugify(header)
+    except AttributeError:
+        pass
+
+    return f'<section data-slide-number="{i}" style="--slide-number: {(i+1)/num_slides}" id="{slide_id}">{html}</section>'
+
 if __name__ == '__main__':
     with open('talk.md') as f:
         source = f.read()
@@ -72,8 +99,14 @@ if __name__ == '__main__':
 
     metadata = tomli.loads(metadata_toml)
     slides = re.split(r'\n-{3,}\n', body)
+    num_slides = len(slides)+2
 
-    slides = [f'<section id="slide-{i}">{slide}</section>' for i, slide in enumerate([markdown(t, extensions=[MyExtension()]) for t in slides]+['<p>This slide intentionally left blank</p>'])]
+    extensions = [
+        MyExtension(),
+        'pymdownx.blocks.details',
+    ]
+
+    slides = [slide_html(i,num_slides,slide) for i, slide in enumerate([markdown(t, extensions=extensions) for t in slides]+['<p>This slide intentionally left blank</p>'])]
 
     with open('template.html') as f:
         template_html = f.read()

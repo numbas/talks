@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Introduction to Numbas</title>
+        <title>A tour of advanced mathematical assessment in Numbas</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="style.css" id="theme">
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="presentation.js" type="module"></script>
     </head>
     <body>
@@ -18,157 +16,77 @@
                     <use href="images/ncl-logo.svg#logo" width="793" height="225"></use>
                 </svg>
             </a>
+
             <div id="qrcode"></div>
+
+            <hr>
+
+            <p class="presenter"><a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a></p>
+            <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
         </header>
         <main>
             <section id="start">
                 <img id="logo" alt="Numbas" src="images/numbas-logo.svg">
-                <h1>Introduction to Numbas</h1>
+                <h1>A tour of advanced mathematical assessment in Numbas</h1>
                 <p>
                     <a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a>
                     <br>
                     Newcastle University
                 </p>
-                <p></p>
+                <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
             </section>
-<section id="slide-0"><h1>Plan for today</h1>
+<section data-slide-number="0" style="--slide-number: 0.07692307692307693" id="abstract"><h1>Abstract</h1>
+<p>Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.</p>
+<p>I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.</p></section>
+<section data-slide-number="1" style="--slide-number: 0.15384615384615385" id="where_are_we_startin"><h1>Where are we starting from?</h1>
+<p>The framing of this event suggests that most of the audience are using basic, possibly randomised, single-input questions automatically marked by comparison with an expected answer.</p>
+<p>e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.</p>
+<p>More sophisticated assessment systems have existed for longer than I have!</p>
+<p>See Sangwin's book.</p>
+<p>So: do I show really whizz-bang, cutting-edge stuff, or stuff we've been doing for years but which this audience hasn't seen?</p></section>
+<section data-slide-number="2" style="--slide-number: 0.23076923076923078" id="my_position_on_asses"><h1>My position on assessment</h1>
+<p>Formative assessment is useful.</p>
+<p>Summative assessment is a necessary evil.</p></section>
+<section data-slide-number="3" style="--slide-number: 0.3076923076923077" id="basics"><h1>Basics</h1>
+<p>None of this is specific to advanced mathematics.</p>
+<h2>Parts</h2>
+<p>Break up a long question into parts which are marked independently of each other.</p>
+<h2>Steps</h2>
+<p>Give an option to break up a longer calculation into smaller pieces: offer scaffolding.</p></section>
+<section data-slide-number="4" style="--slide-number: 0.38461538461538464" id="the_user_interface"><h1>The user interface</h1>
+<p>We don't want to penalise students for small mistakes or misunderstandings.</p>
 <ul>
-<li>2 hours</li>
-<li>Please <strong>interrupt</strong> at any time!</li>
+<li>Don't accept unmarkable input, and always give immediate feedback so the student can fix it.</li>
+<li>Always allow the student to change their answer.</li>
+<li>Show how parts relate to each other, e.g. "this part's marking depends on your answer to the previous part."</li>
+</ul></section>
+<section data-slide-number="5" style="--slide-number: 0.46153846153846156" id="adaptive_marking"><h1>Adaptive marking</h1>
+<p>Replace a question variable with the student's answer to a previous part.</p>
+<p>Allows "error carried forward" marking.</p>
+<p>Or, adventurously, allow the student to make up their own question. (more on that later)</p></section>
+<section data-slide-number="6" style="--slide-number: 0.5384615384615384" id="alternative_answers"><h1>Alternative answers</h1>
+<p>Mark against a few different expected answers / marking settings.</p>
+<p>Give tailored feedback; catch common errors; generally give some more wiggle room.</p></section>
+<section data-slide-number="7" style="--slide-number: 0.6153846153846154" id="custom_marking_algor"><h1>Custom marking algorithms</h1>
+<p>Test the properties of the student's answer.</p>
+<p>Do several things with it.</p>
+<p>Give detailed feedback.</p>
+<p>Branching decision trees.</p>
+<p>Build up a series of feedback notes.</p>
+<p>Combine several answer inputs.</p>
+<p>e.g. </p>
+<ul>
+<li>"Give an example of X"</li>
 </ul>
-<hr/>
-
-<ol>
-<li>Introduce Numbas and demo</li>
-<li>Write a first question</li>
-<li>Look at advanced features</li>
-</ol></section>
-<section id="slide-1"><h1><a href="https://numbas.org.uk"><img class="inline" alt="Numbas" src="images/numbas-logo.svg"></a></h1>
-<ul>
-<li><img alt="" src="images/open-source.svg" class="bullet"> An open-source e-assessment system designed for mathematical subjects.</li>
-<li><img alt="" src="images/ncl-crest.svg" class="bullet"> Developed at Newcastle University since 2011.</li>
-<li><img alt="" src="images/world.svg" class="bullet"> Used around the world.</li>
-</ul></section>
-<section id="slide-2"><h1>Key features</h1>
-<ul>
-<li><img alt="" src="images/dice.svg" class="bullet"> Randomised questions.</li>
-<li><img alt="" src="images/accessibility.svg" class="bullet"> Easy to use and accessible.</li>
-<li><img alt="" src="images/adaptive.svg" class="bullet"> Adaptive behaviour.</li>
-<li><img alt="" src="images/customisation.svg" class="bullet"> Customisable everywhere.</li>
-<li><img alt="" src="images/maths.svg" class="bullet"> Lots of maths features.</li>
-<li><img alt="" src="images/offline.svg" class="bullet"> Runs standalone.</li>
-<li><img alt="" src="images/lti.svg" class="bullet"> LTI support.</li>
-</ul></section>
-<section id="slide-3"><h1>Question types</h1>
-<dl class="grid">
-    <dt>Math notation</dt>
-    <dd><img alt="Prompt text says 'differentiate the following function: f(x) = minus 6 x squared minus 7 x minus 10'. An input box contains 'minus 12 x minus 7', and is followed by a rendering in mathematical notation and a green tick" src="images/jme.png"></dd>
-    <dt>Number</dt>
-    <dd><img alt="Prompt text says 'write 1234.567 in continental European style. An input box contains '1.234,567' and is followed by a green tick." src="images/numberentry.png"></dd>
-    <dt>Matrix</dt>
-    <dd><img alt="Prompt text says 'write a 3 × 3 identity matrix. Beneath are inputs labelled 'rows' and 'columns', and then a grid of inputs containing the entries of a 3×3 identity matrix, followed by a green tick." src="images/matrix.png"></dd>
-</dl></section>
-<section id="slide-4"><h1>Question types</h1>
-<dl class="grid">
-    <dt>Multiple choice</dt>
-    <dd><img alt="Prompt text says 'Tick each mammal'. Beneath are checkboxes labelled 'sparrow', 'shark', 'dog' (ticked) and 'cat' (ticked)', followed by a green tick." src="images/m_n_2.png">
-    <img alt="Prompt text says 'Select pairs of numbers that add up to 4. Beneath is a grid of checkboxes; the upper triangle is empty. The columns and rows are both labelled 1,2,3. 1,3 and 2,2 are ticked. The grid is followed by a green tick." src="images/m_n_x.png"></dd>
-    <dt>Short text</dt>
-    <dd><img alt="Prompt text says 'Write a headline in title case'. An input box contains 'Numbas Marks Answer Correctly', followed by a green tick." src="images/patternmatch.png"></dd>
-    <dt>Make your own</dt>
-    <dd><img alt="Prompt says 'Convert 240cm to metres'. An input box contains '2.4m', followed by text 'Include units in your answer' and a green tick." src="images/quantities.png"></dd>
-</dl></section>
-<section id="slide-5"><h1>Question types</h1>
-<dl class="grid">
-    <dt>Code</dt>
-    <dd><img alt="Prompt says 'Define a function called count_a which counts the number of times the letter 'a' appears in a string.' Beneath is a code editor containing Python code, followed by a green tick." src="images/code_part.png">
-    <dt>Spreadsheet</dt>
-    <dd><img alt="Prompt text says 'Before making a purchase, you always fill in a product fact sheet. Fill in the product fact sheet for the Autocomb Pro, using the information above'. Beneath is a spreadsheet interface with coloured areas headed 'Product name', 'Price', 'Running costs', 'Dimensions' and 'Reviews'. Numbers and text have been entered in the cells next to the headings. The spreadsheet is followed by a green tick." src="images/spreadsheet_part.png"></dd>
-</dl></section>
-<section id="slide-6"><h1>Interactive diagrams</h1>
-<dl class="grid">
-    <dt><a href="https://numbas.mathcentre.ac.uk/question/13914/geogebra-test-motion-on-a-slope/">GeoGebra</a></dt>
-    <dd><video controls src="videos/geogebra.webm" poster="videos/geogebra.png" alt="A question containing a diagram showing an object on a slope. The play button is clicked, and the object slides down the slope."></video></dd>
-
-    <dt><a href="https://numbas.mathcentre.ac.uk/question/106801/jsxgraph-interactive-venn-diagram/">JSXGraph</a></dt>
-    <dd><video controls src="videos/jsxgraph.webm" poster="videos/jsxgraph.png" alt="A question showing a Venn diagram with points labelled by numbers. Below is a table showing the numbers, with checkboxes in columns 'Positive' and 'Even'. The mouse pointer drags some points into the right parts of the diagram, and then clicks on some checkboxes, which causes other points to move to the corresponding positions."></video></dd>
-</dl></section>
-<section id="slide-7"><h1>Modes of use</h1>
-<dl>
-    <dt>Sequential</dt>
-    <dd>A fixed list of questions.</dd>
-    <dt>Menu</dt>
-    <dd>Student picks which questions they want to try.</dd>
-    <dt>Diagnostic</dt>
-    <dd>Adapts to student's performance.</dd>
-    <dt>Explore</dd>
-    <dd>Student picks their own path through an activity.</dd>
-</dl></section>
-<section id="slide-8"><h1>How we use it</h1>
-<ul>
-<li>Large banks of practice material.</li>
-<li>In-course assessment: open for two weeks, worth 2% of module.</li>
-<li>Labs: students enter measurements; Numbas marks calculations.</li>
-<li>High-stakes assessments for many maths modules, as well as large service courses.</li>
-<li>Hybrid exams: some automatically marked, some marked by hand.</li>
-</ul></section>
-<section id="slide-9"><h1>How to do it</h1>
-<ul>
-<li>Large question-writing team.</li>
-<li>Think creatively about assessing hard topics.</li>
-<li>Check everything very thoroughly <em>in advance</em>.</li>
-</ul></section>
-<section id="slide-10"><figure>
-    <iframe src="https://numbas.mathcentre.ac.uk/exam/1973/numbas-website-demo/embed"></iframe>
-    <figcaption><a target="_blank" class="source" href="https://www.numbas.org.uk/demo">numbas.org.uk/demo</a></figcaption>
-</figure></section>
-<section id="slide-11"><h1>The mathcentre editor</h1>
-<ul>
-<li>Open to everyone.</li>
-<li>Collect ready-made questions into a custom test</li>
-<li>Or write your own.</li>
-</ul>
-<p><a href="https://numbas.mathcentre.ac.uk" target="_blank">numbas.mathcentre.ac.uk</a></p></section>
-<section id="slide-12"><h1>Let's make this</h1>
-<figure>
-    <iframe src="https://numbas.mathcentre.ac.uk/question/144306/my-first-question/embed/"></iframe>
-    <figcaption><a target="_blank" class="source" href="https://numbas.mathcentre.ac.uk/question/144306/my-first-question/preview/">numbas.mathcentre.ac.uk/question/144306/my-first-question/preview/</a></figcaption>
-</figure></section>
-<section id="slide-13"><h1>Documentation</h1>
-<figure>
-    <img alt="The Numbas documentation" src="images/docs.png">
-    <figcaption>
-        <a href="https://docs.numbas.org.uk">docs.numbas.org.uk</a>
-    </figcaption>
-</figure></section>
-<section id="slide-14"><h1>Planning a question</h1>
-<ul>
-<li>What does the question assess?</li>
-<li>What does the student have to do?</li>
-<li>How might the student get the answer wrong?</li>
-<li>Sketch the structure of the question</li>
-<li>Implement the question in Numbas</li>
-<li>Pay attention to detail</li>
-<li>Think about randomisation</li>
-<li>Do the boring admin bits</li>
-</ul></section>
-<section id="slide-15"><h1>Use projects</h1>
-<p><img alt="" src="images/project.png" /></p></section>
-<section id="slide-16"><h1>Organise material into folders</h1>
-<p><img alt="" src="images/folders.png" /></p></section>
-<section id="slide-17"><h1>Use editing history to leave editing comments and set checkpoints</h1>
-<p><img alt="" src="images/editing-history.png" /></p></section>
-<section id="slide-18"><h1>Write good variable descriptions</h1>
-<p><img alt="" src="images/variable-descriptions.png" /></p></section>
-<section id="slide-19"><h1>Use the "random person" extension</h1>
-<p><img alt="" src="images/random-person.png" /></p></section>
-<section id="slide-20"><h1>Create printable exams with the "printed worksheet" theme</h1>
-<p><img alt="" src="images/worksheet.png" /></p></section>
-<section id="slide-21"><h1>Extensions add functionality</h1>
-<p><img alt="" src="images/extensions.png" /></p></section>
-<section id="slide-22"><h1>Custom part types allow different kinds of interaction</h1>
-<p><img alt="" src="images/custom-part-types.png" /></p></section>
-<section id="slide-23"><h1>Thanks!</h1>
+<p>There's almost always more than one valid answer to a question.</p></section>
+<section data-slide-number="8" style="--slide-number: 0.6923076923076923" id="custom_part_types"><h1>Custom part types</h1>
+<p>Use different input methods / formats.</p></section>
+<section data-slide-number="9" style="--slide-number: 0.7692307692307693" id="explore_mode"><h1>Explore mode</h1>
+<p>Allow more choice.</p>
+<p>Assess the student's choice of method.</p>
+<p>Let the student design their own question.</p>
+<p>Follow an algorithm.</p></section>
+<section data-slide-number="10" style="--slide-number: 0.8461538461538461" id="thanks"><h1>Thanks!</h1>
 <dl>
 <dt>Website</dt>
 <dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
@@ -182,7 +100,7 @@
 <dt>Source code</dt>
 <dd><a href="https://github.com/numbas">github.com/numbas</a></dd>
 </dl></section>
-<section id="slide-24"><p>This slide intentionally left blank</p></section>
+<section data-slide-number="11" style="--slide-number: 0.9230769230769231" id="slide-11"><p>This slide intentionally left blank</p></section>
         </main>
         <footer><a id="url"></a></footer>
     </body>

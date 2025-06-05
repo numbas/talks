@@ -6,9 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=M+PLUS+1p:wght@400;700;800&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="style.css" id="theme">
-        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="presentation.js" type="module"></script>
     </head>
     <body>
@@ -18,7 +16,13 @@
                     <use href="images/ncl-logo.svg#logo" width="793" height="225"></use>
                 </svg>
             </a>
+
             <div id="qrcode"></div>
+
+            <hr>
+
+            <p class="presenter">{{presenter}}</p>
+            <p class="event">{{event}}</p>
         </header>
         <main>
             <section id="start">
@@ -29,7 +33,7 @@
                     <br>
                     {{affiliation}}
                 </p>
-                <p>{{event}}</p>
+                <p class="event">{{event}}</p>
             </section>
 {{markdown content}}
         </main>
