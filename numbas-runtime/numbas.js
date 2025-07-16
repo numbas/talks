@@ -3770,7 +3770,7 @@ class NumbasExamElement extends HTMLElement {
          * @returns {observable.<string>}
          */
         function styleObservable(property_name) {
-            const value = body_style.getPropertyValue(property_name)
+            const value = body_style.getPropertyValue(property_name);
             const obs = Knockout.observable();
             obs.initial_value = value;
             return obs;
@@ -5747,8 +5747,6 @@ Numbas.queueScript('exam-display', ['display-util', 'display-base', 'math', 'uti
             correct_message: R('control.confirm end.correct'),
             incorrect_message: R('control.confirm end.incorrect')
         });
-
-        document.title = e.settings.name;
     }
     display.ExamDisplay.prototype = /** @lends Numbas.display.ExamDisplay.prototype */
     {

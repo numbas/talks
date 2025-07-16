@@ -5,6 +5,10 @@ event = "<a href=\"https://pcwww.liv.ac.uk/~itho17/workshop2025/\">Automated gra
 
 +++
 
+<numbas-exam source_url="numbas-exams/easy-question.exam" locale="en-GB"></numbas-exam>
+
+---
+
 # Abstract
 
 Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
@@ -28,6 +32,11 @@ See Sangwin's book.
 So: do I show really whizz-bang, cutting-edge stuff, or stuff we've been doing for years but which this audience hasn't seen?
 
 ---
+
+<numbas-exam source_url="numbas-exams/easy-question.exam" locale="en-GB"></numbas-exam>
+
+---
+
 
 # My position on assessment
 

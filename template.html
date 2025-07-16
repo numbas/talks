@@ -7,9 +7,32 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="style.css" id="theme">
+
+        <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                packages: {'[+]': ['numbas']}
+            },
+            loader: {
+                load: ['[numbas]/numbas-mathjax.js'],
+                paths: {numbas: 'numbas-runtime/mathjax'},
+                versionWarnings: false
+            },
+            startup: {
+                typeset: false
+            }
+        };
+        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-rc.4/tex-svg.js"></script>
+
+        <script src="numbas-runtime/numbas.js" defer></script>
         <script src="presentation.js" type="module"></script>
     </head>
     <body>
+        <div id="loading" style="display: none">
+            <progress></progress>
+        </div>
         <header>
             <a id="uni" target="_blank" href="https://ncl.ac.uk">
                 <svg title="Newcastle University" viewBox="0 0 793.45331 225.10667" xmlns="http://www.w3.org/2000/svg">
@@ -38,5 +61,6 @@
 {{markdown content}}
         </main>
         <footer><a id="url"></a></footer>
+        {{numbas_exam_template}}
     </body>
 </html>

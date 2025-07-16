@@ -113,6 +113,9 @@ if __name__ == '__main__':
 
     metadata['markdown content'] = '\n'.join(slides)
 
+    with open('numbas-runtime/exam_template.html') as f:
+        metadata['numbas_exam_template'] = f.read()
+
     # Extremely weak templating system: replace ``{{key}}`` with the value of ``key`` in ``metadata``.
     ohtml = re.sub(r'\{\{(?P<key>[^}]+)\}\}', lambda m: metadata.get(m.group('key'),''), template_html)
 
