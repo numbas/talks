@@ -32,7 +32,7 @@
 
 :root {
     --bg: white;
-    --bg-lum: 0.9;
+    --bg-lum: 0.95;
     --bg-chroma: 0.05;
     --header-font: 'Luciole',sans-serif;
     --text-font: 'Luciole', sans-serif;
@@ -335,6 +335,26 @@ main {
                 margin-top: 1lh;
             }
         }
+
+        & table {
+            border-collapse: collapse;
+
+            & :is(td,th):not(:first-child) {
+                border-left: thin solid;
+            }
+
+            & thead tr:last-child th {
+                border-bottom: thin solid;
+            }
+
+            & :is(td,th) {
+                vertical-align: top;
+            }
+
+            & ul {
+                margin: 0;
+            }
+        }
     }
 
     & #start {
@@ -485,7 +505,7 @@ footer #url {
 
 numbas-exam {
     display: block;
-    max-height: calc(100svh - 4rem);
+    max-height: calc(100svh - 5rem);
     width: calc(100cqw - var(--spacing));
     overflow: auto;
     border-radius: var(--more-border-radius);

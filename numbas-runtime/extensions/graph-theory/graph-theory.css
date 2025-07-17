@@ -1,0 +1,60 @@
+.working-out {
+    --num-columns: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--num-columns),auto);
+    grid-gap: 1em;
+    align-items: center;
+    justify-content: start;
+}
+.working-out .explanation {
+    grid-column: 1;
+}
+@media (max-width: 40em) {
+    .working-out {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.weight-matrix {
+    border-collapse: collapse;
+}
+
+.weight-matrix td,
+.weight-matrix th {
+    padding: 0.25em;
+}
+.weight-matrix td {
+    text-align: right;
+}
+
+.weight-matrix tr > *:not(:last-child) {
+    border-right: 1px solid;
+}
+.weight-matrix tr:not(:last-child) > * {
+    border-bottom: 1px solid;
+}
+
+.working-out table th.visited,
+.weight-matrix td.visited {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.weight-matrix td.possible {
+    background: hsl(240,50%,90%);
+}
+.weight-matrix td.connected {
+    opacity: 0.5;
+}
+.working-out table {
+    margin: 0 auto;
+}
+
+graph-app {
+    width: 100%;
+    max-width: 90vw;
+    max-height: 80vh;
+    border: 1px solid;
+    box-sizing: content-box;
+}

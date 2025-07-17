@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <script src="../../tests/jme-runtime.js"></script>
+        <script src="../../tests/locales.js"></script>
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                TeX: {
+                    extensions: ['begingroup.js']
+                },
+                tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['\\[','\\]'], ['$$','$$']],
+                    processEscapes: true
+                },
+                "HTML-CSS": {
+                    mtextFontInherit: true,
+                    preferredFont: 'Latin-Modern',
+                    webFont: 'Latin-Modern'
+                },
+                skipStartupTypeset: true,
+                displayAlign: "center",
+                displayIndent: "0.1em"
+            });
+            MathJax.Hub.processSectionDelay = 0;
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script src="permutations.js"></script>
+</head>
+<body>
+		<script>
+			Numbas.queueScript('base',[],function() {});
+			Numbas.queueScript('go',['jme','extensions/permutations/permutations.js'],function() {
+                Numbas.activateExtension('permutations');
+                var permutations = window.permutations = Numbas.extensions.permutations;
+
+                var scope = window.scope = new Numbas.jme.Scope([Numbas.jme.builtinScope,permutations.scope]);
+			});
+		</script>
+
+		<style type="text/css">
+		</style>
+</body>
+</html>

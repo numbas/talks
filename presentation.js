@@ -3,6 +3,8 @@ import QRCode from './qrcode.js';
 window.QRCode = QRCode;
 
 setTimeout(() => {
+    Numbas.display.control_focus = false;
+
     const qrcode = new QRCode('qrcode', {
         width: 512,
         height: 512
@@ -54,7 +56,9 @@ setTimeout(() => {
 
     sections.forEach((section,i) => {
         section.addEventListener('click', e => {
-            if(e.target.nodeName=='A') {
+            console.log(e.target.nodeName);
+            const safe_clicks = 'section ul li p ol div span'.split(' ');
+            if(!safe_clicks.includes(e.target.nodeName.toLowerCase())) {
                 return;
             }
             const box = section.getBoundingClientRect();
@@ -89,6 +93,24 @@ setTimeout(() => {
             }
         })
     })
+
+    const exam_observer = new IntersectionObserver(
+        (entries) => {
+            for(let {target, isIntersecting} of entries) {
+                if(isIntersecting) {
+                    target.load_exam();
+                }
+            }
+        },
+        {
+            root: document.querySelector('main'),
+            threshold: 0.01
+        }
+    );
+
+    for(let exam of document.querySelectorAll('numbas-exam')) {
+        exam_observer.observe(exam);
+    }
 
 },100);
 

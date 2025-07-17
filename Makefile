@@ -14,9 +14,6 @@ numbas-runtime/numbas.css: $(RUNTIME_PATH)/numbas.css
 numbas-runtime/numbas.js: $(RUNTIME_PATH)/numbas.js
 	cp $< $@
 
-numbas-exams/easy-question.exam:
-	curl http://clppc.local:8000/question/45/easy-question.exam > $@
-
 upload:
 	rsync -avzr ./* numbas:/srv/www/numbas/talks/$(BRANCH)
 

@@ -5,38 +5,22 @@ event = "<a href=\"https://pcwww.liv.ac.uk/~itho17/workshop2025/\">Automated gra
 
 +++
 
-<numbas-exam source_url="numbas-exams/easy-question.exam" locale="en-GB"></numbas-exam>
-
----
-
 # Abstract
 
-Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
-
-I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.
+> Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
+> I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.
 
 ---
 
 # Where are we starting from?
 
-The framing of this event suggests that most of the audience are using basic, possibly randomised, single-input questions automatically marked by comparison with an expected answer.
-
-
+The framing of this event suggests "basic" means single-input, possible randomised, questions automatically marked by comparison with an expected answer.
 
 e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.
 
-More sophisticated assessment systems have existed for longer than I have!
-
-See Sangwin's book.
-
-So: do I show really whizz-bang, cutting-edge stuff, or stuff we've been doing for years but which this audience hasn't seen?
+More sophisticated assessment systems than this have existed for longer than I have!
 
 ---
-
-<numbas-exam source_url="numbas-exams/easy-question.exam" locale="en-GB"></numbas-exam>
-
----
-
 
 # My position on assessment
 
@@ -60,6 +44,12 @@ Give an option to break up a longer calculation into smaller pieces: offer scaff
 
 ---
 
+# Parts and steps
+
+<numbas-exam noload source_url="numbas-exams/parts-and-steps.exam" locale="en-GB"></numbas-exam>
+
+---
+
 # The user interface
 
 We don't want to penalise students for small mistakes or misunderstandings.
@@ -80,6 +70,12 @@ Or, adventurously, allow the student to make up their own question. (more on tha
 
 ---
 
+# Adaptive marking
+
+<numbas-exam noload source_url="numbas-exams/adaptive-marking.exam" locale="en-GB"></numbas-exam>
+
+---
+
 # Alternative answers
 
 Mark against a few different expected answers / marking settings.
@@ -88,31 +84,49 @@ Give tailored feedback; catch common errors; generally give some more wiggle roo
 
 ---
 
+# Alternative answers demo
+
+<numbas-exam noload source_url="numbas-exams/alternative-answers.exam" locale="en-GB"></numbas-exam>
+
+---
+
 # Custom marking algorithms
 
-Test the properties of the student's answer.
+You can change how any part in Numbas is marked.
 
-Do several things with it.
+Feedback and score are built up through a series of *notes*.
 
-Give detailed feedback.
-
-Branching decision trees.
-
-Build up a series of feedback notes.
-
-Combine several answer inputs.
-
-e.g. 
-
-* "Give an example of X"
+* Test the properties of the student's answer.
+* Do several things with it.
+* Give detailed feedback.
+* Branching decision trees.
+* Combine several answer inputs.
 
 There's almost always more than one valid answer to a question.
+
+---
+
+# Custom marking algorithm demo
+
+<numbas-exam noload source_url="numbas-exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam>
 
 ---
 
 # Custom part types
 
 Use different input methods / formats.
+
+---
+
+# Permutation cycle notation input
+
+<numbas-exam noload source_url="numbas-exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+
+---
+
+# Graph input
+
+<numbas-exam noload source_url="numbas-exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam>
 
 ---
 
@@ -124,7 +138,99 @@ Assess the student's choice of method.
 
 Let the student design their own question.
 
-Follow an algorithm.
+Follow the steps of an algorithm.
+
+---
+
+# Explore mode demo
+
+<numbas-exam noload source_url="numbas-exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+
+---
+
+# Another explore mode demo
+
+<numbas-exam noload source_url="numbas-exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam>
+
+---
+
+# What we use Numbas for
+
+Modules with Numbas assessments in the last two years:
+
+<table class="small-text" style="font-size: min(1.7cqw, 2cqh);">
+<thead>
+<tr>
+<th colspan="4">Stage</th>
+</tr>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul>
+    <li>Algebra</li>
+    <li>Calculus and Differential Equations</li>
+    <li>Dynamics</li>
+    <li>Logic, Sets and Counting</li>
+    <li>Multivariable Calculus</li>
+    <li>Number Systems</li>
+    <li>Probability, Statistics & R</li>
+    <li>Problem Solving with Python</li>
+    <li>Real Analysis</li>
+</ul>
+</td>
+
+<td>
+<ul>
+    <li>Bayesian methods</li>
+    <li>Complex Analysis</li>
+    <li>Computational Probability and Statistics with R</li>
+    <li>Differential Equations Transforms and Waves</li>
+    <li>Fluid Dynamics</li>
+    <li>Groups and Discrete Mathematics</li>
+    <li>Linear Algebra</li>
+    <li>Scientific Computation with Python</li>
+    <li>Vector Calculus</li>
+</ul>
+</td>
+
+<td>
+<ul>
+    <li>Coding Theory</li>
+    <li>Electromagnetism</li>
+    <li>Instabilities</li>
+    <li>Mathematical Biology</li>
+    <li>Methods for Differential Equations</li>
+    <li>Metric Spaces and Topology</li>
+    <li>Partial Differential Equations</li>
+    <li>Relativity</li>
+    <li>Stochastic Processes</li>
+    <li>Topology</li>
+</ul>
+</td>
+
+<td>
+<ul>
+    <li>General Relativity</li>
+    <li>Metric Spaces and Topology</li>
+    <li>Statistical Foundations of Business Analytics</li>
+</ul>
+</td>
+
+</tbody>
+</table>
+
+---
+
+# We cheat a bit
+
+A lot of high-stakes assessments have the rote stuff assessed by Numbas, and harder stuff marked by hand.
 
 ---
 

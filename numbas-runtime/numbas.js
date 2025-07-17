@@ -232,6 +232,8 @@ Numbas.addExtension = function(name, deps, callback) {
     });
 }
 
+Numbas.extension_url_root = {};
+
 /**
  * Get the URL of a standalone file from an extension.
  *
@@ -240,7 +242,8 @@ Numbas.addExtension = function(name, deps, callback) {
  * @returns {string}
  */
 Numbas.getStandaloneFileURL = function(extension, path) {
-    return 'extensions/' + extension + '/standalone_scripts/' + path;
+    const root = Numbas.extension_url_root[extension] || `extensions/${extension}`;
+    return root + '/standalone_scripts/' + path;
 }
 
 /**
@@ -3675,7 +3678,17 @@ class NumbasExamElement extends HTMLElement {
         }
     }
 
+    /** Has this exam been loaded?
+     */
+    has_loaded = false;
+
     async load_exam() {
+        if(this.has_loaded) {
+            return;
+        }
+
+        this.has_loaded = true;
+
         await Numbas.awaitScripts(['start-exam', 'display']);
 
         const template = document.getElementById('numbas-exam-template');
@@ -3691,36 +3704,48 @@ class NumbasExamElement extends HTMLElement {
     }
 
     async load() {
-        const options = {
-            exam_url: this.getAttribute('source_url'),
-            scorm:  this.getAttribute('scorm')?.toLowerCase() !== 'false',
-            element: this
-        };
-        const exam_source_element = this.querySelector('script[type="application/numbas-exam"]');
-        if(exam_source_element) {
-            options.exam_source = exam_source_element.textContent;
-        }
+        try {
+            const options = {
+                exam_url: this.getAttribute('source_url'),
+                scorm:  this.getAttribute('scorm')?.toLowerCase() !== 'false',
+                element: this
+            };
+            const exam_source_element = this.querySelector('script[type="application/numbas-exam"]');
+            if(exam_source_element) {
+                options.exam_source = exam_source_element.textContent;
+            }
 
-        const exam_data = await Numbas.load_exam(options);
+            const exam_data = await Numbas.load_exam(options);
 
-        const extension_data = JSON.parse(this.getAttribute('extensions'));
+            let extension_data_json = this.getAttribute('extensions');
+            const extension_data_element = this.querySelector('script[slot="extension-data"]');
+            if(extension_data_element) {
+                extension_data_json = extension_data_element.textContent.trim();
+            }
+            const extension_data = JSON.parse(extension_data_json);
 
-        for(const extension of exam_data.extensions) {
-            const data = extension_data[extension];
-            for(const js of data.javascripts) {
-                if(!document.head.querySelector(`script[data-numbas-extension="${extension}"]`)) {
-                    const script = document.createElement('script');
-                    script.src = `${data.root}/${js}`;
-                    script.dataset.numbasExtension = extension;
-                    document.head.appendChild(script);
+            for(const extension of exam_data.extensions) {
+                const data = extension_data[extension];
+                Numbas.extension_url_root[extension] = data.root;
+                for(const js of data.javascripts) {
+                    const src = `${data.root}/${js}`;
+                    if(!document.head.querySelector(`script[data-numbas-extension="${extension}"][src="${src}"]`)) {
+                        const script = document.createElement('script');
+                        script.src = src;
+                        script.dataset.numbasExtension = extension;
+                        document.head.appendChild(script);
+                    }
+                }
+                for(const css of data.stylesheets) {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    const src = `${data.root}/${css}`;
+                    link.href = src;
+                    this.shadowRoot.appendChild(link);
                 }
             }
-            for(const css of data.stylesheets) {
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = `${data.root}/${css}`;
-                this.shadowRoot.appendChild(link);
-            }
+        } catch(err) {
+            Numbas.display.die(err);
         }
     }
 
@@ -4116,6 +4141,13 @@ customElements.define('numbas-exam', NumbasExamElement);
 
 /** @namespace Numbas.display */
 var display = Numbas.display = /** @lends Numbas.display */ {
+    /** 
+     * Should Numbas control the browser's scroll and focus?
+     * Set to true if the page only contains this Numbas exam.
+     * Disable this if the exam is embedded in a page.
+     */
+    control_focus: true,
+
     /** Initialise the display.
      */
     init: function() {
@@ -4958,6 +4990,10 @@ Numbas.queueScript('display-util', ['math'], function() {
      * @param {Element} element
      */
     function force_focus(element) {
+        if(!Numbas.display.control_focus) {
+            return;
+        }
+
         const ot = element.tabIndex;
         element.tabIndex = 0;
         element.focus();
@@ -5948,7 +5984,7 @@ Numbas.queueScript('exam-display', ['display-util', 'display-base', 'math', 'uti
             var exam = this.exam;
 
             //scroll back to top of screen
-            scroll(0, 0);
+            Numbas.display.control_focus && scroll(0, 0);
 
             switch(page) {
                 case "frontpage":
@@ -37648,7 +37684,7 @@ Numbas.queueScript('question-display', ['display-util', 'display-base', 'jme-var
             //display score if appropriate
             this.showScore(true);
             //scroll back to top of page
-            scroll(0, 0);
+            Numbas.display.control_focus && scroll(0, 0);
             // make mathjax process the question text (render the maths)
             Numbas.display.typeset(this.html);
 
@@ -37678,7 +37714,7 @@ Numbas.queueScript('question-display', ['display-util', 'display-base', 'jme-var
             if(!this.question.revealed) {
                 return;
             }
-            scroll(0, 0);
+            Numbas.display.control_focus && scroll(0, 0);
         },
         /**
          * Display question score and answer state.
@@ -40599,7 +40635,8 @@ Numbas.queueScript('start-exam', ['base', 'util', 'exam', 'settings', 'exam-to-x
 
         const exam_data = JSON.parse(encoded_json);
 
-        Numbas.custom_part_types = Object.fromEntries(exam_data.custom_part_types.map((cpt) => [cpt.short_name, cpt]));
+        const custom_part_types = Object.fromEntries(exam_data.custom_part_types.map((cpt) => [cpt.short_name, cpt]));
+        Numbas.custom_part_types = Object.assign(Numbas.custom_part_types || {}, custom_part_types);
 
         const examXML = Numbas.exam_to_xml(exam_data).selectSingleNode('/exam');
 

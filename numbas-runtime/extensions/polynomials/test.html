@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <script src="../../tests/jme-runtime.js"></script>
+        <script src="../../tests/locales.js"></script>
+
+		<!--JQuery scripts-->
+        <script charset="UTF-8" type="text/javascript" src="../../runtime/scripts/jquery/jquery.js"></script>
+
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                TeX: {
+                    extensions: ['begingroup.js']
+                },
+                tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    displayMath: [['\\[','\\]'], ['$$','$$']],
+                    processEscapes: true
+                },
+                "HTML-CSS": {
+                    mtextFontInherit: true,
+                    preferredFont: 'Latin-Modern',
+                    webFont: 'Latin-Modern'
+                },
+                skipStartupTypeset: true,
+                displayAlign: "center",
+                displayIndent: "0.1em"
+            });
+            MathJax.Hub.processSectionDelay = 0;
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+		<script src="polynomials.js"></script>
+</head>
+<body>
+		<script>
+			Numbas.queueScript('base',['jquery'],function() {});
+			Numbas.queueScript('go',['jme','extensions/polynomials/polynomials.js'],function() {
+                Numbas.activateExtension('polynomials');
+                var polynomials = window.polynomials = Numbas.extensions.polynomials;
+
+                var scope = window.scope = new Numbas.jme.Scope([Numbas.jme.builtinScope,polynomials.scope]);
+
+                function test_from_tree(expr) {
+                    var p = polynomials.Polynomial.from_tree(Numbas.jme.compile(expr));
+                    console.log(expr);
+                    console.log(p+'');
+                }
+
+                var from_tree_tests = [
+                    'x',
+                    'x^2 - x + 3x^-4',
+                    '11',
+                    'x^2 -11 + 3 - x - 1 + 15x',
+                    'x^3 + 2*x^2 - 6*x - 27',
+                    'x^3-2x'
+                ]
+
+                from_tree_tests.forEach(test_from_tree);
+
+                function test_long_division(c1,c2) {
+                    var p1 = new polynomials.Polynomial('x',c1);
+                    var p2 = new polynomials.Polynomial('x',c2);
+
+                    var latex = polynomials.long_division(p1,p2);
+                    var p = document.createElement('p');
+                    p.textContent = '\\[' + latex + '\\]';
+                    document.body.appendChild(p);
+                    MathJax.Hub.Queue(['Typeset',MathJax.Hub,p]);
+                    var pre = document.createElement('pre');
+                    pre.textContent = latex;
+                    document.body.appendChild(pre);
+                }
+                
+                test_long_division([3,-1,-3,3],[2,1]);
+                test_long_division([3,-1,-3,3],[0,1]);
+                test_long_division([0,1],[3,-1,-3,3]);
+
+                var p2 = new polynomials.Polynomial('x',[3,-7,3]);
+                var p3 = new polynomials.Polynomial('x',[1,0,1,2]);
+                var p1 = p2.mul(p3).add(new polynomials.Polynomial('x',[0,4]));
+                test_long_division(p1.coefficients,p2.coefficients);
+
+			});
+		</script>
+
+		<style type="text/css">
+		</style>
+</body>
+</html>

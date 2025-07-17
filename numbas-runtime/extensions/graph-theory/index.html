@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../../tests/jme-runtime.js"></script>
+        <script src="../../tests/locales.js"></script>
+        <script src="svg.js"></script>
+        <script src="graph-theory.js"></script>
+        <link rel="stylesheet" href="graph-theory.css">
+        <style>
+.log {
+    font-family: monospace;
+}
+.log.error {
+    color: red;
+    font-weight: bold;
+}
+.drawing, .graph {
+    max-width: 20em;
+    border: 1px solid black;
+}
+        </style>
+    </head>
+    <body>
+<script>
+Numbas.queueScript('base',[],function() {});
+Numbas.queueScript('go',['jme','localisation','extensions/graph-theory/graph-theory.js'],function() {
+    Numbas.activateExtension('graph-theory');
+    var gt = window.gt = Numbas.extensions['graph-theory'];
+    var s = window.scope = new Numbas.jme.Scope([Numbas.jme.builtinScope,gt.scope]);
+    var treeToJME = Numbas.jme.display.treeToJME.bind(Numbas.jme.display);
+
+    function run(expr) {
+        try {
+            console.log(`${expr}:\t${Numbas.jme.display.treeToJME({tok:s.evaluate(expr)})}`);
+        } catch(e) {
+            console.error(e.message);
+            console.error(e.stack);
+        }
+    }
+
+    class Section {
+        constructor(name,cb) {
+            this.name = name;
+            this.cb = cb;
+            this.section = document.createElement('section');
+            this.section.setAttribute('id',name.replace(/\s+/g,'-').replace(/[^\w-]/g,''));
+            const header = document.createElement('h2');
+            header.textContent = this.name;
+            this.section.appendChild(header);
+            this.content = document.createElement('div');
+            this.section.appendChild(this.content);
+            document.body.appendChild(this.section);
+            header.addEventListener('click',() => {
+                this.render();
+                this.section.scrollIntoView();
+            });
+        }
+
+        render() {
+            this.content.innerHTML = '';
+            this.cb.apply(this);
+        }
+
+        header(message) {
+            this.element('h2',{},message);
+        }
+
+        element(name,attr,content) {
+            var e = document.createElement(name);
+            if(attr) {
+                for(var x in attr) {
+                    e.setAttribute(x,attr[x]);
+                }
+            }
+            if(content!==undefined) {
+                e.innerHTML = content;
+            }
+            this.content.appendChild(e);
+            return e;
+        }
+
+        log(message,explanation) {
+            if(explanation) {
+                this.element('h3',{},explanation);
+            }
+            this.element('p',{class:'log'},JSON.stringify(message));
+        }
+
+        log_matrix(m) {
+            this.element('pre',{class:'log'},m.map(l=>l.join('\t')).join('\n'));
+        }
+
+        show(element) {
+            this.section.appendChild(element);
+        }
+
+        show_drawing(drawing) {
+            drawing.classList.add('drawing');
+            this.show(drawing);
+        }
+
+        show_graph(graph) {
+            this.show_drawing(graph.draw());
+        }
+
+        evaluate(expr,variables) {
+            return scope.evaluate(expr,variables);
+        }
+    };
+
+    function random_graph(size) {
+        const m = [];
+        for(let i=0;i<size;i++) {
+            const row = [];
+            m.push(row);
+            for(let j=0;j<size;j++) {
+                row.push(0);
+            }
+        }
+        for(let i=0;i<size;i++) {
+            for(let j=0;j<=i;j++) {
+                m[i][j] = m[j][i] = Math.random()<(1-i/size) ? 1 : 0;
+            }
+        }
+        m.rows = m.columns = size;
+        return (new gt.Graph(m)).largest_connected_component();
+    }
+
+    function section(name,cb) {
+        const s = new Section(name,cb);
+        //s.render();
+    }
+
+    section("A triangle", function() {
+        const adjacency = [[0,1,1],[1,0,1],[1,1,0]];
+        const graph = new gt.Graph(adjacency);
+        console.log(graph);
+        graph.set_edge_labels(['a']);
+        graph.auto_layout();   
+        this.show_graph(graph);
+    });
+
+    section("Digraph", function() {
+        const g = new gt.Graph([
+            [0,   0.5, 1, 1, 1], 
+            [0.5, 0,   1, 0, 0], 
+            [0,   0,   0, 0, 0], 
+            [0,   0,   1, 0, 0], 
+            [0,   0,   0, 0, 0]
+        ]);
+        g.set_vertex_labels([0,1,2,3,4]);
+        g.set_edge_labels(['a','b','c','d']);
+        g.auto_layout();
+        this.show_graph(g);
+    });
+
+    section("Several components", function() {
+        const edges = [[1,2],[1,3],[2,3],[4,5]].map(([a,b])=>new gt.Edge(a,b));
+        const g = gt.Graph.from_edges(edges);
+        g.auto_layout();
+        this.show_graph(g);
+        this.log(g.connected_components(),'Connected components');
+
+        g.connected_components().map(c=>this.show_graph(g.subgraph(c)));
+        this.header('Largest connected component');
+        const a3 = g.largest_connected_component();
+        this.show_graph(a3);
+    })
+
+    section("Random graph", function() {
+        const graphs = [6,8,3].map(s=>random_graph(s));
+        graphs.forEach(g=>g.auto_layout());
+        graphs.forEach(g=>this.show_graph(g));
+        const u = gt.Graph.union(...graphs);
+        u.auto_layout();
+        this.show_graph(u);
+        this.log_matrix(u.adjacency_matrix);
+        this.show_graph(u.largest_connected_component());
+    });
+
+    section('Cartesian product', function() {
+        const g1 = gt.Graph.from_edges([[0,1],[0,2],[0,3]].map(([a,b])=>new gt.Edge(a,b)));
+        const g2 = gt.Graph.from_edges([[0,1],[0,2]].map(([a,b])=>new gt.Edge(a,b)))
+        g1.auto_layout();
+        this.show_graph(g1);
+        g2.auto_layout();
+        this.show_graph(g2);
+        const cp = gt.Graph.cartesian_product(g1,g2);
+        console.log(cp);
+        cp.auto_layout();
+        this.show_graph(cp);
+        this.log_matrix(cp.adjacency_matrix);
+    })
+
+    section('Direct product', function() {
+        const g1 = gt.Graph.from_edges([[0,1]].map(([a,b])=>new gt.Edge(a,b)));
+        const g2 = gt.Graph.from_edges([[0,1],[0,2],[1,2],[2,3],[2,4],[3,4]].map(([a,b])=>new gt.Edge(a,b)));
+        g1.auto_layout();
+        this.show_graph(g1);
+        g2.auto_layout();
+        this.show_graph(g2);
+        const dp = gt.Graph.direct_product(g1,g2);
+        console.log(dp);
+        dp.auto_layout();
+        this.show_graph(dp);
+        this.log_matrix(dp.adjacency_matrix);
+    });
+
+    section('Bipartite graph', function() {
+        const bipartite = [[0,3],[2,5],[4,5],[2,6]].map(([a,b])=>new gt.Edge(a,b));
+        const g = gt.Graph.from_edges(bipartite, true);
+        g.add_vertex(new gt.Vertex());
+        g.bipartite_layout([true,true,true,false,true,false,false,false]),
+        this.show_graph(g);
+    });
+
+    section("Prim's algorithm", function() {
+        const g = gt.random_planar_graph(7);
+        g.set_vertex_labels(g.vertices.map((v,i)=>Numbas.util.letterOrdinal(i).toUpperCase()));
+        g.edges.forEach(e => e.weight = Numbas.math.randomrange(1,5));
+        g.auto_layout();
+        g.edges.forEach(e => {
+            const v1 = g.vertices[e.from];
+            const v2 = g.vertices[e.to];
+            const [dx,dy] = [v2.x - v1.x, v2.y - v1.y];
+            const d = Math.floor(Math.sqrt(dx*dx+dy*dy)*10);
+            e.weight = d;
+        });
+        g.set_edge_labels(e=>Numbas.math.niceNumber(e.weight));
+        this.show_graph(g);
+        this.log(g.is_tree(),'g is tree?');
+        g.adjacency_matrix.rows = g.vertices.length;
+        g.adjacency_matrix.columns = g.vertices.length;
+        const r = g.annotated_prims_algorithm();
+        const mst = g.subgraph_by_edges(r.edges);
+        this.show_graph(mst);
+        this.log(mst.is_tree(),'mst is tree?');
+
+        const working = r.working.render();
+        this.show(working);
+    });
+
+    section('Subgraph by edges', function() {
+        const edges = [[0,1],[0,3],[0,2],[1,2]].map(([from,to])=>new gt.Edge(from,to));
+        const g = gt.Graph.from_edges(edges);
+        g.set_vertex_labels([0,1,2,3]);
+        g.auto_layout();
+        this.show_graph(g);
+        const g2 = g.subgraph_by_edges(edges.slice(0,2));
+        this.show_graph(g2);
+    });
+
+    section('Prim in JME', function() {
+        const g = this.evaluate('set_vertex_labels(auto_layout(random_planar_graph(7,1,0.5)),map(upper(letterordinal(i)),i,0..12))');
+        this.show_graph(g.value);
+        const unweighted_mst = this.evaluate('subgraph(g,prims_algorithm(g))',{g:g});
+        this.show_graph(unweighted_mst.value);
+        const weighted_g = this.evaluate(`
+    let(vertices, vertices(g),
+        weights,map(round(len(vertices[from(e)]-vertices[to(e)])),e,edges(g)),
+        set_edge_labels(set_edge_weights(g,weights),map(string(x),x,weights))
+    )
+        `,{g:g});
+        console.log(weighted_g);
+        const mst = this.evaluate('subgraph(g,prims_algorithm(g))',{g:weighted_g});
+        this.show_graph(mst.value);
+        const kruskal = this.evaluate('subgraph(g,kruskals_algorithm(g))',{g:weighted_g});
+        this.show_graph(kruskal.value);
+
+        this.show(this.evaluate('prims_algorithm_working(set_edge_labels(g,[]))',{g:weighted_g}).value[0]);
+    });
+
+    section('Kruskal\'s algorithm', function() {
+        const g = gt.random_planar_graph(7);
+        g.set_vertex_labels(g.vertices.map((v,i)=>Numbas.util.letterOrdinal(i).toUpperCase()));
+        g.edges.forEach(e => e.weight = Numbas.math.randomrange(1,5));
+        g.auto_layout();
+        g.edges.forEach(e => {
+            const v1 = g.vertices[e.from];
+            const v2 = g.vertices[e.to];
+            const [dx,dy] = [v2.x - v1.x, v2.y - v1.y];
+            const d = Math.floor(Math.sqrt(dx*dx+dy*dy)*10);
+            e.weight = d;
+        });
+        g.set_edge_labels(e=>Numbas.math.niceNumber(e.weight));
+        this.show_graph(g);
+        this.log(g.is_tree(),'g is tree?');
+        g.adjacency_matrix.rows = g.vertices.length;
+        g.adjacency_matrix.columns = g.vertices.length;
+        const r = g.annotated_kruskals_algorithm();
+        const mst = r.graph;
+        this.show_graph(mst);
+        this.log(mst.is_tree(),'mst is tree?');
+
+        const working = r.working.render();
+        this.show(working);
+    });
+
+    section('Is tree', function() {
+        const g = gt.Graph.from_edges([[0,1],[0,2],[1,3],[2,3]].map(([from,to])=>new gt.Edge(from,to,1,true)));
+        g.auto_layout();
+        console.log(g);
+        this.show_graph(g);
+        this.log(g.is_tree(),'is tree');
+    });
+});
+
+</script>
+    </body>
+</html>
+
