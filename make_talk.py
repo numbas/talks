@@ -67,6 +67,8 @@ class MyExtension(Extension):
             md.inlinePatterns.register(
                 inlineMathProcessor( pattern, md ), f'math-inline-{i}', 185)
 
+slugs = set()
+
 def slugify(value, v=0):
     slug = re.sub(r'[\W_]+', '_', value).lower()[:20]
     slug = re.sub(r'^_*(.*?)_*$', r'\1', slug)
@@ -78,6 +80,13 @@ def slugify(value, v=0):
             slug = slug[:-1]
         slug = slug + suffix
 
+    n = 2
+    oslug = slug
+    while slug in slugs:
+        slug = f'{slug}-{n}'
+        n += 1
+
+    slugs.add(slug)
     return slug
 
 def slide_html(i, num_slides, html):
