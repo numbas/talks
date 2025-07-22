@@ -58,73 +58,14 @@
                 </p>
                 <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
             </section>
-<section data-slide-number="0" style="--slide-number: 0.043478260869565216" id="abstract"><h1>Abstract</h1>
-<blockquote>
-<p>Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
-I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.</p>
-</blockquote></section>
-<section data-slide-number="1" style="--slide-number: 0.08695652173913043" id="where_are_we_startin"><h1>Where are we starting from?</h1>
-<p>The framing of this event suggests "basic" means single-input, possible randomised, questions automatically marked by comparison with an expected answer.</p>
+<section data-slide-number="0" style="--slide-number: 0.045454545454545456" id="where_are_we_startin"><h1>Where are we starting from?</h1>
+<p>The framing of this event suggests "basic" means single-input, possibly randomised, questions automatically marked by comparison with an expected answer.</p>
 <p>e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.</p>
 <p>More sophisticated assessment systems than this have existed for longer than I have!</p></section>
-<section data-slide-number="2" style="--slide-number: 0.13043478260869565" id="my_position_on_asses"><h1>My position on assessment</h1>
+<section data-slide-number="1" style="--slide-number: 0.09090909090909091" id="my_position_on_asses"><h1>My position on assessment</h1>
 <p>Formative assessment is useful.</p>
 <p>Summative assessment is a necessary evil.</p></section>
-<section data-slide-number="3" style="--slide-number: 0.17391304347826086" id="basics"><h1>Basics</h1>
-<p>None of this is specific to advanced mathematics.</p>
-<h2>Parts</h2>
-<p>Break up a long question into parts which are marked independently of each other.</p>
-<h2>Steps</h2>
-<p>Give an option to break up a longer calculation into smaller pieces: offer scaffolding.</p></section>
-<section data-slide-number="4" style="--slide-number: 0.21739130434782608" id="parts_and_steps"><h1>Parts and steps</h1>
-<p><numbas-exam noload source_url="numbas-exams/parts-and-steps.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="5" style="--slide-number: 0.2608695652173913" id="the_user_interface"><h1>The user interface</h1>
-<p>We don't want to penalise students for small mistakes or misunderstandings.</p>
-<ul>
-<li>Don't accept unmarkable input, and always give immediate feedback so the student can fix it.</li>
-<li>Always allow the student to change their answer.</li>
-<li>Show how parts relate to each other, e.g. "this part's marking depends on your answer to the previous part."</li>
-</ul></section>
-<section data-slide-number="6" style="--slide-number: 0.30434782608695654" id="adaptive_marking"><h1>Adaptive marking</h1>
-<p>Replace a question variable with the student's answer to a previous part.</p>
-<p>Allows "error carried forward" marking.</p>
-<p>Or, adventurously, allow the student to make up their own question. (more on that later)</p></section>
-<section data-slide-number="7" style="--slide-number: 0.34782608695652173" id="adaptive_marking"><h1>Adaptive marking</h1>
-<p><numbas-exam noload source_url="numbas-exams/adaptive-marking.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="8" style="--slide-number: 0.391304347826087" id="alternative_answers"><h1>Alternative answers</h1>
-<p>Mark against a few different expected answers / marking settings.</p>
-<p>Give tailored feedback; catch common errors; generally give some more wiggle room.</p></section>
-<section data-slide-number="9" style="--slide-number: 0.43478260869565216" id="alternative_answers"><h1>Alternative answers demo</h1>
-<p><numbas-exam noload source_url="numbas-exams/alternative-answers.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="10" style="--slide-number: 0.4782608695652174" id="custom_marking_algor"><h1>Custom marking algorithms</h1>
-<p>You can change how any part in Numbas is marked.</p>
-<p>Feedback and score are built up through a series of <em>notes</em>.</p>
-<ul>
-<li>Test the properties of the student's answer.</li>
-<li>Do several things with it.</li>
-<li>Give detailed feedback.</li>
-<li>Branching decision trees.</li>
-<li>Combine several answer inputs.</li>
-</ul>
-<p>There's almost always more than one valid answer to a question.</p></section>
-<section data-slide-number="11" style="--slide-number: 0.5217391304347826" id="custom_marking_algor"><h1>Custom marking algorithm demo</h1>
-<p><numbas-exam noload source_url="numbas-exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="12" style="--slide-number: 0.5652173913043478" id="custom_part_types"><h1>Custom part types</h1>
-<p>Use different input methods / formats.</p></section>
-<section data-slide-number="13" style="--slide-number: 0.6086956521739131" id="permutation_cycle_no"><h1>Permutation cycle notation input</h1>
-<p><numbas-exam noload source_url="numbas-exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="14" style="--slide-number: 0.6521739130434783" id="graph_input"><h1>Graph input</h1>
-<p><numbas-exam noload source_url="numbas-exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="15" style="--slide-number: 0.6956521739130435" id="explore_mode"><h1>Explore mode</h1>
-<p>Allow more choice.</p>
-<p>Assess the student's choice of method.</p>
-<p>Let the student design their own question.</p>
-<p>Follow the steps of an algorithm.</p></section>
-<section data-slide-number="16" style="--slide-number: 0.7391304347826086" id="explore_mode_demo"><h1>Explore mode demo</h1>
-<p><numbas-exam noload source_url="numbas-exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="17" style="--slide-number: 0.782608695652174" id="another_explore_mode"><h1>Another explore mode demo</h1>
-<p><numbas-exam noload source_url="numbas-exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="18" style="--slide-number: 0.8260869565217391" id="what_we_use_numbas_f"><h1>What we use Numbas for</h1>
+<section data-slide-number="2" style="--slide-number: 0.13636363636363635" id="what_we_use_numbas_f"><h1>What we use Numbas for</h1>
 <p>Modules with Numbas assessments in the last two years:</p>
 <table class="small-text" style="font-size: min(1.7cqw, 2cqh);">
 <thead>
@@ -193,9 +134,59 @@ I'll talk about how Numbas has been designed to assess advanced mathematical sub
 
 </tbody>
 </table></section>
-<section data-slide-number="19" style="--slide-number: 0.8695652173913043" id="we_cheat_a_bit"><h1>We cheat a bit</h1>
+<section data-slide-number="3" style="--slide-number: 0.18181818181818182" id="we_cheat_a_bit"><h1>We cheat a bit</h1>
 <p>A lot of high-stakes assessments have the rote stuff assessed by Numbas, and harder stuff marked by hand.</p></section>
-<section data-slide-number="20" style="--slide-number: 0.9130434782608695" id="thanks"><h1>Thanks!</h1>
+<section data-slide-number="4" style="--slide-number: 0.22727272727272727" id="how_we_write_materia"><h1>How we write material for advanced modules</h1>
+<p>Simple question types go a long way!</p>
+<p>We sometimes write an extension to add functions or new data types.</p></section>
+<section data-slide-number="5" style="--slide-number: 0.2727272727272727" id="basics"><h1>Basics</h1>
+<p>None of this is specific to advanced mathematics.</p>
+<h2>Parts</h2>
+<p>Break up a long question into parts which are marked independently of each other.</p>
+<h2>Steps</h2>
+<p>Give an option to break up a longer calculation into smaller pieces: offer scaffolding.</p></section>
+<section data-slide-number="6" style="--slide-number: 0.3181818181818182" id="parts_and_steps"><h1>Parts and steps</h1>
+<p><numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam></p></section>
+<section data-slide-number="7" style="--slide-number: 0.36363636363636365" id="adaptive_marking"><h1>Adaptive marking</h1>
+<p>Replace a question variable with the student's answer to a previous part.</p>
+<p>Allows "error carried forward" marking.</p>
+<p>Or, adventurously, allow the student to make up their own question. (more on that later)</p></section>
+<section data-slide-number="8" style="--slide-number: 0.4090909090909091" id="adaptive_marking-2"><h1>Adaptive marking</h1>
+<p><numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam></p></section>
+<section data-slide-number="9" style="--slide-number: 0.45454545454545453" id="alternative_answers"><h1>Alternative answers</h1>
+<p>Mark against a few different expected answers / marking settings.</p>
+<p>Give tailored feedback; catch common errors; generally give some more wiggle room.</p></section>
+<section data-slide-number="10" style="--slide-number: 0.5" id="alternative_answers-2"><h1>Alternative answers</h1>
+<p><numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam></p></section>
+<section data-slide-number="11" style="--slide-number: 0.5454545454545454" id="custom_marking_algor"><h1>Custom marking algorithms</h1>
+<p>You can change how any part in Numbas is marked.</p>
+<p>Feedback and score are built up through a series of <em>notes</em>.</p>
+<ul>
+<li>Test the properties of the student's answer.</li>
+<li>Do several things with it.</li>
+<li>Give detailed feedback.</li>
+<li>Branching decision trees.</li>
+<li>Combine several answer inputs.</li>
+</ul>
+<p>There's almost always more than one valid answer to a question.</p></section>
+<section data-slide-number="12" style="--slide-number: 0.5909090909090909" id="custom_marking_algor-2"><h1>Custom marking algorithms</h1>
+<p><numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam></p></section>
+<section data-slide-number="13" style="--slide-number: 0.6363636363636364" id="custom_part_types"><h1>Custom part types</h1>
+<p>Use different input methods / formats.</p></section>
+<section data-slide-number="14" style="--slide-number: 0.6818181818181818" id="permutation_cycle_no"><h1>Permutation cycle notation input</h1>
+<p><numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
+<section data-slide-number="15" style="--slide-number: 0.7272727272727273" id="graph_input"><h1>Graph input</h1>
+<p><numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam></p></section>
+<section data-slide-number="16" style="--slide-number: 0.7727272727272727" id="explore_mode"><h1>Explore mode</h1>
+<p>Allow more choice.</p>
+<p>Assess the student's choice of method.</p>
+<p>Let the student design their own question.</p>
+<p>Follow the steps of an algorithm.</p></section>
+<section data-slide-number="17" style="--slide-number: 0.8181818181818182" id="explore_mode-2"><h1>Explore mode</h1>
+<p><numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
+<section data-slide-number="18" style="--slide-number: 0.8636363636363636" id="explore_mode-2-3"><h1>Explore mode</h1>
+<p><numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam></p></section>
+<section data-slide-number="19" style="--slide-number: 0.9090909090909091" id="thanks"><h1>Thanks!</h1>
 <dl>
 <dt>Website</dt>
 <dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
@@ -209,7 +200,7 @@ I'll talk about how Numbas has been designed to assess advanced mathematical sub
 <dt>Source code</dt>
 <dd><a href="https://github.com/numbas">github.com/numbas</a></dd>
 </dl></section>
-<section data-slide-number="21" style="--slide-number: 0.9565217391304348" id="slide-21"><p>This slide intentionally left blank</p></section>
+<section data-slide-number="20" style="--slide-number: 0.9545454545454546" id="slide-20"><p>This slide intentionally left blank</p></section>
         </main>
         <footer><a id="url"></a></footer>
         <template id="numbas-exam-template">

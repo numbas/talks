@@ -4042,10 +4042,9 @@ class NumbasExamElement extends HTMLElement {
      * @param {Element} element
      */
     register_lightbox(element) {
-        const {lightbox} = this;
-
         const register_image = (img) => {
-            var elem = img.cloneNode();
+            const {lightbox} = this;
+
             var wrapper = document.createElement('span');
             wrapper.setAttribute('class', 'lightbox-image-wrapper');
             var align = img.getAttribute('align');
@@ -4072,6 +4071,11 @@ class NumbasExamElement extends HTMLElement {
 
             const activate = () => {
                 lightbox.innerHTML = '';
+                var elem = img.cloneNode();
+                const scope = display_util.find_jme_scope(img);
+                if(scope) {
+                    jme.variables.DOMcontentsubvars(elem, scope);
+                }
                 lightbox.appendChild(elem);
                 this.show_lightbox(wrapper);
             }
@@ -33274,6 +33278,10 @@ if(res) { \
         }).map(function(v) {
             return jme.castToType(v, 'promise').promise;
         });
+
+        if(!promises.length) {
+            return {};
+        }
 
         var all_promises = Promise.all(promises);
         all_promises.then(function(results) {

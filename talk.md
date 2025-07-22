@@ -5,16 +5,9 @@ event = "<a href=\"https://pcwww.liv.ac.uk/~itho17/workshop2025/\">Automated gra
 
 +++
 
-# Abstract
-
-> Numbas is an open-source e-assessment system aimed at mathematical disciplines, developed at Newcastle University. Since the beginning, we've been using it to assess topics at all stages of our maths and stats degree course, from A-Level transition to stage 4 pure maths modules.
-> I'll talk about how Numbas has been designed to assess advanced mathematical subjects and demonstrate some material making use of these features.
-
----
-
 # Where are we starting from?
 
-The framing of this event suggests "basic" means single-input, possible randomised, questions automatically marked by comparison with an expected answer.
+The framing of this event suggests "basic" means single-input, possibly randomised, questions automatically marked by comparison with an expected answer.
 
 e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.
 
@@ -27,130 +20,6 @@ More sophisticated assessment systems than this have existed for longer than I h
 Formative assessment is useful.
 
 Summative assessment is a necessary evil.
-
----
-
-# Basics
-
-None of this is specific to advanced mathematics.
-
-## Parts
-
-Break up a long question into parts which are marked independently of each other.
-
-## Steps
-
-Give an option to break up a longer calculation into smaller pieces: offer scaffolding.
-
----
-
-# Parts and steps
-
-<numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam>
-
----
-
-# The user interface
-
-We don't want to penalise students for small mistakes or misunderstandings.
-
-* Don't accept unmarkable input, and always give immediate feedback so the student can fix it.
-* Always allow the student to change their answer.
-* Show how parts relate to each other, e.g. "this part's marking depends on your answer to the previous part."
-
----
-
-# Adaptive marking
-
-Replace a question variable with the student's answer to a previous part.
-
-Allows "error carried forward" marking.
-
-Or, adventurously, allow the student to make up their own question. (more on that later)
-
----
-
-# Adaptive marking
-
-<numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam>
-
----
-
-# Alternative answers
-
-Mark against a few different expected answers / marking settings.
-
-Give tailored feedback; catch common errors; generally give some more wiggle room.
-
----
-
-# Alternative answers demo
-
-<numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam>
-
----
-
-# Custom marking algorithms
-
-You can change how any part in Numbas is marked.
-
-Feedback and score are built up through a series of *notes*.
-
-* Test the properties of the student's answer.
-* Do several things with it.
-* Give detailed feedback.
-* Branching decision trees.
-* Combine several answer inputs.
-
-There's almost always more than one valid answer to a question.
-
----
-
-# Custom marking algorithm demo
-
-<numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam>
-
----
-
-# Custom part types
-
-Use different input methods / formats.
-
----
-
-# Permutation cycle notation input
-
-<numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
-
----
-
-# Graph input
-
-<numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam>
-
----
-
-# Explore mode
-
-Allow more choice.
-
-Assess the student's choice of method.
-
-Let the student design their own question.
-
-Follow the steps of an algorithm.
-
----
-
-# Explore mode demo
-
-<numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
-
----
-
-# Another explore mode demo
-
-<numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam>
 
 ---
 
@@ -231,6 +100,128 @@ Modules with Numbas assessments in the last two years:
 # We cheat a bit
 
 A lot of high-stakes assessments have the rote stuff assessed by Numbas, and harder stuff marked by hand.
+
+---
+
+# How we write material for advanced modules
+
+Simple question types go a long way!
+
+We sometimes write an extension to add functions or new data types.
+
+---
+
+# Basics
+
+None of this is specific to advanced mathematics.
+
+## Parts
+
+Break up a long question into parts which are marked independently of each other.
+
+## Steps
+
+Give an option to break up a longer calculation into smaller pieces: offer scaffolding.
+
+---
+
+# Parts and steps
+
+<numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam>
+
+---
+
+# Adaptive marking
+
+Replace a question variable with the student's answer to a previous part.
+
+Allows "error carried forward" marking.
+
+Or, adventurously, allow the student to make up their own question. (more on that later)
+
+---
+
+# Adaptive marking
+
+<numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam>
+
+---
+
+# Alternative answers
+
+Mark against a few different expected answers / marking settings.
+
+Give tailored feedback; catch common errors; generally give some more wiggle room.
+
+---
+
+# Alternative answers
+
+<numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam>
+
+---
+
+# Custom marking algorithms
+
+You can change how any part in Numbas is marked.
+
+Feedback and score are built up through a series of *notes*.
+
+* Test the properties of the student's answer.
+* Do several things with it.
+* Give detailed feedback.
+* Branching decision trees.
+* Combine several answer inputs.
+
+There's almost always more than one valid answer to a question.
+
+---
+
+# Custom marking algorithms
+
+<numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam>
+
+---
+
+# Custom part types
+
+Use different input methods / formats.
+
+---
+
+# Permutation cycle notation input
+
+<numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+
+---
+
+# Graph input
+
+<numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam>
+
+---
+
+# Explore mode
+
+Allow more choice.
+
+Assess the student's choice of method.
+
+Let the student design their own question.
+
+Follow the steps of an algorithm.
+
+---
+
+# Explore mode
+
+<numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+
+---
+
+# Explore mode
+
+<numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam>
 
 ---
 

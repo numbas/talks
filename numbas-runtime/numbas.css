@@ -86,6 +86,7 @@
 
     * {
         box-sizing: border-box;
+        font-size-adjust: ex-height 0.53;
     }
 
     .sr-only {
@@ -2702,7 +2703,7 @@ Copyright 2011-25 Newcastle University
         background: none;
         border: none;
 
-        & > img {
+        & > :is(img, object[type*="image"]) {
           width: 100% !important;
           height: 100% !important;
           object-fit: contain;
