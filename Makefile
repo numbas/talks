@@ -2,7 +2,7 @@ BRANCH=$(shell git branch --show-current)
 
 RUNTIME_PATH=../editor/editor/static/previews/question
 
-index.html: talk.md numbas-exams/easy-question.exam numbas-runtime/numbas.css numbas-runtime/numbas.js numbas-runtime/iconfont numbas-runtime/exam_template.html
+index.html: talk.md numbas-runtime/numbas.css numbas-runtime/numbas.js numbas-runtime/iconfont numbas-runtime/exam_template.html
 	python3 make_talk.py
 
 numbas-runtime/iconfont: $(RUNTIME_PATH)/resources/iconfont

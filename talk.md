@@ -46,7 +46,7 @@ Give an option to break up a longer calculation into smaller pieces: offer scaff
 
 # Parts and steps
 
-<numbas-exam noload source_url="numbas-exams/parts-and-steps.exam" locale="en-GB"></numbas-exam>
+<numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam>
 
 ---
 
@@ -72,7 +72,7 @@ Or, adventurously, allow the student to make up their own question. (more on tha
 
 # Adaptive marking
 
-<numbas-exam noload source_url="numbas-exams/adaptive-marking.exam" locale="en-GB"></numbas-exam>
+<numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam>
 
 ---
 
@@ -86,7 +86,7 @@ Give tailored feedback; catch common errors; generally give some more wiggle roo
 
 # Alternative answers demo
 
-<numbas-exam noload source_url="numbas-exams/alternative-answers.exam" locale="en-GB"></numbas-exam>
+<numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam>
 
 ---
 
@@ -108,7 +108,7 @@ There's almost always more than one valid answer to a question.
 
 # Custom marking algorithm demo
 
-<numbas-exam noload source_url="numbas-exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam>
+<numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam>
 
 ---
 
@@ -120,13 +120,13 @@ Use different input methods / formats.
 
 # Permutation cycle notation input
 
-<numbas-exam noload source_url="numbas-exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+<numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
 
 ---
 
 # Graph input
 
-<numbas-exam noload source_url="numbas-exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam>
+<numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam>
 
 ---
 
@@ -144,13 +144,13 @@ Follow the steps of an algorithm.
 
 # Explore mode demo
 
-<numbas-exam noload source_url="numbas-exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
+<numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam>
 
 ---
 
 # Another explore mode demo
 
-<numbas-exam noload source_url="numbas-exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam>
+<numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam>
 
 ---
 
