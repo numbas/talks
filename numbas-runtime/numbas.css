@@ -2878,6 +2878,7 @@ exam-container.show-nav #everything {
 
     .question, #infoDisplay {
         max-height: none;
+        height: initial;
     }
 
     .main-content {
