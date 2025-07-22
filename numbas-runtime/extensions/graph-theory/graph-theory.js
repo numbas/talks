@@ -1,5 +1,4 @@
 Numbas.addExtension('graph-theory',['jme','jme-display','svgjs','graph-app'],function(extension) {
-    console.log('???');
     const scope = extension.scope;
     var jme = Numbas.jme;
 

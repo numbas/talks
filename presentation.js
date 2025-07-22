@@ -56,7 +56,6 @@ setTimeout(() => {
 
     sections.forEach((section,i) => {
         section.addEventListener('click', e => {
-            console.log(e.target.nodeName);
             const safe_clicks = 'section ul li p ol div span'.split(' ');
             if(!safe_clicks.includes(e.target.nodeName.toLowerCase())) {
                 return;

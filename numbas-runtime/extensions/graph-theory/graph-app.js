@@ -1,5 +1,4 @@
 Numbas.queueScript('graph-app',[], function() {
-    console.log('APP');
 (function(scope){
 'use strict';
 
@@ -79,7 +78,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
+
 
 
 var _JsArray_empty = [];
@@ -236,12 +235,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -267,12 +266,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -457,13 +456,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -521,11 +520,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.al.V === region.aq.V)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.al.V;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.al.V + ' through ' + region.aq.V;
 }
 
 
@@ -563,7 +562,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -576,7 +575,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -611,7 +610,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -620,10 +619,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -653,17 +652,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -714,11 +713,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -1214,7 +1213,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1618,11 +1617,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1859,9 +1858,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aU,
+		impl.a$,
+		impl.aZ,
 		function() { return function() {} }
 	);
 });
@@ -1874,7 +1873,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2318,7 +2317,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2339,7 +2338,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2379,10 +2378,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**_UNUSED/
+	/**/
 	var node = args['node'];
 	//*/
-	/**/
+	/**_UNUSED/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2637,24 +2636,24 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 	return key == 'innerHTML' || key == 'formAction' ? 'data-' + key : key;
 }
 
-function _VirtualDom_noJavaScriptUri_UNUSED(value)
+function _VirtualDom_noJavaScriptUri(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,'')) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptUri(value)
+function _VirtualDom_noJavaScriptUri_UNUSED(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,''))
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
 		: value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
+function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri(value)
+function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
@@ -2706,9 +2705,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		message: func(record.message),
-		stopPropagation: record.stopPropagation,
-		preventDefault: record.preventDefault
+		D: func(record.D),
+		am: record.am,
+		aj: record.aj
 	}
 });
 
@@ -2976,11 +2975,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.message;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
+		var message = !tag ? value : tag < 3 ? value.a : value.D;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.am;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.aj) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3930,15 +3929,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aU,
+		impl.a$,
+		impl.aZ,
 		function(sendToApp, initialModel) {
-			var view = impl.view;
-			/**_UNUSED/
+			var view = impl.a0;
+			/**/
 			var domNode = args['node'];
 			//*/
-			/**/
+			/**_UNUSED/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3966,12 +3965,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.aU,
+		impl.a$,
+		impl.aZ,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
-			var view = impl.view;
+			var divertHrefToApp = impl.ak && impl.ak(sendToApp)
+			var view = impl.a0;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3979,12 +3978,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aN);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
+				(title !== doc.a_) && (_VirtualDom_doc.title = title = doc.a_);
 			});
 		}
 	);
@@ -4040,12 +4039,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.onUrlChange;
-	var onUrlRequest = impl.onUrlRequest;
+	var onUrlChange = impl.aV;
+	var onUrlRequest = impl.aW;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		setup: function(sendToApp)
+		ak: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4061,9 +4060,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.protocol === next.protocol
-							&& curr.host === next.host
-							&& curr.port_.a === next.port_.a
+							&& curr.aB === next.aB
+							&& curr.au === next.au
+							&& curr.ay.a === next.ay.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4071,13 +4070,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		init: function(flags)
+		aU: function(flags)
 		{
-			return A3(impl.init, flags, _Browser_getUrl(), key);
+			return A3(impl.aU, flags, _Browser_getUrl(), key);
 		},
-		view: impl.view,
-		update: impl.update,
-		subscriptions: impl.subscriptions
+		a0: impl.a0,
+		a$: impl.a$,
+		aZ: impl.aZ
 	});
 }
 
@@ -4143,17 +4142,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { hidden: 'hidden', change: 'visibilitychange' }
+		? { aS: 'hidden', aO: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
+		? { aS: 'mozHidden', aO: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { hidden: 'msHidden', change: 'msvisibilitychange' }
+		? { aS: 'msHidden', aO: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
-		: { hidden: 'hidden', change: 'visibilitychange' };
+		? { aS: 'webkitHidden', aO: 'webkitvisibilitychange' }
+		: { aS: 'hidden', aO: 'visibilitychange' };
 }
 
 
@@ -4234,12 +4233,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		scene: _Browser_getScene(),
-		viewport: {
-			x: _Browser_window.pageXOffset,
-			y: _Browser_window.pageYOffset,
-			width: _Browser_doc.documentElement.clientWidth,
-			height: _Browser_doc.documentElement.clientHeight
+		a: _Browser_getScene(),
+		aH: {
+			aJ: _Browser_window.pageXOffset,
+			aK: _Browser_window.pageYOffset,
+			aI: _Browser_doc.documentElement.clientWidth,
+			at: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4249,8 +4248,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		aI: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		at: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4273,15 +4272,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			scene: {
-				width: node.scrollWidth,
-				height: node.scrollHeight
+			a: {
+				aI: node.scrollWidth,
+				at: node.scrollHeight
 			},
-			viewport: {
-				x: node.scrollLeft,
-				y: node.scrollTop,
-				width: node.clientWidth,
-				height: node.clientHeight
+			aH: {
+				aJ: node.scrollLeft,
+				aK: node.scrollTop,
+				aI: node.clientWidth,
+				at: node.clientHeight
 			}
 		};
 	});
@@ -4311,18 +4310,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			scene: _Browser_getScene(),
-			viewport: {
-				x: x,
-				y: y,
-				width: _Browser_doc.documentElement.clientWidth,
-				height: _Browser_doc.documentElement.clientHeight
+			a: _Browser_getScene(),
+			aH: {
+				aJ: x,
+				aK: y,
+				aI: _Browser_doc.documentElement.clientWidth,
+				at: _Browser_doc.documentElement.clientHeight
 			},
-			element: {
-				x: x + rect.left,
-				y: y + rect.top,
-				width: rect.width,
-				height: rect.height
+			aQ: {
+				aJ: x + rect.left,
+				aK: y + rect.top,
+				aI: rect.width,
+				at: rect.height
 			}
 		};
 	});
@@ -4357,6 +4356,43 @@ function _Browser_load(url)
 		}
 	}));
 }
+
+
+
+var _Bitwise_and = F2(function(a, b)
+{
+	return a & b;
+});
+
+var _Bitwise_or = F2(function(a, b)
+{
+	return a | b;
+});
+
+var _Bitwise_xor = F2(function(a, b)
+{
+	return a ^ b;
+});
+
+function _Bitwise_complement(a)
+{
+	return ~a;
+};
+
+var _Bitwise_shiftLeftBy = F2(function(offset, a)
+{
+	return a << offset;
+});
+
+var _Bitwise_shiftRightBy = F2(function(offset, a)
+{
+	return a >> offset;
+});
+
+var _Bitwise_shiftRightZfBy = F2(function(offset, a)
+{
+	return a >>> offset;
+});
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
 var $elm$core$Array$foldr = F3(
@@ -4365,7 +4401,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4386,7 +4422,7 @@ var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4431,39 +4467,39 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$LT = 0;
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
+var $elm$core$Basics$False = 1;
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -4588,12 +4624,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -4608,7 +4644,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -4617,7 +4653,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -4681,7 +4717,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -4696,7 +4732,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -4716,7 +4752,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -4763,25 +4799,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.g) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.k),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.k);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.g * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.l) : builder.l;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.g);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.k) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.k);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4794,7 +4830,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{l: nodeList, g: (len / $elm$core$Array$branchFactor) | 0, k: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4824,9 +4860,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
@@ -4838,33 +4874,31 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 'Normal':
+		case 0:
 			return 0;
-		case 'MayStopPropagation':
+		case 1:
 			return 1;
-		case 'MayPreventDefault':
+		case 2:
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
+	return {$: 1, a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var $elm$url$Url$Http = {$: 'Http'};
-var $elm$url$Url$Https = {$: 'Https'};
+var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
+var $elm$url$Url$Http = 0;
+var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
+		return {as: fragment, au: host, h: path, ay: port_, aB: protocol, aC: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -4900,7 +4934,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -4983,26 +5017,24 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Http,
+		0,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Https,
+		1,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0.a;
+		var nvr = _v0;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
+var $elm$core$Task$Perform = $elm$core$Basics$identity;
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
+var $elm$core$Task$init = $elm$core$Task$succeed(0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5108,7 +5140,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0.a;
+		var task = _v0;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5120,7 +5152,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return _Utils_Tuple0;
+				return 0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5130,63 +5162,62 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(_Utils_Tuple0);
+		return $elm$core$Task$succeed(0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0.a;
-		return $elm$core$Task$Perform(
-			A2($elm$core$Task$map, tagger, task));
+		var task = _v0;
+		return A2($elm$core$Task$map, tagger, task);
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
-				A2($elm$core$Task$map, toMessage, task)));
+			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
 var $elm$json$Json$Decode$index = _Json_decodeIndex;
-var $author$project$GraphApp$Add = {$: 'Add'};
-var $author$project$GraphApp$Free = {$: 'Free'};
-var $author$project$GraphApp$MoveThings = {$: 'MoveThings'};
-var $author$project$GraphApp$Play = {$: 'Play'};
-var $author$project$GraphApp$blank_scene = {edges: _List_Nil, name: '', points: _List_Nil, ratio: 1};
+var $author$project$GraphApp$Add = 0;
+var $author$project$GraphApp$Free = {$: 0};
+var $author$project$GraphApp$MoveThings = 2;
+var $author$project$GraphApp$Play = 0;
+var $author$project$GraphApp$blank_scene = {c: _List_Nil, P: '', b: _List_Nil, K: 1};
 var $author$project$GraphApp$set_color = function (m) {
-	return {edges: m.edges, name: m.name, path: _List_Nil, points: m.points, ratio: m.ratio};
+	return {c: m.c, P: m.P, h: _List_Nil, b: m.b, K: m.K};
 };
 var $author$project$GraphApp$blank_scene_coloured = $author$project$GraphApp$set_color($author$project$GraphApp$blank_scene);
 var $author$project$GraphApp$init_model = {
-	add_edge_first_point: $elm$core$Maybe$Nothing,
-	base_url: '',
-	can_change_mode: false,
-	disabled: false,
-	edit_action: $author$project$GraphApp$Add,
-	future_scenes: _List_Nil,
-	history_scenes: _List_Nil,
-	key_state: $author$project$GraphApp$Free,
-	mode: $author$project$GraphApp$Play,
-	mouse: _Utils_Tuple2(100000043.0, 0.0),
-	playmode: $author$project$GraphApp$MoveThings,
-	scene: $author$project$GraphApp$blank_scene_coloured,
-	touch_offset: _Utils_Tuple2(0, 0),
-	touch_state: $author$project$GraphApp$Free,
-	touches: _List_Nil
+	j: $elm$core$Maybe$Nothing,
+	af: '',
+	U: false,
+	H: false,
+	r: 0,
+	t: _List_Nil,
+	x: _List_Nil,
+	u: $author$project$GraphApp$Free,
+	e: 0,
+	f: _Utils_Tuple2(100000043.0, 0.0),
+	ab: 0,
+	q: 2,
+	a: $author$project$GraphApp$blank_scene_coloured,
+	ae: _Utils_Tuple2(0, 0),
+	z: $author$project$GraphApp$Free,
+	F: _List_Nil
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$GraphApp$Edit = {$: 'Edit'};
-var $author$project$GraphApp$Euler = {$: 'Euler'};
-var $author$project$GraphApp$Hamilton = {$: 'Hamilton'};
+var $author$project$GraphApp$Edit = 1;
+var $author$project$GraphApp$Euler = 1;
+var $author$project$GraphApp$Hamilton = 0;
 var $elm$core$Result$map2 = F3(
 	function (func, ra, rb) {
-		if (ra.$ === 'Err') {
+		if (ra.$ === 1) {
 			var x = ra.a;
 			return $elm$core$Result$Err(x);
 		} else {
 			var a = ra.a;
-			if (rb.$ === 'Err') {
+			if (rb.$ === 1) {
 				var x = rb.a;
 				return $elm$core$Result$Err(x);
 			} else {
@@ -5210,11 +5241,11 @@ var $author$project$GraphApp$parse_mode = function (s) {
 		var playmode = function () {
 			switch (ps) {
 				case 'hamilton':
-					return $elm$core$Result$Ok($author$project$GraphApp$Hamilton);
+					return $elm$core$Result$Ok(0);
 				case 'euler':
-					return $elm$core$Result$Ok($author$project$GraphApp$Euler);
+					return $elm$core$Result$Ok(1);
 				case 'movethings':
-					return $elm$core$Result$Ok($author$project$GraphApp$MoveThings);
+					return $elm$core$Result$Ok(2);
 				default:
 					return $elm$core$Result$Err('There is no play mode ' + (ps + '.'));
 			}
@@ -5222,9 +5253,9 @@ var $author$project$GraphApp$parse_mode = function (s) {
 		var mode = function () {
 			switch (ms) {
 				case 'edit':
-					return $elm$core$Result$Ok($author$project$GraphApp$Edit);
+					return $elm$core$Result$Ok(1);
 				case 'play':
-					return $elm$core$Result$Ok($author$project$GraphApp$Play);
+					return $elm$core$Result$Ok(0);
 				default:
 					return $elm$core$Result$Err('There is no mode ' + (ms + '.'));
 			}
@@ -5236,7 +5267,7 @@ var $author$project$GraphApp$parse_mode = function (s) {
 };
 var $elm$core$Result$withDefault = F2(
 	function (def, result) {
-		if (result.$ === 'Ok') {
+		if (!result.$) {
 			var a = result.a;
 			return a;
 		} else {
@@ -5247,13 +5278,13 @@ var $author$project$GraphApp$set_mode = F2(
 	function (modename, model) {
 		var _v0 = A2(
 			$elm$core$Result$withDefault,
-			_Utils_Tuple2($author$project$GraphApp$Play, $author$project$GraphApp$MoveThings),
+			_Utils_Tuple2(0, 2),
 			$author$project$GraphApp$parse_mode(modename));
 		var mode = _v0.a;
 		var playmode = _v0.b;
 		return _Utils_update(
 			model,
-			{mode: mode, playmode: playmode});
+			{e: mode, q: playmode});
 	});
 var $author$project$GraphApp$init = function (_v0) {
 	var base_url = _v0.a;
@@ -5264,15 +5295,15 @@ var $author$project$GraphApp$init = function (_v0) {
 			modename,
 			_Utils_update(
 				$author$project$GraphApp$init_model,
-				{base_url: base_url})),
+				{af: base_url})),
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$json$Json$Decode$string = _Json_decodeString;
 var $author$project$GraphApp$ReceiveScene = function (a) {
-	return {$: 'ReceiveScene', a: a};
+	return {$: 15, a: a};
 };
 var $author$project$GraphApp$ReceiveSetting = function (a) {
-	return {$: 'ReceiveSetting', a: a};
+	return {$: 16, a: a};
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$json$Json$Decode$value = _Json_decodeValue;
@@ -5286,23 +5317,24 @@ var $author$project$GraphApp$subscriptions = function (model) {
 				$author$project$GraphApp$settingsPort($author$project$GraphApp$ReceiveSetting)
 			]));
 };
-var $author$project$GraphApp$DownFree = {$: 'DownFree'};
+var $author$project$GraphApp$DownFree = {$: 1};
 var $author$project$GraphApp$Dragging = function (a) {
-	return {$: 'Dragging', a: a};
+	return {$: 2, a: a};
 };
 var $author$project$GraphApp$add_history = F2(
 	function (scene, model) {
 		return _Utils_update(
 			model,
 			{
-				future_scenes: _List_Nil,
-				history_scenes: A2($elm$core$List$cons, scene, model.history_scenes)
+				t: _List_Nil,
+				x: A2($elm$core$List$cons, scene, model.x)
 			});
 	});
+var $elm$core$Bitwise$and = _Bitwise_and;
 var $author$project$GraphApp$can_move_points = function (model) {
-	var _v0 = _Utils_Tuple2(model.mode, model.playmode);
-	if (_v0.a.$ === 'Play') {
-		if (_v0.b.$ === 'MoveThings') {
+	var _v0 = _Utils_Tuple2(model.e, model.q);
+	if (!_v0.a) {
+		if (_v0.b === 2) {
 			var _v1 = _v0.a;
 			var _v2 = _v0.b;
 			return true;
@@ -5312,11 +5344,11 @@ var $author$project$GraphApp$can_move_points = function (model) {
 		}
 	} else {
 		var _v4 = _v0.a;
-		var _v5 = model.edit_action;
-		switch (_v5.$) {
-			case 'Move':
+		var _v5 = model.r;
+		switch (_v5) {
+			case 2:
 				return true;
-			case 'Add':
+			case 0:
 				return true;
 			default:
 				return false;
@@ -5326,7 +5358,7 @@ var $author$project$GraphApp$can_move_points = function (model) {
 var $elm$json$Json$Decode$decodeValue = _Json_run;
 var $author$project$GraphApp$Scene = F5(
 	function (points, edges, name, path, ratio) {
-		return {edges: edges, name: name, path: path, points: points, ratio: ratio};
+		return {c: edges, P: name, h: path, b: points, K: ratio};
 	});
 var $elm$json$Json$Decode$oneOf = _Json_oneOf;
 var $author$project$GraphApp$decode_default = F2(
@@ -5338,9 +5370,9 @@ var $author$project$GraphApp$decode_default = F2(
 					$elm$json$Json$Decode$succeed(_default)
 				]));
 	});
-var $author$project$GraphApp$ArcIn = {$: 'ArcIn'};
-var $author$project$GraphApp$ArcOut = {$: 'ArcOut'};
-var $author$project$GraphApp$Straight = {$: 'Straight'};
+var $author$project$GraphApp$ArcIn = 2;
+var $author$project$GraphApp$ArcOut = 1;
+var $author$project$GraphApp$Straight = 0;
 var $elm$json$Json$Decode$fail = _Json_fail;
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $elm$json$Json$Decode$int = _Json_decodeInt;
@@ -5364,11 +5396,11 @@ var $author$project$GraphApp$decode_edge = $elm$json$Json$Decode$oneOf(
 				function (s) {
 					switch (s) {
 						case 'straight':
-							return $elm$json$Json$Decode$succeed($author$project$GraphApp$Straight);
+							return $elm$json$Json$Decode$succeed(0);
 						case 'arcout':
-							return $elm$json$Json$Decode$succeed($author$project$GraphApp$ArcOut);
+							return $elm$json$Json$Decode$succeed(1);
 						case 'arcin':
-							return $elm$json$Json$Decode$succeed($author$project$GraphApp$ArcIn);
+							return $elm$json$Json$Decode$succeed(2);
 						default:
 							return $elm$json$Json$Decode$fail('Trying to decode an edge shape, but the string ' + (s + ' is not valid.'));
 					}
@@ -5378,7 +5410,7 @@ var $author$project$GraphApp$decode_edge = $elm$json$Json$Decode$oneOf(
 			$elm$json$Json$Decode$map2,
 			function (from) {
 				return function (to) {
-					return _Utils_Tuple3(from, to, $author$project$GraphApp$Straight);
+					return _Utils_Tuple3(from, to, 0);
 				};
 			},
 			A2($elm$json$Json$Decode$index, 0, $elm$json$Json$Decode$int),
@@ -5388,7 +5420,7 @@ var $elm$json$Json$Decode$list = _Json_decodeList;
 var $author$project$GraphApp$decode_path = $elm$json$Json$Decode$list($elm$json$Json$Decode$int);
 var $author$project$GraphApp$Point = F3(
 	function (position, colour, label) {
-		return {colour: colour, label: label, position: position};
+		return {N: colour, C: label, d: position};
 	});
 var $elm$json$Json$Decode$null = _Json_decodeNull;
 var $elm$json$Json$Decode$nullable = function (decoder) {
@@ -5416,7 +5448,7 @@ var $author$project$GraphApp$decode_vector = A3(
 	A2($elm$json$Json$Decode$field, 'x', $elm$json$Json$Decode$float),
 	A2($elm$json$Json$Decode$field, 'y', $elm$json$Json$Decode$float));
 var $author$project$GraphApp$plain_point = function (pos) {
-	return {colour: $elm$core$Maybe$Nothing, label: $elm$core$Maybe$Nothing, position: pos};
+	return {N: $elm$core$Maybe$Nothing, C: $elm$core$Maybe$Nothing, d: pos};
 };
 var $author$project$GraphApp$decode_point = $elm$json$Json$Decode$oneOf(
 	_List_fromArray(
@@ -5475,7 +5507,7 @@ var $author$project$GraphApp$decode_can_change_mode_setting = A2(
 			return function (model) {
 				return _Utils_update(
 					model,
-					{can_change_mode: can_change_mode});
+					{U: can_change_mode});
 			};
 		},
 		$elm$json$Json$Decode$bool));
@@ -5488,7 +5520,7 @@ var $author$project$GraphApp$decode_disabled_setting = A2(
 			return function (model) {
 				return _Utils_update(
 					model,
-					{add_edge_first_point: $elm$core$Maybe$Nothing, disabled: disabled});
+					{j: $elm$core$Maybe$Nothing, H: disabled});
 			};
 		},
 		$elm$json$Json$Decode$bool));
@@ -5548,24 +5580,24 @@ var $author$project$GraphApp$mapAt = F3(
 var $elm$core$Basics$not = _Basics_not;
 var $author$project$GraphApp$update_point = F3(
 	function (fn, model, i) {
-		if (model.disabled || (!$author$project$GraphApp$can_move_points(model))) {
+		if (model.H || (!$author$project$GraphApp$can_move_points(model))) {
 			return model;
 		} else {
-			var scene = model.scene;
+			var scene = model.a;
 			var nscene = _Utils_update(
 				scene,
 				{
-					points: A3(
+					b: A3(
 						$author$project$GraphApp$mapAt,
 						function (j) {
 							return _Utils_eq(j, i);
 						},
 						fn,
-						model.scene.points)
+						model.a.b)
 				});
 			return _Utils_update(
 				model,
-				{scene: nscene});
+				{a: nscene});
 		}
 	});
 var $author$project$GraphApp$vsub = F2(
@@ -5577,8 +5609,8 @@ var $author$project$GraphApp$vsub = F2(
 		return _Utils_Tuple2(x1 - x2, y1 - y2);
 	});
 var $author$project$GraphApp$drag_point = function (model) {
-	var _v0 = model.touch_state;
-	if (_v0.$ === 'Dragging') {
+	var _v0 = model.z;
+	if (_v0.$ === 2) {
 		var i = _v0.a;
 		return A3(
 			$author$project$GraphApp$update_point,
@@ -5586,7 +5618,7 @@ var $author$project$GraphApp$drag_point = function (model) {
 				return _Utils_update(
 					p,
 					{
-						position: A2($author$project$GraphApp$vsub, model.mouse, model.touch_offset)
+						d: A2($author$project$GraphApp$vsub, model.f, model.ae)
 					});
 			},
 			model,
@@ -5636,23 +5668,149 @@ var $elm$core$List$member = F2(
 			},
 			xs);
 	});
-var $elm$core$Basics$neq = _Utils_notEqual;
+var $author$project$GraphApp$first3 = function (_v0) {
+	var a = _v0.a;
+	var b = _v0.b;
+	var c = _v0.c;
+	return a;
+};
+var $elm$core$Basics$min = F2(
+	function (x, y) {
+		return (_Utils_cmp(x, y) < 0) ? x : y;
+	});
+var $author$project$GraphApp$second3 = function (_v0) {
+	var a = _v0.a;
+	var b = _v0.b;
+	var c = _v0.c;
+	return b;
+};
+var $elm$core$List$sortBy = _List_sortBy;
+var $author$project$GraphApp$unique_edges = function (model) {
+	var scene = model.a;
+	var sorted_edges = A2(
+		$elm$core$Basics$composeR,
+		$elm$core$List$map(
+			function (_v1) {
+				var a = _v1.a;
+				var b = _v1.b;
+				var s = _v1.c;
+				return _Utils_Tuple3(
+					A2($elm$core$Basics$min, a, b),
+					A2($elm$core$Basics$max, a, b),
+					s);
+			}),
+		A2(
+			$elm$core$Basics$composeR,
+			$elm$core$List$sortBy($author$project$GraphApp$second3),
+			$elm$core$List$sortBy($author$project$GraphApp$first3)))(scene.c);
+	var keep_if_different = F2(
+		function (e, last) {
+			if (last.b) {
+				var e2 = last.a;
+				var rest = last.b;
+				return _Utils_eq(e, e2) ? last : A2($elm$core$List$cons, e, last);
+			} else {
+				return _List_fromArray(
+					[e]);
+			}
+		});
+	var new_edges = A3($elm$core$List$foldr, keep_if_different, _List_Nil, sorted_edges);
+	var new_scene = _Utils_update(
+		scene,
+		{c: new_edges});
+	return _Utils_update(
+		model,
+		{a: new_scene});
+};
+var $author$project$GraphApp$add_edge = F3(
+	function (i, j, model) {
+		var scene = model.a;
+		var new_scene = _Utils_update(
+			scene,
+			{
+				c: _Utils_ap(
+					scene.c,
+					_List_fromArray(
+						[
+							_Utils_Tuple3(i, j, 0)
+						]))
+			});
+		return A2(
+			$author$project$GraphApp$add_history,
+			model.a,
+			$author$project$GraphApp$unique_edges(
+				_Utils_update(
+					model,
+					{
+						j: $elm$core$Maybe$Just(i),
+						a: new_scene
+					})));
+	});
 var $author$project$GraphApp$next_shape = function (_v0) {
 	var a = _v0.a;
 	var b = _v0.b;
 	var s = _v0.c;
 	var ns = function () {
-		switch (s.$) {
-			case 'Straight':
-				return $author$project$GraphApp$ArcOut;
-			case 'ArcOut':
-				return $author$project$GraphApp$ArcIn;
+		switch (s) {
+			case 0:
+				return 1;
+			case 1:
+				return 2;
 			default:
-				return $author$project$GraphApp$Straight;
+				return 0;
 		}
 	}();
 	return _Utils_Tuple3(a, b, ns);
 };
+var $author$project$GraphApp$change_edge_shape = F2(
+	function (model, edge) {
+		var scene = model.a;
+		var new_scene = _Utils_update(
+			scene,
+			{
+				c: A2(
+					$elm$core$List$map,
+					function (e2) {
+						return _Utils_eq(edge, e2) ? $author$project$GraphApp$next_shape(edge) : e2;
+					},
+					scene.c)
+			});
+		return A2(
+			$author$project$GraphApp$add_history,
+			model.a,
+			_Utils_update(
+				model,
+				{a: new_scene}));
+	});
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $elm$core$Basics$neq = _Utils_notEqual;
+var $author$project$GraphApp$remove_edge = F2(
+	function (model, edge) {
+		var scene = model.a;
+		var new_scene = _Utils_update(
+			scene,
+			{
+				c: A2(
+					$elm$core$List$filter,
+					$elm$core$Basics$neq(edge),
+					scene.c)
+			});
+		return A2(
+			$author$project$GraphApp$add_history,
+			model.a,
+			_Utils_update(
+				model,
+				{a: new_scene}));
+	});
 var $elm$core$List$drop = F2(
 	function (n, list) {
 		drop:
@@ -5806,6 +5964,44 @@ var $author$project$GraphApp$remove_index = F2(
 			A2($elm$core$List$take, n, list),
 			A2($elm$core$List$drop, n + 1, list));
 	});
+var $author$project$GraphApp$remove_point = F2(
+	function (model, i) {
+		var sub = function (j) {
+			return (_Utils_cmp(j, i) > 0) ? (j - 1) : j;
+		};
+		var scene = model.a;
+		var new_edges = A2(
+			$elm$core$List$map,
+			function (_v0) {
+				var a = _v0.a;
+				var b = _v0.b;
+				var s = _v0.c;
+				return _Utils_Tuple3(
+					sub(a),
+					sub(b),
+					s);
+			},
+			A2(
+				$elm$core$List$filter,
+				function (_v1) {
+					var a = _v1.a;
+					var b = _v1.b;
+					return (!_Utils_eq(a, i)) && (!_Utils_eq(b, i));
+				},
+				scene.c));
+		var new_scene = _Utils_update(
+			scene,
+			{
+				c: new_edges,
+				b: A2($author$project$GraphApp$remove_index, i, scene.b)
+			});
+		return A2(
+			$author$project$GraphApp$add_history,
+			model.a,
+			_Utils_update(
+				model,
+				{a: new_scene}));
+	});
 var $elm$core$List$head = function (list) {
 	if (list.b) {
 		var x = list.a;
@@ -5828,7 +6024,7 @@ var $author$project$GraphApp$is_adjacent = F3(
 					_Utils_Tuple2(a, b),
 					_Utils_Tuple2(j, i));
 			},
-			model.scene.edges);
+			model.a.c);
 	});
 var $elm$core$Tuple$second = function (_v0) {
 	var y = _v0.b;
@@ -5839,7 +6035,7 @@ var $author$project$GraphApp$path_edges = function (path) {
 		function (b, _v1) {
 			var last = _v1.a;
 			var edges = _v1.b;
-			if (last.$ === 'Nothing') {
+			if (last.$ === 1) {
 				return _Utils_Tuple2(
 					$elm$core$Maybe$Just(b),
 					edges);
@@ -5873,20 +6069,20 @@ var $author$project$GraphApp$path_has_edge = F2(
 	});
 var $author$project$GraphApp$set_path = F2(
 	function (model, path) {
-		var oscene = model.scene;
+		var oscene = model.a;
 		var nscene = _Utils_update(
 			oscene,
-			{path: path});
+			{h: path});
 		return _Utils_update(
 			model,
-			{scene: nscene});
+			{a: nscene});
 	});
 var $author$project$GraphApp$select_point = F2(
 	function (model, state) {
-		if (state.$ === 'Dragging') {
+		if (state.$ === 2) {
 			var i = state.a;
-			var _v1 = $elm$core$List$head(model.scene.path);
-			if (_v1.$ === 'Nothing') {
+			var _v1 = $elm$core$List$head(model.a.h);
+			if (_v1.$ === 1) {
 				return A2(
 					$author$project$GraphApp$set_path,
 					model,
@@ -5898,18 +6094,18 @@ var $author$project$GraphApp$select_point = F2(
 					return A2(
 						$author$project$GraphApp$set_path,
 						model,
-						A2($elm$core$List$drop, 1, model.scene.path));
+						A2($elm$core$List$drop, 1, model.a.h));
 				} else {
 					var ok_edge = function () {
-						var _v2 = model.playmode;
-						switch (_v2.$) {
-							case 'Hamilton':
-								return !A2($elm$core$List$member, i, model.scene.path);
-							case 'Euler':
+						var _v2 = model.q;
+						switch (_v2) {
+							case 0:
+								return !A2($elm$core$List$member, i, model.a.h);
+							case 1:
 								return !A2(
 									$author$project$GraphApp$path_has_edge,
 									_Utils_Tuple2(i, j),
-									model.scene.path);
+									model.a.h);
 							default:
 								return false;
 						}
@@ -5917,7 +6113,7 @@ var $author$project$GraphApp$select_point = F2(
 					return (A3($author$project$GraphApp$is_adjacent, i, j, model) && ok_edge) ? A2(
 						$author$project$GraphApp$set_path,
 						model,
-						A2($elm$core$List$cons, i, model.scene.path)) : model;
+						A2($elm$core$List$cons, i, model.a.h)) : model;
 				}
 			}
 		} else {
@@ -5927,7 +6123,7 @@ var $author$project$GraphApp$select_point = F2(
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
-		if (_v0.$ === 'Just') {
+		if (!_v0.$) {
 			var x = _v0.a;
 			return A2($elm$core$List$cons, x, xs);
 		} else {
@@ -5948,23 +6144,13 @@ var $author$project$GraphApp$listGet = function (n) {
 		$elm$core$List$drop(n),
 		$elm$core$List$head);
 };
-var $elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return $elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
-	});
 var $elm$core$Maybe$map2 = F3(
 	function (func, ma, mb) {
-		if (ma.$ === 'Nothing') {
+		if (ma.$ === 1) {
 			return $elm$core$Maybe$Nothing;
 		} else {
 			var a = ma.a;
-			if (mb.$ === 'Nothing') {
+			if (mb.$ === 1) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var b = mb.a;
@@ -5977,21 +6163,21 @@ var $author$project$GraphApp$get_edge = F2(
 	function (model, _v0) {
 		var i = _v0.a;
 		var j = _v0.b;
-		var mb = A2($author$project$GraphApp$listGet, j, model.scene.points);
-		var ma = A2($author$project$GraphApp$listGet, i, model.scene.points);
+		var mb = A2($author$project$GraphApp$listGet, j, model.a.b);
+		var ma = A2($author$project$GraphApp$listGet, i, model.a.b);
 		return A3(
 			$elm$core$Maybe$map2,
 			$elm$core$Tuple$pair,
 			A2(
 				$elm$core$Maybe$map,
 				function ($) {
-					return $.position;
+					return $.d;
 				},
 				ma),
 			A2(
 				$elm$core$Maybe$map,
 				function ($) {
-					return $.position;
+					return $.d;
 				},
 				mb));
 	});
@@ -6002,7 +6188,7 @@ var $author$project$GraphApp$minimumMap = F2(
 			function (_v2, mb) {
 				var i = _v2.a;
 				var a = _v2.b;
-				if (mb.$ === 'Nothing') {
+				if (mb.$ === 1) {
 					return $elm$core$Maybe$Just(
 						_Utils_Tuple2(i, a));
 				} else {
@@ -6079,7 +6265,7 @@ var $author$project$GraphApp$selected_edge = F3(
 				$author$project$GraphApp$get_edge(model),
 				$elm$core$Maybe$map(
 					$author$project$GraphApp$point_line_distance(pos))),
-			model.scene.edges);
+			model.a.c);
 		return A2(
 			$elm$core$Maybe$map,
 			A2($elm$core$Basics$composeR, $elm$core$Tuple$second, $elm$core$Tuple$second),
@@ -6109,14 +6295,14 @@ var $author$project$GraphApp$selected_edge = F3(
 								};
 							},
 							distances,
-							model.scene.edges)))));
+							model.a.c)))));
 	});
 var $author$project$GraphApp$toggle_point_colour = F2(
 	function (i, model) {
 		var toggle_colour = function (p) {
 			var ncolour = function () {
-				var _v0 = p.colour;
-				if (_v0.$ === 'Nothing') {
+				var _v0 = p.N;
+				if (_v0.$ === 1) {
 					return $elm$core$Maybe$Just(1);
 				} else {
 					var x = _v0.a;
@@ -6125,267 +6311,134 @@ var $author$project$GraphApp$toggle_point_colour = F2(
 			}();
 			return _Utils_update(
 				p,
-				{colour: ncolour});
+				{N: ncolour});
 		};
-		var scene = model.scene;
+		var scene = model.a;
 		var nscene = _Utils_update(
 			scene,
 			{
-				points: A3(
+				b: A3(
 					$author$project$GraphApp$mapAt,
 					function (j) {
 						return _Utils_eq(j, i);
 					},
 					toggle_colour,
-					model.scene.points)
+					model.a.b)
 			});
 		return _Utils_update(
 			model,
-			{add_edge_first_point: $elm$core$Maybe$Nothing, scene: nscene});
+			{j: $elm$core$Maybe$Nothing, a: nscene});
 	});
-var $author$project$GraphApp$first3 = function (_v0) {
-	var a = _v0.a;
-	var b = _v0.b;
-	var c = _v0.c;
-	return a;
-};
-var $elm$core$Basics$min = F2(
-	function (x, y) {
-		return (_Utils_cmp(x, y) < 0) ? x : y;
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
 	});
-var $author$project$GraphApp$second3 = function (_v0) {
-	var a = _v0.a;
-	var b = _v0.b;
-	var c = _v0.c;
-	return b;
-};
-var $elm$core$List$sortBy = _List_sortBy;
-var $author$project$GraphApp$unique_edges = function (model) {
-	var scene = model.scene;
-	var sorted_edges = A2(
-		$elm$core$Basics$composeR,
-		$elm$core$List$map(
-			function (_v1) {
-				var a = _v1.a;
-				var b = _v1.b;
-				var s = _v1.c;
-				return _Utils_Tuple3(
-					A2($elm$core$Basics$min, a, b),
-					A2($elm$core$Basics$max, a, b),
-					s);
-			}),
-		A2(
-			$elm$core$Basics$composeR,
-			$elm$core$List$sortBy($author$project$GraphApp$second3),
-			$elm$core$List$sortBy($author$project$GraphApp$first3)))(scene.edges);
-	var keep_if_different = F2(
-		function (e, last) {
-			if (last.b) {
-				var e2 = last.a;
-				var rest = last.b;
-				return _Utils_eq(e, e2) ? last : A2($elm$core$List$cons, e, last);
-			} else {
-				return _List_fromArray(
-					[e]);
-			}
-		});
-	var new_edges = A3($elm$core$List$foldr, keep_if_different, _List_Nil, sorted_edges);
-	var new_scene = _Utils_update(
-		scene,
-		{edges: new_edges});
-	return _Utils_update(
-		model,
-		{scene: new_scene});
-};
 var $author$project$GraphApp$mouse_up = F2(
 	function (model, touch_state) {
-		var undoable = $author$project$GraphApp$add_history(model.scene);
+		var undoable = $author$project$GraphApp$add_history(model.a);
 		var nmodel = function () {
-			if (model.disabled) {
-				return model;
-			} else {
-				var _v0 = _Utils_Tuple2(model.mode, model.playmode);
-				if (_v0.a.$ === 'Play') {
-					if (_v0.b.$ === 'MoveThings') {
-						var _v1 = _v0.a;
-						var _v2 = _v0.b;
-						return model;
-					} else {
-						var _v3 = _v0.a;
-						return A2($author$project$GraphApp$select_point, model, touch_state);
-					}
+			var _v0 = _Utils_Tuple2(model.e, model.q);
+			if (!_v0.a) {
+				if (_v0.b === 2) {
+					var _v1 = _v0.a;
+					var _v2 = _v0.b;
+					return model;
 				} else {
-					var _v4 = _v0.a;
-					var _v5 = model.edit_action;
-					switch (_v5.$) {
-						case 'Add':
-							if (touch_state.$ === 'Dragging') {
-								var i = touch_state.a;
-								var _v7 = model.add_edge_first_point;
-								if (_v7.$ === 'Just') {
-									var j = _v7.a;
-									if (_Utils_eq(i, j)) {
-										return _Utils_update(
-											model,
-											{add_edge_first_point: $elm$core$Maybe$Nothing});
-									} else {
-										var scene = model.scene;
-										var new_scene = _Utils_update(
-											scene,
-											{
-												edges: _Utils_ap(
-													scene.edges,
-													_List_fromArray(
-														[
-															_Utils_Tuple3(i, j, $author$project$GraphApp$Straight)
-														]))
-											});
-										return undoable(
-											$author$project$GraphApp$unique_edges(
-												_Utils_update(
-													model,
-													{
-														add_edge_first_point: $elm$core$Maybe$Just(i),
-														scene: new_scene
-													})));
-									}
+					var _v3 = _v0.a;
+					return A2($author$project$GraphApp$select_point, model, touch_state);
+				}
+			} else {
+				var _v4 = _v0.a;
+				var _v5 = model.r;
+				switch (_v5) {
+					case 0:
+						if (touch_state.$ === 2) {
+							var i = touch_state.a;
+							var _v7 = model.j;
+							if (!_v7.$) {
+								var j = _v7.a;
+								return _Utils_eq(i, j) ? _Utils_update(
+									model,
+									{j: $elm$core$Maybe$Nothing}) : A3($author$project$GraphApp$add_edge, i, j, model);
+							} else {
+								return _Utils_update(
+									model,
+									{
+										j: $elm$core$Maybe$Just(i)
+									});
+							}
+						} else {
+							var scene = model.a;
+							var i = $elm$core$List$length(scene.b);
+							var new_add_edge_first_point = $elm$core$Maybe$Just(i);
+							var new_edge = function () {
+								var _v8 = model.j;
+								if (!_v8.$) {
+									var j = _v8.a;
+									return _List_fromArray(
+										[
+											_Utils_Tuple3(j, i, 0)
+										]);
 								} else {
-									return _Utils_update(
-										model,
-										{
-											add_edge_first_point: $elm$core$Maybe$Just(i)
-										});
+									return _List_Nil;
 								}
-							} else {
-								var scene = model.scene;
-								var i = $elm$core$List$length(scene.points);
-								var new_add_edge_first_point = $elm$core$Maybe$Just(i);
-								var new_edge = function () {
-									var _v8 = model.add_edge_first_point;
-									if (_v8.$ === 'Just') {
-										var j = _v8.a;
-										return _List_fromArray(
+							}();
+							var new_scene = _Utils_update(
+								scene,
+								{
+									c: _Utils_ap(scene.c, new_edge),
+									b: _Utils_ap(
+										scene.b,
+										_List_fromArray(
 											[
-												_Utils_Tuple3(j, i, $author$project$GraphApp$Straight)
-											]);
-									} else {
-										return _List_Nil;
-									}
-								}();
-								var new_scene = _Utils_update(
-									scene,
-									{
-										edges: _Utils_ap(scene.edges, new_edge),
-										points: _Utils_ap(
-											scene.points,
-											_List_fromArray(
-												[
-													$author$project$GraphApp$plain_point(model.mouse)
-												]))
-									});
-								return undoable(
-									$author$project$GraphApp$unique_edges(
-										_Utils_update(
-											model,
-											{add_edge_first_point: new_add_edge_first_point, scene: new_scene})));
-							}
-						case 'Delete':
-							if (touch_state.$ === 'Dragging') {
-								var i = touch_state.a;
-								var sub = function (j) {
-									return (_Utils_cmp(j, i) > 0) ? (j - 1) : j;
-								};
-								var scene = model.scene;
-								var new_edges = A2(
-									$elm$core$List$map,
-									function (_v10) {
-										var a = _v10.a;
-										var b = _v10.b;
-										var s = _v10.c;
-										return _Utils_Tuple3(
-											sub(a),
-											sub(b),
-											s);
-									},
-									A2(
-										$elm$core$List$filter,
-										function (_v11) {
-											var a = _v11.a;
-											var b = _v11.b;
-											return (!_Utils_eq(a, i)) && (!_Utils_eq(b, i));
-										},
-										scene.edges));
-								var new_scene = _Utils_update(
-									scene,
-									{
-										edges: new_edges,
-										points: A2($author$project$GraphApp$remove_index, i, scene.points)
-									});
-								return undoable(
+												$author$project$GraphApp$plain_point(model.f)
+											]))
+								});
+							return undoable(
+								$author$project$GraphApp$unique_edges(
 									_Utils_update(
 										model,
-										{scene: new_scene}));
-							} else {
-								var scene = model.scene;
-								var closest_edge = A3($author$project$GraphApp$selected_edge, 1, model, model.mouse);
-								var new_scene = function () {
-									if (closest_edge.$ === 'Just') {
-										var e = closest_edge.a;
-										return _Utils_update(
-											scene,
-											{
-												edges: A2(
-													$elm$core$List$filter,
-													$elm$core$Basics$neq(e),
-													scene.edges)
-											});
-									} else {
-										return scene;
-									}
-								}();
-								return undoable(
-									_Utils_update(
-										model,
-										{scene: new_scene}));
-							}
-						case 'ChangeShape':
-							if (touch_state.$ === 'Dragging') {
-								var i = touch_state.a;
-								return A2($author$project$GraphApp$toggle_point_colour, i, model);
-							} else {
-								var scene = model.scene;
-								var closest_edge = A3($author$project$GraphApp$selected_edge, 1, model, model.mouse);
-								var new_scene = function () {
-									if (closest_edge.$ === 'Just') {
-										var e = closest_edge.a;
-										return _Utils_update(
-											scene,
-											{
-												edges: A2(
-													$elm$core$List$map,
-													function (e2) {
-														return _Utils_eq(e, e2) ? $author$project$GraphApp$next_shape(e) : e2;
-													},
-													scene.edges)
-											});
-									} else {
-										return scene;
-									}
-								}();
-								return undoable(
-									_Utils_update(
-										model,
-										{scene: new_scene}));
-							}
-						default:
-							return model;
-					}
+										{j: new_add_edge_first_point, a: new_scene})));
+						}
+					case 1:
+						if (touch_state.$ === 2) {
+							var i = touch_state.a;
+							return A2($author$project$GraphApp$remove_point, model, i);
+						} else {
+							return A2(
+								$elm$core$Maybe$withDefault,
+								model,
+								A2(
+									$elm$core$Maybe$map,
+									$author$project$GraphApp$remove_edge(model),
+									A3($author$project$GraphApp$selected_edge, 1, model, model.f)));
+						}
+					case 3:
+						if (touch_state.$ === 2) {
+							var i = touch_state.a;
+							return A2($author$project$GraphApp$toggle_point_colour, i, model);
+						} else {
+							return A2(
+								$elm$core$Maybe$withDefault,
+								model,
+								A2(
+									$elm$core$Maybe$map,
+									$author$project$GraphApp$change_edge_shape(model),
+									A3($author$project$GraphApp$selected_edge, 1, model, model.f)));
+						}
+					default:
+						return model;
 				}
 			}
 		}();
-		return _Utils_update(
+		return model.H ? model : _Utils_update(
 			nmodel,
-			{touch_state: $author$project$GraphApp$Free});
+			{z: $author$project$GraphApp$Free});
 	});
 var $author$project$GraphApp$end_touches = F2(
 	function (model, touchinfos) {
@@ -6396,11 +6449,11 @@ var $author$project$GraphApp$end_touches = F2(
 					return A2(
 						$author$project$GraphApp$mouse_up,
 						m,
-						$author$project$GraphApp$Dragging(t.selected_point));
+						$author$project$GraphApp$Dragging(t.ac));
 				};
 			},
 			model,
-			model.touches);
+			model.F);
 		var ids = A2(
 			$elm$core$List$map,
 			function (_v0) {
@@ -6413,12 +6466,12 @@ var $author$project$GraphApp$end_touches = F2(
 		return _Utils_update(
 			nmodel,
 			{
-				touches: A2(
+				F: A2(
 					$elm$core$List$filter,
 					function (t) {
-						return !A2($elm$core$List$member, t.identifier, ids);
+						return !A2($elm$core$List$member, t.aa, ids);
 					},
-					model.touches)
+					model.F)
 			});
 	});
 var $elm$core$List$maximum = function (list) {
@@ -6441,36 +6494,27 @@ var $elm$core$List$minimum = function (list) {
 		return $elm$core$Maybe$Nothing;
 	}
 };
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
 var $author$project$GraphApp$fit_points = function (scene) {
 	var ys = A2(
 		$elm$core$List$map,
 		A2(
 			$elm$core$Basics$composeR,
 			function ($) {
-				return $.position;
+				return $.d;
 			},
 			$elm$core$Tuple$second),
-		scene.points);
+		scene.b);
 	var xs = A2(
 		$elm$core$List$map,
 		A2(
 			$elm$core$Basics$composeR,
 			function ($) {
-				return $.position;
+				return $.d;
 			},
 			$elm$core$Tuple$first),
-		scene.points);
+		scene.b);
 	var height = 14;
-	var width = height * scene.ratio;
+	var width = height * scene.K;
 	var _v0 = _Utils_Tuple2(
 		A2(
 			$elm$core$Maybe$withDefault,
@@ -6498,28 +6542,28 @@ var $author$project$GraphApp$fit_points = function (scene) {
 	var dx = maxx - minx;
 	var midx = (minx + maxx) / 2;
 	var fit_point = function (p) {
-		var _v2 = p.position;
+		var _v2 = p.d;
 		var x = _v2.a;
 		var y = _v2.b;
 		return _Utils_update(
 			p,
 			{
-				position: _Utils_Tuple2(
+				d: _Utils_Tuple2(
 					(x - midx) * ((!dx) ? 1 : (width / dx)),
 					(y - midy) * ((!dy) ? 1 : (height / dy)))
 			});
 	};
-	var npoints = A2($elm$core$List$map, fit_point, scene.points);
+	var npoints = A2($elm$core$List$map, fit_point, scene.b);
 	return _Utils_update(
 		scene,
-		{points: npoints});
+		{b: npoints});
 };
 var $elm$core$Basics$compare = _Utils_compare;
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -6527,14 +6571,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
+				switch (_v1) {
+					case 0:
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 'EQ':
+					case 1:
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -6546,23 +6590,23 @@ var $elm$core$Dict$get = F2(
 			}
 		}
 	});
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
-var $elm$core$Dict$Black = {$: 'Black'};
+var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = {$: 'Red'};
+var $elm$core$Dict$Red = 0;
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
+		if ((right.$ === -1) && (!right.a)) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+			if ((left.$ === -1) && (!left.a)) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6570,22 +6614,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -6598,11 +6642,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -6610,8 +6654,8 @@ var $elm$core$Dict$balance = F5(
 	});
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -6619,8 +6663,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
+			switch (_v1) {
+				case 0:
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -6628,7 +6672,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 'EQ':
+				case 1:
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -6644,13 +6688,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -6684,7 +6728,6 @@ var $author$project$GraphApp$keymap = $elm$core$Dict$fromList(
 			'ArrowDown',
 			_Utils_Tuple2(0, 1))
 		]));
-var $elm$core$Debug$log = _Debug_log;
 var $author$project$GraphApp$vadd = F2(
 	function (_v0, _v1) {
 		var x1 = _v0.a;
@@ -6701,9 +6744,9 @@ var $author$project$GraphApp$move_point = function (_v0) {
 			return _Utils_update(
 				p,
 				{
-					position: A2(
+					d: A2(
 						$author$project$GraphApp$vadd,
-						p.position,
+						p.d,
 						_Utils_Tuple2(dx, dy))
 				});
 		});
@@ -6715,9 +6758,9 @@ var $author$project$GraphApp$move_touches = F2(
 				A2(
 					$elm$core$List$filter,
 					function (t) {
-						return _Utils_eq(t.identifier, id);
+						return _Utils_eq(t.aa, id);
 					},
-					model.touches));
+					model.F));
 		};
 		var moved_touches = A2(
 			$elm$core$List$filterMap,
@@ -6729,11 +6772,11 @@ var $author$project$GraphApp$move_touches = F2(
 					$elm$core$Maybe$map,
 					function (t) {
 						return _Utils_Tuple2(
-							t.selected_point,
+							t.ac,
 							A2(
 								$author$project$GraphApp$vsub,
 								_Utils_Tuple2(x, y),
-								t.offset));
+								t.ah));
 					},
 					get_touch(id));
 			},
@@ -6749,7 +6792,7 @@ var $author$project$GraphApp$move_touches = F2(
 						function (p) {
 							return _Utils_update(
 								p,
-								{position: pos});
+								{d: pos});
 						},
 						nmodel,
 						i);
@@ -6764,30 +6807,30 @@ var $author$project$GraphApp$nocmd = function (x) {
 var $author$project$GraphApp$press_escape = function (model) {
 	return _Utils_update(
 		model,
-		{add_edge_first_point: $elm$core$Maybe$Nothing});
+		{j: $elm$core$Maybe$Nothing});
 };
 var $author$project$GraphApp$reportState = _Platform_outgoingPort('reportState', $elm$core$Basics$identity);
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $author$project$GraphApp$is_cycle = function (model) {
-	var last = $elm$core$List$head(model.scene.path);
-	var first = A2($elm$core$Basics$composeR, $elm$core$List$reverse, $elm$core$List$head)(model.scene.path);
-	var _v0 = _Utils_Tuple2(model.mode, model.playmode);
+	var last = $elm$core$List$head(model.a.h);
+	var first = A2($elm$core$Basics$composeR, $elm$core$List$reverse, $elm$core$List$head)(model.a.h);
+	var _v0 = _Utils_Tuple2(model.e, model.q);
 	_v0$2:
 	while (true) {
-		if (_v0.a.$ === 'Play') {
-			switch (_v0.b.$) {
-				case 'Hamilton':
+		if (!_v0.a) {
+			switch (_v0.b) {
+				case 0:
 					var _v1 = _v0.a;
 					var _v2 = _v0.b;
 					var _v3 = _Utils_Tuple2(first, last);
-					if ((_v3.a.$ === 'Just') && (_v3.b.$ === 'Just')) {
+					if ((!_v3.a.$) && (!_v3.b.$)) {
 						var a = _v3.a.a;
 						var b = _v3.b.a;
 						return A3($author$project$GraphApp$is_adjacent, a, b, model) || _Utils_eq(a, b);
 					} else {
 						return false;
 					}
-				case 'Euler':
+				case 1:
 					var _v4 = _v0.a;
 					var _v5 = _v0.b;
 					return _Utils_eq(first, last);
@@ -6802,13 +6845,13 @@ var $author$project$GraphApp$is_cycle = function (model) {
 };
 var $author$project$GraphApp$is_eulerian = function (model) {
 	return _Utils_eq(
-		$elm$core$List$length(model.scene.path),
-		$elm$core$List$length(model.scene.edges) + 1);
+		$elm$core$List$length(model.a.h),
+		$elm$core$List$length(model.a.c) + 1);
 };
 var $author$project$GraphApp$is_hamiltonian = function (model) {
 	return _Utils_eq(
-		$elm$core$List$length(model.scene.path),
-		$elm$core$List$length(model.scene.points));
+		$elm$core$List$length(model.a.h),
+		$elm$core$List$length(model.a.b));
 };
 var $elm$core$List$isEmpty = function (xs) {
 	if (!xs.b) {
@@ -6818,19 +6861,19 @@ var $elm$core$List$isEmpty = function (xs) {
 	}
 };
 var $author$project$GraphApp$is_stuck = function (model) {
-	var last = $elm$core$List$head(model.scene.path);
+	var last = $elm$core$List$head(model.a.h);
 	var got = function (i) {
-		return A2($elm$core$List$member, i, model.scene.path);
+		return A2($elm$core$List$member, i, model.a.h);
 	};
 	var condition = function (_v5) {
 		var a = _v5.a;
 		var b = _v5.b;
-		var _v0 = _Utils_Tuple2(model.mode, model.playmode);
+		var _v0 = _Utils_Tuple2(model.e, model.q);
 		_v0$2:
 		while (true) {
-			if (_v0.a.$ === 'Play') {
-				switch (_v0.b.$) {
-					case 'Hamilton':
+			if (!_v0.a) {
+				switch (_v0.b) {
+					case 0:
 						var _v1 = _v0.a;
 						var _v2 = _v0.b;
 						return (_Utils_eq(
@@ -6838,13 +6881,13 @@ var $author$project$GraphApp$is_stuck = function (model) {
 							$elm$core$Maybe$Just(a)) && (!got(b))) || (_Utils_eq(
 							last,
 							$elm$core$Maybe$Just(b)) && (!got(a)));
-					case 'Euler':
+					case 1:
 						var _v3 = _v0.a;
 						var _v4 = _v0.b;
 						return (!A2(
 							$author$project$GraphApp$path_has_edge,
 							_Utils_Tuple2(a, b),
-							model.scene.path)) && (_Utils_eq(
+							model.a.h)) && (_Utils_eq(
 							last,
 							$elm$core$Maybe$Just(a)) || _Utils_eq(
 							last,
@@ -6858,7 +6901,7 @@ var $author$project$GraphApp$is_stuck = function (model) {
 		}
 		return true;
 	};
-	var options = A2($elm$core$List$filter, condition, model.scene.edges);
+	var options = A2($elm$core$List$filter, condition, model.a.c);
 	return (!_Utils_eq(last, $elm$core$Maybe$Nothing)) && $elm$core$List$isEmpty(options);
 };
 var $elm$json$Json$Encode$object = function (pairs) {
@@ -6871,14 +6914,14 @@ var $elm$json$Json$Encode$object = function (pairs) {
 					var v = _v0.b;
 					return A3(_Json_addField, k, v, obj);
 				}),
-			_Json_emptyObject(_Utils_Tuple0),
+			_Json_emptyObject(0),
 			pairs));
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$GraphApp$serialize_mode = function (mode) {
 	return $elm$json$Json$Encode$string(
 		function () {
-			if (mode.$ === 'Play') {
+			if (!mode) {
 				return 'play';
 			} else {
 				return 'edit';
@@ -6892,7 +6935,7 @@ var $elm$json$Json$Encode$list = F2(
 			A3(
 				$elm$core$List$foldl,
 				_Json_addEntry(func),
-				_Json_emptyArray(_Utils_Tuple0),
+				_Json_emptyArray(0),
 				entries));
 	});
 var $elm$json$Json$Encode$int = _Json_wrap;
@@ -6913,10 +6956,10 @@ var $author$project$GraphApp$serialize_edge = function (_v0) {
 				'shape',
 				$elm$json$Json$Encode$string(
 					function () {
-						switch (shape.$) {
-							case 'Straight':
+						switch (shape) {
+							case 0:
 								return 'straight';
-							case 'ArcOut':
+							case 1:
 								return 'arcout';
 							default:
 								return 'arcin';
@@ -6952,13 +6995,13 @@ var $author$project$GraphApp$serialize_point = function (p) {
 			[
 				_Utils_Tuple2(
 				'position',
-				$author$project$GraphApp$serialize_vector(p.position)),
+				$author$project$GraphApp$serialize_vector(p.d)),
 				_Utils_Tuple2(
 				'label',
-				A2($author$project$GraphApp$e_nullable, $elm$json$Json$Encode$string, p.label)),
+				A2($author$project$GraphApp$e_nullable, $elm$json$Json$Encode$string, p.C)),
 				_Utils_Tuple2(
 				'colour',
-				A2($author$project$GraphApp$e_nullable, $elm$json$Json$Encode$int, p.colour))
+				A2($author$project$GraphApp$e_nullable, $elm$json$Json$Encode$int, p.N))
 			]));
 };
 var $author$project$GraphApp$serialize_scene = function (scene) {
@@ -6967,19 +7010,19 @@ var $author$project$GraphApp$serialize_scene = function (scene) {
 			[
 				_Utils_Tuple2(
 				'points',
-				A2($elm$json$Json$Encode$list, $author$project$GraphApp$serialize_point, scene.points)),
+				A2($elm$json$Json$Encode$list, $author$project$GraphApp$serialize_point, scene.b)),
 				_Utils_Tuple2(
 				'edges',
-				A2($elm$json$Json$Encode$list, $author$project$GraphApp$serialize_edge, scene.edges)),
+				A2($elm$json$Json$Encode$list, $author$project$GraphApp$serialize_edge, scene.c)),
 				_Utils_Tuple2(
 				'name',
-				$elm$json$Json$Encode$string(scene.name)),
+				$elm$json$Json$Encode$string(scene.P)),
 				_Utils_Tuple2(
 				'path',
-				$author$project$GraphApp$serialize_path(scene.path)),
+				$author$project$GraphApp$serialize_path(scene.h)),
 				_Utils_Tuple2(
 				'ratio',
-				$elm$json$Json$Encode$float(scene.ratio))
+				$elm$json$Json$Encode$float(scene.K))
 			]));
 };
 var $author$project$GraphApp$serialize_model = function (model) {
@@ -7008,10 +7051,10 @@ var $author$project$GraphApp$serialize_model = function (model) {
 			[
 				_Utils_Tuple2(
 				'scene',
-				$author$project$GraphApp$serialize_scene(model.scene)),
+				$author$project$GraphApp$serialize_scene(model.a)),
 				_Utils_Tuple2(
 				'mode',
-				$author$project$GraphApp$serialize_mode(model.mode)),
+				$author$project$GraphApp$serialize_mode(model.e)),
 				_Utils_Tuple2('success', success_info)
 			]));
 };
@@ -7022,7 +7065,7 @@ var $author$project$GraphApp$report_state = function (model) {
 };
 var $elm$core$Maybe$andThen = F2(
 	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
+		if (!maybeValue.$) {
 			var value = maybeValue.a;
 			return callback(value);
 		} else {
@@ -7036,32 +7079,32 @@ var $author$project$GraphApp$selected_point = F3(
 			A2(
 				$elm$core$Basics$composeR,
 				function ($) {
-					return $.position;
+					return $.d;
 				},
 				$author$project$GraphApp$dist(pos)),
-			model.scene.points);
+			model.a.b);
 		return A2(
 			$elm$core$Maybe$andThen,
 			function (_v0) {
 				var i = _v0.a;
 				var p = _v0.b;
 				return (_Utils_cmp(
-					A2($author$project$GraphApp$dist, pos, p.position),
+					A2($author$project$GraphApp$dist, pos, p.d),
 					r) < 0) ? $elm$core$Maybe$Just(
 					_Utils_Tuple2(
 						i,
-						A2($author$project$GraphApp$vsub, pos, p.position))) : $elm$core$Maybe$Nothing;
+						A2($author$project$GraphApp$vsub, pos, p.d))) : $elm$core$Maybe$Nothing;
 			},
 			closest);
 	});
 var $author$project$GraphApp$set_mouse_to_selected_point = F2(
 	function (i, model) {
-		var _v0 = A2($author$project$GraphApp$listGet, i, model.scene.points);
-		if (_v0.$ === 'Just') {
+		var _v0 = A2($author$project$GraphApp$listGet, i, model.a.b);
+		if (!_v0.$) {
 			var p = _v0.a;
 			return _Utils_update(
 				model,
-				{mouse: p.position});
+				{f: p.d});
 		} else {
 			return model;
 		}
@@ -7070,7 +7113,7 @@ var $author$project$GraphApp$set_scene = F2(
 	function (scene, model) {
 		return _Utils_update(
 			model,
-			{add_edge_first_point: $elm$core$Maybe$Nothing, scene: scene});
+			{j: $elm$core$Maybe$Nothing, a: scene});
 	});
 var $author$project$GraphApp$start_touches = F2(
 	function (model, touchinfos) {
@@ -7085,7 +7128,7 @@ var $author$project$GraphApp$start_touches = F2(
 					function (_v1) {
 						var p = _v1.a;
 						var offset = _v1.b;
-						return {identifier: id, offset: offset, selected_point: p};
+						return {aa: id, ah: offset, ac: p};
 					},
 					A3(
 						$author$project$GraphApp$selected_point,
@@ -7097,28 +7140,30 @@ var $author$project$GraphApp$start_touches = F2(
 		return _Utils_update(
 			model,
 			{
-				touches: _Utils_ap(model.touches, touches)
+				F: _Utils_ap(model.F, touches)
 			});
 	});
 var $author$project$GraphApp$undo_path = function (model) {
-	var oscene = model.scene;
+	var oscene = model.a;
 	var nscene = _Utils_update(
 		oscene,
 		{
-			path: A2($elm$core$List$drop, 1, oscene.path)
+			h: A2($elm$core$List$drop, 1, oscene.h)
 		});
 	return _Utils_update(
 		model,
-		{scene: nscene});
+		{a: nscene});
 };
 var $author$project$GraphApp$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 'ChangeUrlRequest':
+			case 17:
 				return $author$project$GraphApp$nocmd(model);
-			case 'UrlChanging':
+			case 13:
 				return $author$project$GraphApp$nocmd(model);
-			case 'MouseMove':
+			case 14:
+				return $author$project$GraphApp$nocmd(model);
+			case 0:
 				var x = msg.a;
 				var y = msg.b;
 				return $author$project$GraphApp$nocmd(
@@ -7126,31 +7171,66 @@ var $author$project$GraphApp$update = F2(
 						_Utils_update(
 							model,
 							{
-								mouse: _Utils_Tuple2(x, y)
+								f: _Utils_Tuple2(x, y)
 							})));
-			case 'MouseDown':
-				var _v1 = A3($author$project$GraphApp$selected_point, 1, model, model.mouse);
-				if (_v1.$ === 'Just') {
-					var _v2 = _v1.a;
-					var i = _v2.a;
-					var offset = _v2.b;
-					return $author$project$GraphApp$nocmd(
-						_Utils_update(
-							model,
-							{
-								touch_offset: offset,
-								touch_state: $author$project$GraphApp$Dragging(i)
-							}));
+			case 1:
+				var buttons = msg.a;
+				var nmodel = _Utils_update(
+					model,
+					{ab: buttons});
+				if (buttons === 1) {
+					var _v1 = A3($author$project$GraphApp$selected_point, 1, nmodel, nmodel.f);
+					if (!_v1.$) {
+						var _v2 = _v1.a;
+						var i = _v2.a;
+						var offset = _v2.b;
+						return $author$project$GraphApp$nocmd(
+							_Utils_update(
+								nmodel,
+								{
+									ae: offset,
+									z: $author$project$GraphApp$Dragging(i)
+								}));
+					} else {
+						return $author$project$GraphApp$nocmd(
+							_Utils_update(
+								nmodel,
+								{z: $author$project$GraphApp$DownFree}));
+					}
 				} else {
-					return $author$project$GraphApp$nocmd(
-						_Utils_update(
-							model,
-							{touch_state: $author$project$GraphApp$DownFree}));
+					return $author$project$GraphApp$nocmd(nmodel);
 				}
-			case 'MouseUp':
-				return $author$project$GraphApp$report_state(
-					A2($author$project$GraphApp$mouse_up, model, model.touch_state));
-			case 'Focus':
+			case 2:
+				if ((model.ab & 2) > 0) {
+					var _v3 = model.j;
+					if (_v3.$ === 1) {
+						var _v4 = A3($author$project$GraphApp$selected_point, 1, model, model.f);
+						if (!_v4.$) {
+							var _v5 = _v4.a;
+							var i = _v5.a;
+							return $author$project$GraphApp$nocmd(
+								A2($author$project$GraphApp$remove_point, model, i));
+						} else {
+							return $author$project$GraphApp$nocmd(
+								A2(
+									$elm$core$Maybe$withDefault,
+									model,
+									A2(
+										$elm$core$Maybe$map,
+										$author$project$GraphApp$remove_edge(model),
+										A3($author$project$GraphApp$selected_edge, 1, model, model.f))));
+						}
+					} else {
+						return $author$project$GraphApp$nocmd(
+							_Utils_update(
+								model,
+								{j: $elm$core$Maybe$Nothing, z: $author$project$GraphApp$Free}));
+					}
+				} else {
+					return $author$project$GraphApp$report_state(
+						A2($author$project$GraphApp$mouse_up, model, model.z));
+				}
+			case 3:
 				var i = msg.a;
 				return $author$project$GraphApp$nocmd(
 					A2(
@@ -7159,26 +7239,26 @@ var $author$project$GraphApp$update = F2(
 						_Utils_update(
 							model,
 							{
-								key_state: $author$project$GraphApp$Dragging(i)
+								u: $author$project$GraphApp$Dragging(i)
 							})));
-			case 'Blur':
+			case 4:
 				var i = msg.a;
 				return $author$project$GraphApp$nocmd(
 					_Utils_eq(
-						model.key_state,
+						model.u,
 						$author$project$GraphApp$Dragging(i)) ? _Utils_update(
 						model,
-						{key_state: $author$project$GraphApp$Free}) : model);
-			case 'KeyDown':
+						{u: $author$project$GraphApp$Free}) : model);
+			case 5:
 				var key = msg.a;
-				var _v3 = A2($elm$core$Dict$get, key, $author$project$GraphApp$keymap);
-				if (_v3.$ === 'Just') {
-					var diff = _v3.a;
-					var _v4 = _Utils_Tuple2(
+				var _v6 = A2($elm$core$Dict$get, key, $author$project$GraphApp$keymap);
+				if (!_v6.$) {
+					var diff = _v6.a;
+					var _v7 = _Utils_Tuple2(
 						$author$project$GraphApp$can_move_points(model),
-						model.key_state);
-					if (_v4.a && (_v4.b.$ === 'Dragging')) {
-						var i = _v4.b.a;
+						model.u);
+					if (_v7.a && (_v7.b.$ === 2)) {
+						var i = _v7.b.a;
 						return $author$project$GraphApp$report_state(
 							A3($author$project$GraphApp$move_point, diff, model, i));
 					} else {
@@ -7187,36 +7267,51 @@ var $author$project$GraphApp$update = F2(
 				} else {
 					switch (key) {
 						case 'Enter':
-							var _v6 = _Utils_Tuple2(model.mode, model.key_state);
-							_v6$2:
+							var _v9 = _Utils_Tuple2(model.e, model.u);
+							_v9$2:
 							while (true) {
-								if (_v6.a.$ === 'Play') {
-									if (_v6.b.$ === 'Dragging') {
-										var _v7 = _v6.a;
-										var i = _v6.b.a;
+								if (!_v9.a) {
+									if (_v9.b.$ === 2) {
+										var _v10 = _v9.a;
+										var i = _v9.b.a;
 										return $author$project$GraphApp$nocmd(
 											A2(
 												$author$project$GraphApp$set_mouse_to_selected_point,
 												i,
-												A2($author$project$GraphApp$select_point, model, model.key_state)));
+												A2($author$project$GraphApp$select_point, model, model.u)));
 									} else {
-										break _v6$2;
+										break _v9$2;
 									}
 								} else {
-									if (_v6.b.$ === 'Dragging') {
-										var _v8 = _v6.a;
-										var i = _v6.b.a;
+									if (_v9.b.$ === 2) {
+										var _v11 = _v9.a;
+										var i = _v9.b.a;
 										return $author$project$GraphApp$nocmd(
-											A2($author$project$GraphApp$mouse_up, model, model.key_state));
+											A2($author$project$GraphApp$mouse_up, model, model.u));
 									} else {
-										break _v6$2;
+										break _v9$2;
 									}
 								}
 							}
 							return $author$project$GraphApp$nocmd(model);
 						case 'Backspace':
-							return $author$project$GraphApp$report_state(
-								$author$project$GraphApp$undo_path(model));
+							var _v12 = model.e;
+							if (!_v12) {
+								return $author$project$GraphApp$report_state(
+									$author$project$GraphApp$undo_path(model));
+							} else {
+								var _v13 = model.u;
+								if (_v13.$ === 2) {
+									var i = _v13.a;
+									return $author$project$GraphApp$nocmd(
+										A2(
+											$author$project$GraphApp$add_history,
+											model.a,
+											A2($author$project$GraphApp$remove_point, model, i)));
+								} else {
+									return $author$project$GraphApp$nocmd(model);
+								}
+							}
 						case 'Escape':
 							return $author$project$GraphApp$nocmd(
 								$author$project$GraphApp$press_escape(model));
@@ -7224,34 +7319,34 @@ var $author$project$GraphApp$update = F2(
 							return $author$project$GraphApp$nocmd(model);
 					}
 				}
-			case 'TouchStart':
+			case 6:
 				var touches = msg.a;
 				return $author$project$GraphApp$nocmd(
 					A2($author$project$GraphApp$start_touches, model, touches));
-			case 'TouchMove':
+			case 7:
 				var touches = msg.a;
 				return $author$project$GraphApp$report_state(
 					A2($author$project$GraphApp$move_touches, model, touches));
-			case 'TouchEnd':
+			case 8:
 				var touches = msg.a;
 				return $author$project$GraphApp$report_state(
 					A2($author$project$GraphApp$end_touches, model, touches));
-			case 'ChangeMode':
+			case 9:
 				var new_mode = msg.a;
 				return $author$project$GraphApp$report_state(
 					_Utils_update(
 						model,
-						{add_edge_first_point: $elm$core$Maybe$Nothing, mode: new_mode}));
-			case 'SetEditAction':
+						{j: $elm$core$Maybe$Nothing, e: new_mode}));
+			case 10:
 				var action = msg.a;
-				if (_Utils_eq(action, $author$project$GraphApp$Add) && _Utils_eq(model.edit_action, $author$project$GraphApp$Add)) {
-					var undoable = $author$project$GraphApp$add_history(model.scene);
-					var scene = model.scene;
+				if ((!action) && (!model.r)) {
+					var undoable = $author$project$GraphApp$add_history(model.a);
+					var scene = model.a;
 					var new_scene = _Utils_update(
 						scene,
 						{
-							points: _Utils_ap(
-								scene.points,
+							b: _Utils_ap(
+								scene.b,
 								_List_fromArray(
 									[
 										$author$project$GraphApp$plain_point(
@@ -7262,65 +7357,64 @@ var $author$project$GraphApp$update = F2(
 						undoable(
 							_Utils_update(
 								model,
-								{scene: new_scene})));
+								{a: new_scene})));
 				} else {
 					return $author$project$GraphApp$nocmd(
 						_Utils_update(
 							model,
-							{add_edge_first_point: $elm$core$Maybe$Nothing, edit_action: action}));
+							{j: $elm$core$Maybe$Nothing, r: action}));
 				}
-			case 'Undo':
-				var _v9 = model.history_scenes;
-				if (_v9.b) {
-					var s = _v9.a;
-					var rest = _v9.b;
+			case 11:
+				var _v14 = model.x;
+				if (_v14.b) {
+					var s = _v14.a;
+					var rest = _v14.b;
 					return $author$project$GraphApp$report_state(
 						_Utils_update(
 							model,
 							{
-								future_scenes: A2($elm$core$List$cons, model.scene, model.future_scenes),
-								history_scenes: rest,
-								scene: s
+								t: A2($elm$core$List$cons, model.a, model.t),
+								x: rest,
+								a: s
 							}));
 				} else {
 					return $author$project$GraphApp$nocmd(model);
 				}
-			case 'Redo':
-				var _v10 = model.future_scenes;
-				if (_v10.b) {
-					var s = _v10.a;
-					var rest = _v10.b;
+			case 12:
+				var _v15 = model.t;
+				if (_v15.b) {
+					var s = _v15.a;
+					var rest = _v15.b;
 					return $author$project$GraphApp$report_state(
 						_Utils_update(
 							model,
 							{
-								future_scenes: rest,
-								history_scenes: A2($elm$core$List$cons, model.scene, model.history_scenes),
-								scene: s
+								t: rest,
+								x: A2($elm$core$List$cons, model.a, model.x),
+								a: s
 							}));
 				} else {
 					return $author$project$GraphApp$nocmd(model);
 				}
-			case 'ReceiveScene':
+			case 15:
 				var value = msg.a;
-				var _v11 = A2($elm$json$Json$Decode$decodeValue, $author$project$GraphApp$decode_scene, value);
-				if (_v11.$ === 'Ok') {
-					var scene = _v11.a;
+				var _v16 = A2($elm$json$Json$Decode$decodeValue, $author$project$GraphApp$decode_scene, value);
+				if (!_v16.$) {
+					var scene = _v16.a;
 					return $author$project$GraphApp$report_state(
 						A2(
 							$author$project$GraphApp$set_scene,
 							$author$project$GraphApp$fit_points(scene),
 							model));
 				} else {
-					var err = _v11.a;
-					var q = A2($elm$core$Debug$log, 'error', err);
+					var err = _v16.a;
 					return $author$project$GraphApp$nocmd(model);
 				}
 			default:
 				var value = msg.a;
-				var _v12 = A2($elm$json$Json$Decode$decodeValue, $author$project$GraphApp$decode_settings, value);
-				if (_v12.$ === 'Ok') {
-					var fn = _v12.a;
+				var _v17 = A2($elm$json$Json$Decode$decodeValue, $author$project$GraphApp$decode_settings, value);
+				if (!_v17.$) {
+					var fn = _v17.a;
 					return $author$project$GraphApp$report_state(
 						fn(model));
 				} else {
@@ -7345,17 +7439,24 @@ var $author$project$GraphApp$classList = A2(
 		$elm$core$List$filter($elm$core$Tuple$second),
 		$elm$core$List$map($elm$core$Tuple$first)));
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$GraphApp$ChangeShape = {$: 'ChangeShape'};
-var $author$project$GraphApp$Delete = {$: 'Delete'};
-var $author$project$GraphApp$Move = {$: 'Move'};
-var $author$project$GraphApp$Redo = {$: 'Redo'};
+var $author$project$GraphApp$Delete = 1;
+var $author$project$GraphApp$Move = 2;
+var $author$project$GraphApp$Redo = {$: 12};
 var $author$project$GraphApp$SetEditAction = function (a) {
-	return {$: 'SetEditAction', a: a};
+	return {$: 10, a: a};
 };
-var $author$project$GraphApp$Undo = {$: 'Undo'};
+var $author$project$GraphApp$Undo = {$: 11};
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $author$project$GraphApp$ChangeMode = function (a) {
-	return {$: 'ChangeMode', a: a};
+	return {$: 9, a: a};
 };
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -7366,7 +7467,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$on = F2(
@@ -7416,7 +7517,7 @@ var $author$project$GraphApp$edit_controls = function (model) {
 					$elm$html$Html$Events$onClick($author$project$GraphApp$Undo),
 					$elm$html$Html$Attributes$class('undo'),
 					$elm$html$Html$Attributes$disabled(
-					_Utils_eq(model.history_scenes, _List_Nil))
+					_Utils_eq(model.x, _List_Nil))
 				]),
 			_List_fromArray(
 				[
@@ -7429,7 +7530,7 @@ var $author$project$GraphApp$edit_controls = function (model) {
 					$elm$html$Html$Events$onClick($author$project$GraphApp$Redo),
 					$elm$html$Html$Attributes$class('redo'),
 					$elm$html$Html$Attributes$disabled(
-					_Utils_eq(model.future_scenes, _List_Nil))
+					_Utils_eq(model.t, _List_Nil))
 				]),
 			_List_fromArray(
 				[
@@ -7438,62 +7539,59 @@ var $author$project$GraphApp$edit_controls = function (model) {
 		]);
 	var actions = A2(
 		$elm$core$List$map,
-		function (_v0) {
-			var action = _v0.a;
-			var cls = _v0.b;
-			var text = _v0.c;
+		function (a) {
 			return A2(
 				$elm$html$Html$button,
 				_List_fromArray(
 					[
 						$elm$html$Html$Events$onClick(
-						$author$project$GraphApp$SetEditAction(action)),
+						$author$project$GraphApp$SetEditAction(a.S)),
 						$author$project$GraphApp$classList(
 						_List_fromArray(
 							[
-								_Utils_Tuple2(cls, true),
+								_Utils_Tuple2(a._, true),
 								_Utils_Tuple2(
 								'active',
-								_Utils_eq(model.edit_action, action))
-							]))
+								_Utils_eq(model.r, a.S))
+							])),
+						A2($elm$html$Html$Attributes$attribute, 'aria-label', a.C)
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(text)
+						$elm$html$Html$text(a.ad)
 					]));
 		},
 		_List_fromArray(
 			[
-				_Utils_Tuple3($author$project$GraphApp$Add, 'add', '+'),
-				_Utils_Tuple3($author$project$GraphApp$Move, 'move', '↝'),
-				_Utils_Tuple3($author$project$GraphApp$Delete, 'delete', '🗑'),
-				_Utils_Tuple3($author$project$GraphApp$ChangeShape, 'change-shape', '⌒')
+				{S: 0, _: 'add', C: 'Add points and edges', ad: '+'},
+				{S: 2, _: 'move', C: 'Move points', ad: '↝'},
+				{S: 1, _: 'delete', C: 'Delete points or edges', ad: '🗑'}
 			]));
 	return _Utils_ap(
-		model.can_change_mode ? _List_fromArray(
+		model.U ? _List_fromArray(
 			[
-				$author$project$GraphApp$change_mode_button($author$project$GraphApp$Play)
+				$author$project$GraphApp$change_mode_button(0)
 			]) : _List_Nil,
-		model.disabled ? _List_Nil : _Utils_ap(actions, history));
+		model.H ? _List_Nil : _Utils_ap(actions, history));
 };
 var $author$project$GraphApp$play_controls = function (model) {
-	return model.can_change_mode ? _List_fromArray(
+	return model.U ? _List_fromArray(
 		[
-			$author$project$GraphApp$change_mode_button($author$project$GraphApp$Edit)
+			$author$project$GraphApp$change_mode_button(1)
 		]) : _List_Nil;
 };
 var $author$project$GraphApp$controls = function (model) {
 	var mode_controls = function () {
-		var _v1 = model.mode;
-		if (_v1.$ === 'Play') {
+		var _v1 = model.e;
+		if (!_v1) {
 			return $author$project$GraphApp$play_controls(model);
 		} else {
 			return $author$project$GraphApp$edit_controls(model);
 		}
 	}();
 	var cls = function () {
-		var _v0 = model.mode;
-		if (_v0.$ === 'Play') {
+		var _v0 = model.e;
+		if (!_v0) {
 			return 'play';
 		} else {
 			return 'edit';
@@ -7512,114 +7610,14 @@ var $author$project$GraphApp$controls = function (model) {
 			]),
 		mode_controls);
 };
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $author$project$GraphApp$euler = function (model) {
-	var image = function () {
-		var _v0 = _Utils_Tuple3(
-			$author$project$GraphApp$is_eulerian(model),
-			$author$project$GraphApp$is_cycle(model),
-			$author$project$GraphApp$is_stuck(model));
-		if (!_v0.a) {
-			if (_v0.c) {
-				return 'euler-cross.png';
-			} else {
-				return 'euler.png';
-			}
-		} else {
-			if (_v0.b) {
-				return 'euler-happy.png';
-			} else {
-				return 'euler-slightly-happy.png';
-			}
-		}
-	}();
-	return A2(
-		$elm$html$Html$img,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$src(
-				_Utils_ap(model.base_url, image)),
-				$author$project$GraphApp$classList(
-				_List_fromArray(
-					[
-						_Utils_Tuple2('hamilton', true)
-					]))
-			]),
-		_List_Nil);
-};
-var $author$project$GraphApp$hamilton = function (model) {
-	var image = function () {
-		var _v0 = _Utils_Tuple3(
-			$author$project$GraphApp$is_hamiltonian(model),
-			$author$project$GraphApp$is_cycle(model),
-			$author$project$GraphApp$is_stuck(model));
-		if (_v0.a && _v0.b) {
-			return 'hamilton-happy.png';
-		} else {
-			if (_v0.c) {
-				return 'hamilton-cross.png';
-			} else {
-				return 'hamilton.png';
-			}
-		}
-	}();
-	return A2(
-		$elm$html$Html$img,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$src(
-				_Utils_ap(model.base_url, image)),
-				$author$project$GraphApp$classList(
-				_List_fromArray(
-					[
-						_Utils_Tuple2('hamilton', true)
-					]))
-			]),
-		_List_Nil);
-};
-var $author$project$GraphApp$dude = function (model) {
-	var _v0 = _Utils_Tuple2(model.mode, model.playmode);
-	_v0$2:
-	while (true) {
-		if (_v0.a.$ === 'Play') {
-			switch (_v0.b.$) {
-				case 'Hamilton':
-					var _v1 = _v0.a;
-					var _v2 = _v0.b;
-					return _List_fromArray(
-						[
-							$author$project$GraphApp$hamilton(model)
-						]);
-				case 'Euler':
-					var _v3 = _v0.a;
-					var _v4 = _v0.b;
-					return _List_fromArray(
-						[
-							$author$project$GraphApp$euler(model)
-						]);
-				default:
-					break _v0$2;
-			}
-		} else {
-			break _v0$2;
-		}
-	}
-	return _List_Nil;
-};
 var $author$project$GraphApp$get_edges = function (model) {
 	return A2(
 		$elm$core$List$filterMap,
 		$author$project$GraphApp$get_edge(model),
-		model.scene.edges);
+		model.a.c);
 };
 var $author$project$GraphApp$KeyDown = function (a) {
-	return {$: 'KeyDown', a: a};
+	return {$: 5, a: a};
 };
 var $author$project$GraphApp$preventIfMapped = F3(
 	function (mapped_keys, msg, key) {
@@ -7634,45 +7632,8 @@ var $author$project$GraphApp$keydown = A2(
 	$elm$json$Json$Decode$map,
 	A2($author$project$GraphApp$preventIfMapped, $author$project$GraphApp$keymap, $author$project$GraphApp$KeyDown),
 	A2($elm$json$Json$Decode$field, 'key', $elm$json$Json$Decode$string));
-var $elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
-var $elm$virtual_dom$VirtualDom$node = function (tag) {
-	return _VirtualDom_node(
-		_VirtualDom_noScript(tag));
-};
-var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
-var $author$project$GraphApp$prefetches = function (model) {
-	return A2(
-		$elm$core$List$map,
-		function (f) {
-			return A3(
-				$elm$html$Html$node,
-				'link',
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$attribute, 'rel', 'prefetch'),
-						$elm$html$Html$Attributes$href(
-						_Utils_ap(model.base_url, f))
-					]),
-				_List_Nil);
-		},
-		_List_fromArray(
-			['hamilton.png', 'hamilton-happy.png', 'hamilton-slightly-happy.png', 'hamilton-cross.png']));
-};
 var $elm$virtual_dom$VirtualDom$MayPreventDefault = function (a) {
-	return {$: 'MayPreventDefault', a: a};
+	return {$: 2, a: a};
 };
 var $elm$html$Html$Events$preventDefaultOn = F2(
 	function (event, decoder) {
@@ -7681,20 +7642,23 @@ var $elm$html$Html$Events$preventDefaultOn = F2(
 			event,
 			$elm$virtual_dom$VirtualDom$MayPreventDefault(decoder));
 	});
-var $author$project$GraphApp$MouseDown = {$: 'MouseDown'};
+var $author$project$GraphApp$MouseDown = function (a) {
+	return {$: 1, a: a};
+};
 var $author$project$GraphApp$MouseMove = F2(
 	function (a, b) {
-		return {$: 'MouseMove', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
-var $author$project$GraphApp$MouseUp = {$: 'MouseUp'};
+var $author$project$GraphApp$MouseUp = {$: 2};
+var $author$project$GraphApp$NoOp = {$: 17};
 var $author$project$GraphApp$TouchEnd = function (a) {
-	return {$: 'TouchEnd', a: a};
+	return {$: 8, a: a};
 };
 var $author$project$GraphApp$TouchMove = function (a) {
-	return {$: 'TouchMove', a: a};
+	return {$: 7, a: a};
 };
 var $author$project$GraphApp$TouchStart = function (a) {
-	return {$: 'TouchStart', a: a};
+	return {$: 6, a: a};
 };
 var $elm$json$Json$Decode$at = F2(
 	function (fields, decoder) {
@@ -7731,20 +7695,16 @@ var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
 var $elm$svg$Svg$g = $elm$svg$Svg$trustedNode('g');
 var $elm$svg$Svg$Attributes$height = _VirtualDom_attribute('height');
 var $elm$svg$Svg$Events$on = $elm$html$Html$Events$on;
-var $elm$svg$Svg$Events$onMouseDown = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'mousedown',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $elm$svg$Svg$Events$onMouseUp = function (msg) {
 	return A2(
 		$elm$html$Html$Events$on,
 		'mouseup',
 		$elm$json$Json$Decode$succeed(msg));
 };
+var $elm$svg$Svg$Events$preventDefaultOn = $elm$html$Html$Events$preventDefaultOn;
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$viewBox = _VirtualDom_attribute('viewBox');
+var $author$project$GraphApp$ChangeShape = 3;
 var $elm$svg$Svg$Attributes$d = _VirtualDom_attribute('d');
 var $elm$core$String$fromFloat = _String_fromNumber;
 var $author$project$GraphApp$ff = $elm$core$String$fromFloat;
@@ -7774,9 +7734,7 @@ var $author$project$GraphApp$strf = F2(
 				return function (_v0) {
 					var out = _v0.a;
 					var cbits = _v0.b;
-					if (_Utils_eq(
-						chr,
-						_Utils_chr('%'))) {
+					if (chr === '%') {
 						var _v1 = next_bit(cbits);
 						var suffix = _v1.a;
 						var nbits = _v1.b;
@@ -7832,11 +7790,11 @@ var $author$project$GraphApp$arc = F3(
 			_List_Nil);
 	});
 var $author$project$GraphApp$get_path = function (model) {
-	var _v0 = model.playmode;
-	if (_v0.$ === 'MoveThings') {
+	var _v0 = model.q;
+	if (_v0 === 2) {
 		return _List_Nil;
 	} else {
-		return model.scene.path;
+		return model.a.h;
 	}
 };
 var $elm$svg$Svg$line = $elm$svg$Svg$trustedNode('line');
@@ -7873,10 +7831,10 @@ var $author$project$GraphApp$view_edge = F2(
 	function (model, _v0) {
 		var segment = _v0.a;
 		var edge = _v0.b;
-		var selected = _Utils_eq(model.mode, $author$project$GraphApp$Edit) && ((_Utils_eq(model.edit_action, $author$project$GraphApp$Delete) || _Utils_eq(model.edit_action, $author$project$GraphApp$ChangeShape)) && (_Utils_eq(
-			A3($author$project$GraphApp$selected_edge, 1, model, model.mouse),
+		var selected = (model.e === 1) && (((model.r === 1) || (model.r === 3)) && (_Utils_eq(
+			A3($author$project$GraphApp$selected_edge, 1, model, model.f),
 			$elm$core$Maybe$Just(edge)) && _Utils_eq(
-			A3($author$project$GraphApp$selected_point, 1, model, model.mouse),
+			A3($author$project$GraphApp$selected_point, 1, model, model.f),
 			$elm$core$Maybe$Nothing)));
 		var path = $author$project$GraphApp$get_path(model);
 		var one_way_ends_path = F2(
@@ -7888,7 +7846,7 @@ var $author$project$GraphApp$view_edge = F2(
 					A2($elm$core$Basics$composeR, $elm$core$List$reverse, $elm$core$List$head)(path));
 			});
 		var edges = $author$project$GraphApp$get_edges(model);
-		var d = A2($author$project$GraphApp$point_line_distance, model.mouse, segment);
+		var d = A2($author$project$GraphApp$point_line_distance, model.f, segment);
 		var _v1 = segment;
 		var _v2 = _v1.a;
 		var x1 = _v2.a;
@@ -7905,21 +7863,21 @@ var $author$project$GraphApp$view_edge = F2(
 		var s = _v5.c;
 		var can_move_along = function () {
 			var _v15 = $elm$core$List$head(path);
-			if (_v15.$ === 'Nothing') {
+			if (_v15.$ === 1) {
 				return false;
 			} else {
 				var a = _v15.a;
 				var b = _Utils_eq(a, i) ? j : i;
-				var _v16 = _Utils_Tuple2(model.mode, model.playmode);
+				var _v16 = _Utils_Tuple2(model.e, model.q);
 				_v16$2:
 				while (true) {
-					if (_v16.a.$ === 'Play') {
-						switch (_v16.b.$) {
-							case 'Hamilton':
+					if (!_v16.a) {
+						switch (_v16.b) {
+							case 0:
 								var _v17 = _v16.a;
 								var _v18 = _v16.b;
 								return (_Utils_eq(a, i) || _Utils_eq(a, j)) && (!A2($elm$core$List$member, b, path));
-							case 'Euler':
+							case 1:
 								var _v19 = _v16.a;
 								var _v20 = _v16.b;
 								return (_Utils_eq(a, i) || _Utils_eq(a, j)) && (!A2(
@@ -7936,7 +7894,7 @@ var $author$project$GraphApp$view_edge = F2(
 				return false;
 			}
 		}();
-		var ends_path = (A2(one_way_ends_path, i, j) || A2(one_way_ends_path, j, i)) && ($author$project$GraphApp$is_hamiltonian(model) && (_Utils_eq(model.playmode, $author$project$GraphApp$Hamilton) && _Utils_eq(model.mode, $author$project$GraphApp$Play)));
+		var ends_path = (A2(one_way_ends_path, i, j) || A2(one_way_ends_path, j, i)) && ($author$project$GraphApp$is_hamiltonian(model) && ((!model.q) && (!model.e)));
 		var in_path = A3(
 			$elm$core$List$foldl,
 			function (a) {
@@ -7959,12 +7917,12 @@ var $author$project$GraphApp$view_edge = F2(
 			_Utils_Tuple2($elm$core$Maybe$Nothing, false),
 			path).b;
 		var moving_along = function () {
-			var _v7 = _Utils_Tuple2(model.mode, model.playmode);
-			if (_v7.a.$ === 'Edit') {
+			var _v7 = _Utils_Tuple2(model.e, model.q);
+			if (_v7.a === 1) {
 				var _v8 = _v7.a;
 				return false;
 			} else {
-				if (_v7.b.$ === 'MoveThings') {
+				if (_v7.b === 2) {
 					var _v9 = _v7.a;
 					var _v10 = _v7.b;
 					return false;
@@ -7972,8 +7930,8 @@ var $author$project$GraphApp$view_edge = F2(
 					var _v11 = _v7.a;
 					var _v12 = _Utils_Tuple2(
 						$elm$core$List$head(path),
-						A3($author$project$GraphApp$selected_point, 1, model, model.mouse));
-					if ((_v12.a.$ === 'Just') && (_v12.b.$ === 'Just')) {
+						A3($author$project$GraphApp$selected_point, 1, model, model.f));
+					if ((!_v12.a.$) && (!_v12.b.$)) {
 						var a = _v12.a.a;
 						var _v13 = _v12.b.a;
 						var b = _v13.a;
@@ -7989,10 +7947,10 @@ var $author$project$GraphApp$view_edge = F2(
 			}
 		}();
 		var curve = function () {
-			switch (s.$) {
-				case 'Straight':
+			switch (s) {
+				case 0:
 					return $author$project$GraphApp$pline;
-				case 'ArcOut':
+				case 1:
 					return $author$project$GraphApp$arc(true);
 				default:
 					return $author$project$GraphApp$arc(false);
@@ -8020,11 +7978,11 @@ var $author$project$GraphApp$view_edge = F2(
 					segment)
 				]));
 	});
-var $author$project$GraphApp$Blur = function (a) {
-	return {$: 'Blur', a: a};
+var $author$project$GraphApp$BlurPoint = function (a) {
+	return {$: 4, a: a};
 };
-var $author$project$GraphApp$Focus = function (a) {
-	return {$: 'Focus', a: a};
+var $author$project$GraphApp$FocusPoint = function (a) {
+	return {$: 3, a: a};
 };
 var $elm$svg$Svg$circle = $elm$svg$Svg$trustedNode('circle');
 var $elm$svg$Svg$Attributes$cx = _VirtualDom_attribute('cx');
@@ -8039,7 +7997,7 @@ var $author$project$GraphApp$indexOf = F2(
 				var i = _v0.a;
 				var y = _v0.b;
 				return function (v) {
-					if (v.$ === 'Nothing') {
+					if (v.$ === 1) {
 						return _Utils_eq(x, y) ? $elm$core$Maybe$Just(i) : $elm$core$Maybe$Nothing;
 					} else {
 						var j = v;
@@ -8059,23 +8017,23 @@ var $elm$svg$Svg$Attributes$y = _VirtualDom_attribute('y');
 var $author$project$GraphApp$view_point = F3(
 	function (model, i, point) {
 		var selected = _Utils_eq(
-			model.add_edge_first_point,
+			model.j,
 			$elm$core$Maybe$Just(i));
 		var path = $author$project$GraphApp$get_path(model);
 		var path_index = A2(
 			$author$project$GraphApp$indexOf,
 			i,
 			$elm$core$List$reverse(path));
-		var label = A2($elm$core$Maybe$withDefault, '', point.label);
+		var label = A2($elm$core$Maybe$withDefault, '', point.C);
 		var in_path = A2($elm$core$List$member, i, path);
 		var hovered = _Utils_eq(
 			A2(
 				$elm$core$Maybe$map,
 				$elm$core$Tuple$first,
-				A3($author$project$GraphApp$selected_point, 1, model, model.mouse)),
+				A3($author$project$GraphApp$selected_point, 1, model, model.f)),
 			$elm$core$Maybe$Just(i));
-		var colour = A2($elm$core$Maybe$withDefault, 0, point.colour);
-		var _v0 = point.position;
+		var colour = A2($elm$core$Maybe$withDefault, 0, point.N);
+		var _v0 = point.d;
 		var x = _v0.a;
 		var y = _v0.b;
 		return A2(
@@ -8098,12 +8056,12 @@ var $author$project$GraphApp$view_point = F3(
 					$elm$svg$Svg$Events$on,
 					'focus',
 					$elm$json$Json$Decode$succeed(
-						$author$project$GraphApp$Focus(i))),
+						$author$project$GraphApp$FocusPoint(i))),
 					A2(
 					$elm$svg$Svg$Events$on,
 					'blur',
 					$elm$json$Json$Decode$succeed(
-						$author$project$GraphApp$Blur(i)))
+						$author$project$GraphApp$BlurPoint(i)))
 				]),
 			_List_fromArray(
 				[
@@ -8141,8 +8099,8 @@ var $author$project$GraphApp$view_point = F3(
 	});
 var $author$project$GraphApp$view_new_things = function (model) {
 	var new_point = function () {
-		var _v5 = _Utils_Tuple3(model.mode, model.edit_action, model.touch_state);
-		if (((_v5.a.$ === 'Edit') && (_v5.b.$ === 'Add')) && (_v5.c.$ === 'DownFree')) {
+		var _v5 = _Utils_Tuple3(model.e, model.r, model.z);
+		if (((_v5.a === 1) && (!_v5.b)) && (_v5.c.$ === 1)) {
 			var _v6 = _v5.a;
 			var _v7 = _v5.b;
 			var _v8 = _v5.c;
@@ -8150,26 +8108,26 @@ var $author$project$GraphApp$view_new_things = function (model) {
 				A3(
 					$author$project$GraphApp$view_point,
 					model,
-					$elm$core$List$length(model.scene.points),
-					$author$project$GraphApp$plain_point(model.mouse)));
+					$elm$core$List$length(model.a.b),
+					$author$project$GraphApp$plain_point(model.f)));
 		} else {
 			return $elm$core$Maybe$Nothing;
 		}
 	}();
 	var new_edge = function () {
-		if (_Utils_eq(model.mode, $author$project$GraphApp$Edit) && _Utils_eq(model.edit_action, $author$project$GraphApp$Add)) {
+		if ((model.e === 1) && (!model.r)) {
 			var _v0 = _Utils_Tuple2(
-				model.add_edge_first_point,
-				A3($author$project$GraphApp$selected_point, 1, model, model.mouse));
-			if (_v0.a.$ === 'Just') {
-				if (_v0.b.$ === 'Just') {
+				model.j,
+				A3($author$project$GraphApp$selected_point, 1, model, model.f));
+			if (!_v0.a.$) {
+				if (!_v0.b.$) {
 					var i = _v0.a.a;
 					var _v1 = _v0.b.a;
 					var j = _v1.a;
-					var mp2 = A2($author$project$GraphApp$listGet, j, model.scene.points);
-					var mp1 = A2($author$project$GraphApp$listGet, i, model.scene.points);
+					var mp2 = A2($author$project$GraphApp$listGet, j, model.a.b);
+					var mp1 = A2($author$project$GraphApp$listGet, i, model.a.b);
 					var _v2 = _Utils_Tuple2(mp1, mp2);
-					if ((_v2.a.$ === 'Just') && (_v2.b.$ === 'Just')) {
+					if ((!_v2.a.$) && (!_v2.b.$)) {
 						var p1 = _v2.a.a;
 						var p2 = _v2.b.a;
 						return $elm$core$Maybe$Just(
@@ -8179,15 +8137,15 @@ var $author$project$GraphApp$view_new_things = function (model) {
 									[
 										$elm$svg$Svg$Attributes$class('edge new-edge')
 									]),
-								_Utils_Tuple2(p1.position, p2.position)));
+								_Utils_Tuple2(p1.d, p2.d)));
 					} else {
 						return $elm$core$Maybe$Nothing;
 					}
 				} else {
 					var i = _v0.a.a;
 					var _v3 = _v0.b;
-					var mp = A2($author$project$GraphApp$listGet, i, model.scene.points);
-					if (mp.$ === 'Just') {
+					var mp = A2($author$project$GraphApp$listGet, i, model.a.b);
+					if (!mp.$) {
 						var p = mp.a;
 						return $elm$core$Maybe$Just(
 							A2(
@@ -8196,7 +8154,7 @@ var $author$project$GraphApp$view_new_things = function (model) {
 									[
 										$elm$svg$Svg$Attributes$class('edge new-edge')
 									]),
-								_Utils_Tuple2(p.position, model.mouse)));
+								_Utils_Tuple2(p.d, model.f)));
 					} else {
 						return $elm$core$Maybe$Nothing;
 					}
@@ -8208,7 +8166,7 @@ var $author$project$GraphApp$view_new_things = function (model) {
 			return $elm$core$Maybe$Nothing;
 		}
 	}();
-	return model.disabled ? _List_Nil : A2(
+	return model.H ? _List_Nil : A2(
 		$elm$core$List$filterMap,
 		$elm$core$Basics$identity,
 		_List_fromArray(
@@ -8256,8 +8214,19 @@ var $author$project$GraphApp$svg_bit = function (model) {
 				$elm$svg$Svg$Events$on,
 				'svgtouchstart',
 				$author$project$GraphApp$decode_touch($author$project$GraphApp$TouchStart)),
-				$elm$svg$Svg$Events$onMouseDown($author$project$GraphApp$MouseDown),
-				$elm$svg$Svg$Events$onMouseUp($author$project$GraphApp$MouseUp)
+				A2(
+				$elm$svg$Svg$Events$on,
+				'mousedown',
+				A2(
+					$elm$json$Json$Decode$map,
+					$author$project$GraphApp$MouseDown,
+					A2($elm$json$Json$Decode$field, 'buttons', $elm$json$Json$Decode$int))),
+				$elm$svg$Svg$Events$onMouseUp($author$project$GraphApp$MouseUp),
+				A2(
+				$elm$svg$Svg$Events$preventDefaultOn,
+				'contextmenu',
+				$elm$json$Json$Decode$succeed(
+					_Utils_Tuple2($author$project$GraphApp$NoOp, true)))
 			]),
 		_List_fromArray(
 			[
@@ -8267,14 +8236,14 @@ var $author$project$GraphApp$svg_bit = function (model) {
 				A2(
 					$elm$core$List$map,
 					$author$project$GraphApp$view_edge(model),
-					A3($elm$core$List$map2, $elm$core$Tuple$pair, edges, model.scene.edges))),
+					A3($elm$core$List$map2, $elm$core$Tuple$pair, edges, model.a.c))),
 				A2(
 				$elm$svg$Svg$g,
 				_List_Nil,
 				A2(
 					$elm$core$List$indexedMap,
 					$author$project$GraphApp$view_point(model),
-					model.scene.points)),
+					model.a.b)),
 				A2(
 				$elm$svg$Svg$g,
 				_List_Nil,
@@ -8291,18 +8260,14 @@ var $author$project$GraphApp$view = function (model) {
 				$elm$svg$Svg$Attributes$class('app ' + $author$project$GraphApp$theme),
 				A2($elm$html$Html$Events$preventDefaultOn, 'keydown', $author$project$GraphApp$keydown)
 			]),
-		_Utils_ap(
-			_List_fromArray(
-				[
-					$author$project$GraphApp$controls(model),
-					$author$project$GraphApp$svg_bit(model)
-				]),
-			_Utils_ap(
-				$author$project$GraphApp$dude(model),
-				$author$project$GraphApp$prefetches(model))));
+		_List_fromArray(
+			[
+				$author$project$GraphApp$controls(model),
+				$author$project$GraphApp$svg_bit(model)
+			]));
 };
 var $author$project$GraphApp$main = $elm$browser$Browser$element(
-	{init: $author$project$GraphApp$init, subscriptions: $author$project$GraphApp$subscriptions, update: $author$project$GraphApp$update, view: $author$project$GraphApp$view});
+	{aU: $author$project$GraphApp$init, aZ: $author$project$GraphApp$subscriptions, a$: $author$project$GraphApp$update, a0: $author$project$GraphApp$view});
 _Platform_export({'GraphApp':{'init':$author$project$GraphApp$main(
 	A2(
 		$elm$json$Json$Decode$andThen,
