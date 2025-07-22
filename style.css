@@ -305,7 +305,7 @@ main {
             width: 100%;
         }
 
-        & p {
+        & p:not(:has(numbas-exam)) {
             text-wrap: balance;
             word-break: keep-all;
         }
