@@ -1,4 +1,4 @@
-BRANCH=$(shell git branch --show-current)
+BRANCH=$(shell jj log -T 'bookmarks.map(|b| b.name()) ++ "\n"' --no-graph | head | xargs)
 
 RUNTIME_PATH=../editor/editor/static/previews/question
 
@@ -15,5 +15,8 @@ numbas-runtime/numbas.js: $(RUNTIME_PATH)/numbas.js
 	cp $< $@
 
 upload:
-	rsync -avzr ./* numbas:/srv/www/numbas/talks/$(BRANCH)
-
+	@if [ "" = "$(BRANCH)" ]; then\
+		echo "Can't work out what the current branch is.";\
+	else\
+		rsync -avzr ./* numbas:/srv/www/numbas/talks/$(BRANCH);\
+	fi
