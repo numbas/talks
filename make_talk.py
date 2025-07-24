@@ -3,7 +3,7 @@ import re
 from markdown import markdown
 from markdown.extensions import Extension
 from markdown.inlinepatterns import ImageInlineProcessor, IMAGE_LINK_RE, LINK_RE, LinkInlineProcessor, InlineProcessor
-import tomli
+import tomllib
 import xml.etree.ElementTree as etree
 
 class SVGProcessor(ImageInlineProcessor):
@@ -106,7 +106,7 @@ if __name__ == '__main__':
         source = f.read()
         metadata_toml, body = re.split(r'\n\+{3,}\n', source)
 
-    metadata = tomli.loads(metadata_toml)
+    metadata = tomllib.loads(metadata_toml)
     slides = re.split(r'\n-{3,}\n', body)
     num_slides = len(slides)+2
 
