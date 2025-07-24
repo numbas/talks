@@ -1,12 +1,15 @@
 @layer no-stylesheet, variables, base, theme, question, user_custom, force;
 
 @layer variables {
-    :root, #style-modal {
+    exam-container, #style-modal {
         --base-text-size: 18px;
 
-        font-size: calc(var(--text-size) * var(--base-text-size));
-
         --text-size: 1;
+
+        --scaled-text-size: calc(var(--text-size) * var(--base-text-size));
+
+        font-size: var(--scaled-text-size);
+
         --line-height: 1.5em;
 
         --border-width: thin;
@@ -40,6 +43,8 @@
         --quad-transition: calc(4 * var(--transition-duration));
 
         --button-radius: 0.2em;
+
+        --exam-height: 100svh;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -182,10 +187,6 @@
     *::before,
     *::after {
         box-sizing: border-box;
-    }
-
-    html {
-        font-size: calc(var(--text-size) * var(--base-text-size));
     }
 
     @media screen {
@@ -1289,6 +1290,7 @@ Copyright 2011-25 Newcastle University
 
     exam-container {
         display: block;
+        min-height: var(--exam-height, 0);
     }
 
     #loading {
@@ -1363,7 +1365,7 @@ Copyright 2011-25 Newcastle University
         font-weight: var(--font-weight);
 
         exam-container.show-nav & {
-            grid-template: "navMenu main" / calc(16 * var(--base-text-size));
+            grid-template: "navMenu main" / calc(16 * var(--scaled-text-size));
         }
 
         exam-container[data-navigatemode="menu"].show-nav & {
@@ -1483,7 +1485,7 @@ Copyright 2011-25 Newcastle University
             }
 
             & .introduction > a {
-                padding-left: calc(1.5 * var(--base-text-size) + var(--quad-text-pad));
+                padding-left: calc(1.5 * var(--scaled-text-size) + var(--quad-text-pad));
             }
 
             & > li > a {
@@ -1504,7 +1506,7 @@ Copyright 2011-25 Newcastle University
 
                     & .feedback-icon {
                         padding: 0;
-                        flex-basis: calc(1.5 * var(--base-text-size));
+                        flex-basis: calc(1.5 * var(--scaled-text-size));
                     }
                     & .score {
                         flex-grow: 1;
@@ -1517,7 +1519,7 @@ Copyright 2011-25 Newcastle University
                     font-size: smaller;
 
                     & .warning-icon {
-                        font-size: calc(1 * var(--base-text-size));
+                        font-size: calc(1 * var(--scaled-text-size));
                         margin: 0;
                     }
                 }
@@ -1973,7 +1975,7 @@ Copyright 2011-25 Newcastle University
 
                 & .partheader {
                     margin-top: var(--half-space);
-                    font-size: calc(1.4 * var(--base-text-size));
+                    font-size: calc(1.4 * var(--scaled-text-size));
                 }
 
                 & .prompt {
@@ -2500,7 +2502,7 @@ Copyright 2011-25 Newcastle University
         }
 
         & #startBtn {
-            font-size: calc(1.5 * var(--base-text-size));
+            font-size: calc(1.5 * var(--scaled-text-size));
             border-width: medium;
         }
 
@@ -2579,7 +2581,7 @@ Copyright 2011-25 Newcastle University
 
         #finished-text {
             margin-top: var(--quad-space);
-            font-size: calc(1.5 * var(--base-text-size));
+            font-size: calc(1.5 * var(--scaled-text-size));
             font-weight: var(--font-weight-bold);
         }
     }
@@ -2622,7 +2624,7 @@ Copyright 2011-25 Newcastle University
 
     #style-modal {
         --text-size: 1;
-        font-size: calc(var(--text-size) * var(--base-text-size));
+        font-size: var(--scaled-text-size);
 
         background-color: var(--background-color);
 
@@ -2875,6 +2877,7 @@ exam-container.show-nav #everything {
     }
     #everything {
         height: revert;
+        padding-top: var(--spacing);
     }
 
     .question, #infoDisplay {
