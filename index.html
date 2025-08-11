@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>A tour of advanced mathematical assessment in Numbas</title>
+        <title>Introduction to Numbas</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="images/numbas-icon.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="style.css" id="theme">
@@ -45,148 +46,113 @@
             <hr>
 
             <p class="presenter"><a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a></p>
-            <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
+            <p class="event"></p>
         </header>
         <main>
             <section id="start">
                 <img id="logo" alt="Numbas" src="images/numbas-logo.svg">
-                <h1>A tour of advanced mathematical assessment in Numbas</h1>
+                <h1>Introduction to Numbas</h1>
                 <p>
                     <a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a>
                     <br>
                     Newcastle University
                 </p>
-                <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
+                <p class="event"></p>
             </section>
-<section data-slide-number="0" style="--slide-number: 0.045454545454545456" id="where_are_we_startin"><h1>Where are we starting from?</h1>
-<p>The framing of this event suggests "basic" means single-input, possibly randomised, questions automatically marked by comparison with an expected answer.</p>
-<p>e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.</p>
-<p>More sophisticated assessment systems than this have existed for longer than I have!</p></section>
-<section data-slide-number="1" style="--slide-number: 0.09090909090909091" id="my_position_on_asses"><h1>My position on assessment</h1>
-<p>Formative assessment is useful.</p>
-<p>Summative assessment is a necessary evil.</p></section>
-<section data-slide-number="2" style="--slide-number: 0.13636363636363635" id="what_we_use_numbas_f"><h1>What we use Numbas for</h1>
-<p>Modules with Numbas assessments in the last two years:</p>
-<table class="small-text" style="font-size: min(1.7cqw, 2cqh);">
-<thead>
-<tr>
-<th colspan="4">Stage</th>
-</tr>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
+<section data-slide-number="0" style="--slide-number: 0.06666666666666667" id=""><h1><a href="https://numbas.org.uk"><img class="inline" alt="Numbas" src="images/numbas-logo.svg"></a></h1>
 <ul>
-    <li>Algebra</li>
-    <li>Calculus and Differential Equations</li>
-    <li>Dynamics</li>
-    <li>Logic, Sets and Counting</li>
-    <li>Multivariable Calculus</li>
-    <li>Number Systems</li>
-    <li>Probability, Statistics & R</li>
-    <li>Problem Solving with Python</li>
-    <li>Real Analysis</li>
-</ul>
-</td>
+<li><img alt="" src="images/open-source.svg" class="bullet"> An open-source e-assessment system designed for mathematical subjects.</li>
+<li><img alt="" src="images/ncl-crest.svg" class="bullet"> Developed at Newcastle University since 2011.</li>
+<li><img alt="" src="images/world.svg" class="bullet"> Used around the world.</li>
+</ul></section>
+<section data-slide-number="1" style="--slide-number: 0.13333333333333333" id="key_features"><h1>Key features</h1>
+<ul>
+<li><img alt="" src="images/dice.svg" class="bullet"> Randomised questions.</li>
+<li><img alt="" src="images/accessibility.svg" class="bullet"> Easy to use and accessible.</li>
+<li><img alt="" src="images/adaptive.svg" class="bullet"> Adaptive behaviour.</li>
+<li><img alt="" src="images/customisation.svg" class="bullet"> Customisable everywhere.</li>
+<li><img alt="" src="images/maths.svg" class="bullet"> Lots of maths features.</li>
+<li><img alt="" src="images/offline.svg" class="bullet"> Runs standalone.</li>
+<li><img alt="" src="images/lti.svg" class="bullet"> LTI support.</li>
+</ul></section>
+<section data-slide-number="2" style="--slide-number: 0.2" id="question_types"><h1>Question types</h1>
+<dl class="grid">
+    <dt>Math notation</dt>
+    <dd><img alt="Prompt text says 'differentiate the following function: f(x) = minus 6 x squared minus 7 x minus 10'. An input box contains 'minus 12 x minus 7', and is followed by a rendering in mathematical notation and a green tick" src="images/jme.png"></dd>
+    <dt>Number</dt>
+    <dd><img alt="Prompt text says 'write 1234.567 in continental European style. An input box contains '1.234,567' and is followed by a green tick." src="images/numberentry.png"></dd>
+    <dt>Matrix</dt>
+    <dd><img alt="Prompt text says 'write a 3 × 3 identity matrix. Beneath are inputs labelled 'rows' and 'columns', and then a grid of inputs containing the entries of a 3×3 identity matrix, followed by a green tick." src="images/matrix.png"></dd>
+</dl></section>
+<section data-slide-number="3" style="--slide-number: 0.26666666666666666" id="question_types-2"><h1>Question types</h1>
+<dl class="grid">
+    <dt>Multiple choice</dt>
+    <dd><img alt="Prompt text says 'Tick each mammal'. Beneath are checkboxes labelled 'sparrow', 'shark', 'dog' (ticked) and 'cat' (ticked)', followed by a green tick." src="images/m_n_2.png">
+    <img alt="Prompt text says 'Select pairs of numbers that add up to 4. Beneath is a grid of checkboxes; the upper triangle is empty. The columns and rows are both labelled 1,2,3. 1,3 and 2,2 are ticked. The grid is followed by a green tick." src="images/m_n_x.png"></dd>
+    <dt>Short text</dt>
+    <dd><img alt="Prompt text says 'Write a headline in title case'. An input box contains 'Numbas Marks Answer Correctly', followed by a green tick." src="images/patternmatch.png"></dd>
+    <dt>Make your own</dt>
+    <dd><img alt="Prompt says 'Convert 240cm to metres'. An input box contains '2.4m', followed by text 'Include units in your answer' and a green tick." src="images/quantities.png"></dd>
+</dl></section>
+<section data-slide-number="4" style="--slide-number: 0.3333333333333333" id="question_types-2-3"><h1>Question types</h1>
+<dl class="grid">
+    <dt>Code</dt>
+    <dd><img alt="Prompt says 'Define a function called count_a which counts the number of times the letter 'a' appears in a string.' Beneath is a code editor containing Python code, followed by a green tick." src="images/code_part.png">
+    <dt>Spreadsheet</dt>
+    <dd><img alt="Prompt text says 'Before making a purchase, you always fill in a product fact sheet. Fill in the product fact sheet for the Autocomb Pro, using the information above'. Beneath is a spreadsheet interface with coloured areas headed 'Product name', 'Price', 'Running costs', 'Dimensions' and 'Reviews'. Numbers and text have been entered in the cells next to the headings. The spreadsheet is followed by a green tick." src="images/spreadsheet_part.png"></dd>
+</dl></section>
+<section data-slide-number="5" style="--slide-number: 0.4" id="interactive_diagrams"><h1>Interactive diagrams</h1>
+<dl class="grid">
+    <dt><a href="https://numbas.mathcentre.ac.uk/question/13914/geogebra-test-motion-on-a-slope/">GeoGebra</a></dt>
+    <dd><video controls src="videos/geogebra.webm" poster="videos/geogebra.png" alt="A question containing a diagram showing an object on a slope. The play button is clicked, and the object slides down the slope."></video></dd>
 
-<td>
+    <dt><a href="https://numbas.mathcentre.ac.uk/question/106801/jsxgraph-interactive-venn-diagram/">JSXGraph</a></dt>
+    <dd><video controls src="videos/jsxgraph.webm" poster="videos/jsxgraph.png" alt="A question showing a Venn diagram with points labelled by numbers. Below is a table showing the numbers, with checkboxes in columns 'Positive' and 'Even'. The mouse pointer drags some points into the right parts of the diagram, and then clicks on some checkboxes, which causes other points to move to the corresponding positions."></video></dd>
+</dl></section>
+<section data-slide-number="6" style="--slide-number: 0.4666666666666667" id="modes_of_use"><h1>Modes of use</h1>
+<dl>
+    <dt>Sequential</dt>
+    <dd>A fixed list of questions.</dd>
+    <dt>Menu</dt>
+    <dd>Student picks which questions they want to try.</dd>
+    <dt>Diagnostic</dt>
+    <dd>Adapts to student's performance.</dd>
+    <dt>Explore</dd>
+    <dd>Student picks their own path through an activity.</dd>
+</dl></section>
+<section data-slide-number="7" style="--slide-number: 0.5333333333333333" id="how_we_use_it"><h1>How we use it</h1>
 <ul>
-    <li>Bayesian methods</li>
-    <li>Complex Analysis</li>
-    <li>Computational Probability and Statistics with R</li>
-    <li>Differential Equations Transforms and Waves</li>
-    <li>Fluid Dynamics</li>
-    <li>Groups and Discrete Mathematics</li>
-    <li>Linear Algebra</li>
-    <li>Scientific Computation with Python</li>
-    <li>Vector Calculus</li>
-</ul>
-</td>
-
-<td>
+<li>Large banks of practice material.</li>
+<li>In-course assessment: open for two weeks, worth 2% of module.</li>
+<li>Labs: students enter measurements; Numbas marks calculations.</li>
+<li>High-stakes assessments for many maths modules, as well as large service courses.</li>
+<li>Hybrid exams: some automatically marked, some marked by hand.</li>
+</ul></section>
+<section data-slide-number="8" style="--slide-number: 0.6" id="how_to_do_it"><h1>How to do it</h1>
 <ul>
-    <li>Coding Theory</li>
-    <li>Electromagnetism</li>
-    <li>Instabilities</li>
-    <li>Mathematical Biology</li>
-    <li>Methods for Differential Equations</li>
-    <li>Metric Spaces and Topology</li>
-    <li>Partial Differential Equations</li>
-    <li>Relativity</li>
-    <li>Stochastic Processes</li>
-    <li>Topology</li>
-</ul>
-</td>
-
-<td>
+<li>Large question-writing team.</li>
+<li>Think creatively about assessing hard topics.</li>
+<li>Check everything very thoroughly <em>in advance</em>.</li>
+</ul></section>
+<section data-slide-number="9" style="--slide-number: 0.6666666666666666" id="slide-9"><figure>
+    <iframe src="https://numbas.mathcentre.ac.uk/exam/1973/numbas-website-demo/embed"></iframe>
+    <figcaption><a target="_blank" class="source" href="https://www.numbas.org.uk/demo">numbas.org.uk/demo</a></figcaption>
+</figure></section>
+<section data-slide-number="10" style="--slide-number: 0.7333333333333333" id="the_mathcentre_edito"><h1>The mathcentre editor</h1>
 <ul>
-    <li>General Relativity</li>
-    <li>Metric Spaces and Topology</li>
-    <li>Statistical Foundations of Business Analytics</li>
+<li>Open to everyone.</li>
+<li>Collect ready-made questions into a custom test</li>
+<li>Or write your own.</li>
 </ul>
-</td>
-
-</tbody>
-</table></section>
-<section data-slide-number="3" style="--slide-number: 0.18181818181818182" id="we_cheat_a_bit"><h1>We cheat a bit</h1>
-<p>A lot of high-stakes assessments have the rote stuff assessed by Numbas, and harder stuff marked by hand.</p></section>
-<section data-slide-number="4" style="--slide-number: 0.22727272727272727" id="how_we_write_materia"><h1>How we write material for advanced modules</h1>
-<p>Simple question types go a long way!</p>
-<p>We sometimes write an extension to add functions or new data types.</p></section>
-<section data-slide-number="5" style="--slide-number: 0.2727272727272727" id="basics"><h1>Basics</h1>
-<p>None of this is specific to advanced mathematics.</p>
-<h2>Parts</h2>
-<p>Break up a long question into parts which are marked independently of each other.</p>
-<h2>Steps</h2>
-<p>Give an option to break up a longer calculation into smaller pieces: offer scaffolding.</p></section>
-<section data-slide-number="6" style="--slide-number: 0.3181818181818182" id="parts_and_steps"><h1>Parts and steps</h1>
-<p><numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="7" style="--slide-number: 0.36363636363636365" id="adaptive_marking"><h1>Adaptive marking</h1>
-<p>Replace a question variable with the student's answer to a previous part.</p>
-<p>Allows "error carried forward" marking.</p>
-<p>Or, adventurously, allow the student to make up their own question. (more on that later)</p></section>
-<section data-slide-number="8" style="--slide-number: 0.4090909090909091" id="adaptive_marking-2"><h1>Adaptive marking</h1>
-<p><numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="9" style="--slide-number: 0.45454545454545453" id="alternative_answers"><h1>Alternative answers</h1>
-<p>Mark against a few different expected answers / marking settings.</p>
-<p>Give tailored feedback; catch common errors; generally give some more wiggle room.</p></section>
-<section data-slide-number="10" style="--slide-number: 0.5" id="alternative_answers-2"><h1>Alternative answers</h1>
-<p><numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="11" style="--slide-number: 0.5454545454545454" id="custom_marking_algor"><h1>Custom marking algorithms</h1>
-<p>You can change how any part in Numbas is marked.</p>
-<p>Feedback and score are built up through a series of <em>notes</em>.</p>
-<ul>
-<li>Test the properties of the student's answer.</li>
-<li>Do several things with it.</li>
-<li>Give detailed feedback.</li>
-<li>Branching decision trees.</li>
-<li>Combine several answer inputs.</li>
-</ul>
-<p>There's almost always more than one valid answer to a question.</p></section>
-<section data-slide-number="12" style="--slide-number: 0.5909090909090909" id="custom_marking_algor-2"><h1>Custom marking algorithms</h1>
-<p><numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="13" style="--slide-number: 0.6363636363636364" id="custom_part_types"><h1>Custom part types</h1>
-<p>Use different input methods / formats.</p></section>
-<section data-slide-number="14" style="--slide-number: 0.6818181818181818" id="permutation_cycle_no"><h1>Permutation cycle notation input</h1>
-<p><numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="15" style="--slide-number: 0.7272727272727273" id="graph_input"><h1>Graph input</h1>
-<p><numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="16" style="--slide-number: 0.7727272727272727" id="explore_mode"><h1>Explore mode</h1>
-<p>Allow more choice.</p>
-<p>Assess the student's choice of method.</p>
-<p>Let the student design their own question.</p>
-<p>Follow the steps of an algorithm.</p></section>
-<section data-slide-number="17" style="--slide-number: 0.8181818181818182" id="explore_mode-2"><h1>Explore mode</h1>
-<p><numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="18" style="--slide-number: 0.8636363636363636" id="explore_mode-2-3"><h1>Explore mode</h1>
-<p><numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="19" style="--slide-number: 0.9090909090909091" id="thanks"><h1>Thanks!</h1>
+<p><a href="https://numbas.mathcentre.ac.uk" target="_blank">numbas.mathcentre.ac.uk</a></p></section>
+<section data-slide-number="11" style="--slide-number: 0.8" id="documentation"><h1>Documentation</h1>
+<figure>
+    <img alt="The Numbas documentation" src="images/docs.png">
+    <figcaption>
+        <a href="https://docs.numbas.org.uk">docs.numbas.org.uk</a>
+    </figcaption>
+</figure></section>
+<section data-slide-number="12" style="--slide-number: 0.8666666666666667" id="thanks"><h1>Thanks!</h1>
 <dl>
 <dt>Website</dt>
 <dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
@@ -200,7 +166,7 @@
 <dt>Source code</dt>
 <dd><a href="https://github.com/numbas">github.com/numbas</a></dd>
 </dl></section>
-<section data-slide-number="20" style="--slide-number: 0.9545454545454546" id="slide-20"><p>This slide intentionally left blank</p></section>
+<section data-slide-number="13" style="--slide-number: 0.9333333333333333" id="slide-13"><p>This slide intentionally left blank</p></section>
         </main>
         <footer><a id="url"></a></footer>
         <template id="numbas-exam-template">
