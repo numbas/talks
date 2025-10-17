@@ -2,9 +2,10 @@ import QRCode from './qrcode.js';
 
 window.QRCode = QRCode;
 
-setTimeout(() => {
-    Numbas.display.control_focus = false;
+const url_footer = document.querySelector('body > footer > a#url');
+url_footer.textContent = window.location.host + window.location.pathname;
 
+setTimeout(() => {
     const qrcode = new QRCode('qrcode', {
         width: 512,
         height: 512
@@ -12,18 +13,23 @@ setTimeout(() => {
 
     function update_qrcode() {
         qrcode.makeCode(window.location+'');
+        url_footer.setAttribute('href',window.location+'');
     }
 
-    function restart_videos(section) {
+    function restart_videos(section, play=false) {
         for(let video of section.querySelectorAll('video')) {
             video.currentTime = 0;
-            video.pause();
+            play ? video.play() : video.pause();
         }
+    }
+
+    function find_current_section() {
+        return sections.toReversed().find(s => s.getBoundingClientRect().top <= 10);
     }
 
     const sections = Array.from(document.querySelectorAll('main > section'));
     function scroll_update() {
-        const section = sections.toReversed().find(s => s.getBoundingClientRect().top <= 10);
+        const section = find_current_section();
         if(!section) {
             return;
         }
@@ -31,6 +37,8 @@ setTimeout(() => {
         if(location.hash != hash) {
             history.replaceState('','',hash);
             restart_videos(section);
+        } else {
+            restart_videos(section, true);
         }
         update_qrcode();
     }
@@ -111,8 +119,105 @@ setTimeout(() => {
         exam_observer.observe(exam);
     }
 
+    window.addEventListener('keydown', e => {
+        if(e.key == 'Escape') {
+            const section = find_current_section();
+            restart_videos(section, [...section.querySelectorAll('video')].some(v => v.paused));
+        }
+    });
+
+    function size_details() {
+        for(let d of document.querySelectorAll('details')) {
+            const was_open = d.open;
+            d.style['min-width'] = '';
+            d.style['min-height'] = '';
+            d.open = true;
+            const {width, height} = d.getBoundingClientRect();
+            d.style['min-width'] = `${width}px`;
+            d.style['min-height'] = `${height}px`;
+            d.open = was_open;
+        }
+    }
+    size_details();
+    window.addEventListener('resize', size_details);
+
+    window.matchMedia("print").addEventListener("change", evt => {
+        if (evt.matches) {
+            for(let e of document.body.querySelectorAll("details:not([open])")) {
+                e.setAttribute("open", "");
+                e.dataset.wasclosed = "";
+            }
+        } else {
+            for(e of document.body.querySelectorAll("details[data-wasclosed]")) {
+                e.removeAttribute("open");
+                delete e.dataset.wasclosed;
+            }
+        }
+    })
 },100);
 
-const url_footer = document.querySelector('body > footer > a#url');
-url_footer.setAttribute('href',window.location+'');
-url_footer.textContent = window.location.host + window.location.pathname;
+function element(name, attr, content) {
+    const el = document.createElement(name);
+    if(attr) {
+        for(let [k,v] of Object.entries(attr)) {
+            el.setAttribute(k,v);
+        }
+    }
+    if(content !== undefined) {
+        el.innerHTML = content;
+    }
+    return el;
+}
+
+function setup_config() {
+    console.log('!!');
+    const config_section = document.getElementById('controls');
+    for(let sheet of document.styleSheets) {
+        for(let rule of sheet.rules) {
+            if(!(rule instanceof CSSPropertyRule)) {
+                continue;
+            }
+            console.log(rule);
+
+            const group = element('div');
+            config_section.append(group);
+
+            const id = `config${rule.name}`;
+
+            const label = element('label',{for:id}, rule.name.slice(2));
+            group.append(label);
+
+            const types = {
+                'number': () => {
+                    const input = element('input',{type:'range', min: 0, max: 1, step: 0.01, value:rule.initialValue});
+                    return input;
+                },
+                'color': () => {
+                    const input = element('input',{type:'color',value:rule.initialValue});
+                    return input;
+                },
+                'length': () => {
+                    const input = element('input',{type:'number',value:rule.initialValue});
+                    return input;
+                },
+                string: () => {
+                    const input = element('input',{type:'text',value:rule.initialValue});
+                    return input;
+                }
+            }
+            const type = rule.syntax.match(/<(.*?)>/)[1];
+            const input = types[type]();
+            input.addEventListener('input', e => {
+                document.documentElement.style.setProperty(rule.name, input.value);
+            });
+            input.id = id;
+            group.append(input);
+        }
+    }
+}
+
+if(document.readyState == 'complete') {
+    setup_config();
+} else {
+    document.addEventListener('DOMContentLoaded', setup_config);
+}

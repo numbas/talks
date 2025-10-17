@@ -1,681 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>A tour of advanced mathematical assessment in Numbas</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="style.css" id="theme">
-
-        <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                packages: {'[+]': ['numbas']}
-            },
-            loader: {
-                load: ['[numbas]/numbas-mathjax.js'],
-                paths: {numbas: 'numbas-runtime/mathjax'},
-                versionWarnings: false
-            },
-            startup: {
-                typeset: false
-            }
-        };
-        </script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-rc.4/tex-svg.js"></script>
-
-        <script src="numbas-runtime/numbas.js" defer></script>
-        <script src="presentation.js" type="module"></script>
-    </head>
-    <body>
-        <div id="loading" style="display: none">
-            <progress></progress>
-        </div>
-        <header>
-            <a id="uni" target="_blank" href="https://ncl.ac.uk">
-                <svg title="Newcastle University" viewBox="0 0 793.45331 225.10667" xmlns="http://www.w3.org/2000/svg">
-                    <use href="images/ncl-logo.svg#logo" width="793" height="225"></use>
-                </svg>
-            </a>
-
-            <div id="qrcode"></div>
-
-            <hr>
-
-            <p class="presenter"><a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a></p>
-            <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
-        </header>
-        <main>
-            <section id="start">
-                <img id="logo" alt="Numbas" src="images/numbas-logo.svg">
-                <h1>A tour of advanced mathematical assessment in Numbas</h1>
-                <p>
-                    <a href="https://www.staff.ncl.ac.uk/christian.perfect/">Christian Lawson-Perfect</a>
-                    <br>
-                    Newcastle University
-                </p>
-                <p class="event"><a href="https://pcwww.liv.ac.uk/~itho17/workshop2025/">Automated grading in mathematics & statistics: beyond the basics</a>, Liverpool University, July 2025</p>
-            </section>
-<section data-slide-number="0" style="--slide-number: 0.045454545454545456" id="where_are_we_startin"><h1>Where are we starting from?</h1>
-<p>The framing of this event suggests "basic" means single-input, possibly randomised, questions automatically marked by comparison with an expected answer.</p>
-<p>e.g. "Calculate <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>", marked by comparing student's answer with the correct value of <math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></math>.</p>
-<p>More sophisticated assessment systems than this have existed for longer than I have!</p></section>
-<section data-slide-number="1" style="--slide-number: 0.09090909090909091" id="my_position_on_asses"><h1>My position on assessment</h1>
-<p>Formative assessment is useful.</p>
-<p>Summative assessment is a necessary evil.</p></section>
-<section data-slide-number="2" style="--slide-number: 0.13636363636363635" id="what_we_use_numbas_f"><h1>What we use Numbas for</h1>
-<p>Modules with Numbas assessments in the last two years:</p>
-<table class="small-text" style="font-size: min(1.7cqw, 2cqh);">
-<thead>
-<tr>
-<th colspan="4">Stage</th>
-</tr>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<ul>
-    <li>Algebra</li>
-    <li>Calculus and Differential Equations</li>
-    <li>Dynamics</li>
-    <li>Logic, Sets and Counting</li>
-    <li>Multivariable Calculus</li>
-    <li>Number Systems</li>
-    <li>Probability, Statistics & R</li>
-    <li>Problem Solving with Python</li>
-    <li>Real Analysis</li>
-</ul>
-</td>
-
-<td>
-<ul>
-    <li>Bayesian methods</li>
-    <li>Complex Analysis</li>
-    <li>Computational Probability and Statistics with R</li>
-    <li>Differential Equations Transforms and Waves</li>
-    <li>Fluid Dynamics</li>
-    <li>Groups and Discrete Mathematics</li>
-    <li>Linear Algebra</li>
-    <li>Scientific Computation with Python</li>
-    <li>Vector Calculus</li>
-</ul>
-</td>
-
-<td>
-<ul>
-    <li>Coding Theory</li>
-    <li>Electromagnetism</li>
-    <li>Instabilities</li>
-    <li>Mathematical Biology</li>
-    <li>Methods for Differential Equations</li>
-    <li>Metric Spaces and Topology</li>
-    <li>Partial Differential Equations</li>
-    <li>Relativity</li>
-    <li>Stochastic Processes</li>
-    <li>Topology</li>
-</ul>
-</td>
-
-<td>
-<ul>
-    <li>General Relativity</li>
-    <li>Metric Spaces and Topology</li>
-    <li>Statistical Foundations of Business Analytics</li>
-</ul>
-</td>
-
-</tbody>
-</table></section>
-<section data-slide-number="3" style="--slide-number: 0.18181818181818182" id="we_cheat_a_bit"><h1>We cheat a bit</h1>
-<p>A lot of high-stakes assessments have the rote stuff assessed by Numbas, and harder stuff marked by hand.</p></section>
-<section data-slide-number="4" style="--slide-number: 0.22727272727272727" id="how_we_write_materia"><h1>How we write material for advanced modules</h1>
-<p>Simple question types go a long way!</p>
-<p>We sometimes write an extension to add functions or new data types.</p></section>
-<section data-slide-number="5" style="--slide-number: 0.2727272727272727" id="basics"><h1>Basics</h1>
-<p>None of this is specific to advanced mathematics.</p>
-<h2>Parts</h2>
-<p>Break up a long question into parts which are marked independently of each other.</p>
-<h2>Steps</h2>
-<p>Give an option to break up a longer calculation into smaller pieces: offer scaffolding.</p></section>
-<section data-slide-number="6" style="--slide-number: 0.3181818181818182" id="parts_and_steps"><h1>Parts and steps</h1>
-<p><numbas-exam noload source_url="exams/parts-and-steps.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="7" style="--slide-number: 0.36363636363636365" id="adaptive_marking"><h1>Adaptive marking</h1>
-<p>Replace a question variable with the student's answer to a previous part.</p>
-<p>Allows "error carried forward" marking.</p>
-<p>Or, adventurously, allow the student to make up their own question. (more on that later)</p></section>
-<section data-slide-number="8" style="--slide-number: 0.4090909090909091" id="adaptive_marking-2"><h1>Adaptive marking</h1>
-<p><numbas-exam noload source_url="exams/adaptive-marking.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="9" style="--slide-number: 0.45454545454545453" id="alternative_answers"><h1>Alternative answers</h1>
-<p>Mark against a few different expected answers / marking settings.</p>
-<p>Give tailored feedback; catch common errors; generally give some more wiggle room.</p></section>
-<section data-slide-number="10" style="--slide-number: 0.5" id="alternative_answers-2"><h1>Alternative answers</h1>
-<p><numbas-exam noload source_url="exams/alternative-answers.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="11" style="--slide-number: 0.5454545454545454" id="custom_marking_algor"><h1>Custom marking algorithms</h1>
-<p>You can change how any part in Numbas is marked.</p>
-<p>Feedback and score are built up through a series of <em>notes</em>.</p>
-<ul>
-<li>Test the properties of the student's answer.</li>
-<li>Do several things with it.</li>
-<li>Give detailed feedback.</li>
-<li>Branching decision trees.</li>
-<li>Combine several answer inputs.</li>
-</ul>
-<p>There's almost always more than one valid answer to a question.</p></section>
-<section data-slide-number="12" style="--slide-number: 0.5909090909090909" id="custom_marking_algor-2"><h1>Custom marking algorithms</h1>
-<p><numbas-exam noload source_url="exams/custom-marking-algorithm.exam" locale="en-GB"></numbas-exam></p></section>
-<section data-slide-number="13" style="--slide-number: 0.6363636363636364" id="custom_part_types"><h1>Custom part types</h1>
-<p>Use different input methods / formats.</p></section>
-<section data-slide-number="14" style="--slide-number: 0.6818181818181818" id="permutation_cycle_no"><h1>Permutation cycle notation input</h1>
-<p><numbas-exam noload source_url="exams/group-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="15" style="--slide-number: 0.7272727272727273" id="graph_input"><h1>Graph input</h1>
-<p><numbas-exam noload source_url="exams/graph-theory.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"graph-theory": {"root": "numbas-runtime/extensions/graph-theory", "stylesheets": ["graph-theory.css"], "javascripts": ["graph-theory.js", "graph-app.js", "svg.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="16" style="--slide-number: 0.7727272727272727" id="explore_mode"><h1>Explore mode</h1>
-<p>Allow more choice.</p>
-<p>Assess the student's choice of method.</p>
-<p>Let the student design their own question.</p>
-<p>Follow the steps of an algorithm.</p></section>
-<section data-slide-number="17" style="--slide-number: 0.8181818181818182" id="explore_mode-2"><h1>Explore mode</h1>
-<p><numbas-exam noload source_url="exams/permutations-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"permutations": {"root": "numbas-runtime/extensions/permutations/", "stylesheets": [], "javascripts": ["permutations.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="18" style="--slide-number: 0.8636363636363636" id="explore_mode-2-3"><h1>Explore mode</h1>
-<p><numbas-exam noload source_url="exams/polynomial-explore.exam" locale="en-GB"><script type="application/json" slot="extension-data">{"polynomials": {"root": "numbas-runtime/extensions/polynomials/", "stylesheets": [], "javascripts": ["polynomials.js"]}}</script></numbas-exam></p></section>
-<section data-slide-number="19" style="--slide-number: 0.9090909090909091" id="thanks"><h1>Thanks!</h1>
-<dl>
-<dt>Website</dt>
-<dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
-
-<dt>Email</dt>
-<dd><a href="mailto:numbas@ncl.ac.uk">numbas@ncl.ac.uk</a></dd>
-
-<dt>Fediverse</dt>
-<dd><a href="https://mathstodon.xyz/@numbas">@numbas@mathstodon.xyz</a></dd>
-
-<dt>Source code</dt>
-<dd><a href="https://github.com/numbas">github.com/numbas</a></dd>
-</dl></section>
-<section data-slide-number="20" style="--slide-number: 0.9545454545454546" id="slide-20"><p>This slide intentionally left blank</p></section>
-        </main>
-        <footer><a id="url"></a></footer>
-        <template id="numbas-exam-template">
-    <style>@import 'numbas-runtime/numbas.css?build_time=1752677542.576513';</style>
-    <exam-container class="exam-container" data-bind="with: exam, css: css, attr: attr">
-        <div id="loading">
-    <img class="logo center-block" src="images/numbas-logo.svg" alt="Numbas"/>
-    <progress min="0" max="100" value="0"></progress>
-    <span class="loading-text" data-localise="page.loading">Loading...</span>
-</div>
-        <!-- modal dialog boxes -->
-<dialog id="saving" data-bind="modal: saving">
-    <div class="text" data-localise="page.saving"></div>
-</dialog>
-
-<dialog class="modal" id="alert-modal" aria-labelledby="alert-modal-title" aria-describedby="alert-modal-body" data-bind="modal: {submit: $root.modal.ok}">
-    <section>
-        <header>
-            <h2 id="alert-modal-title" data-localise="modal.alert"></h2>
-        </header>
-
-        <div class="modal-body" id="alert-modal-body"></div>
-
-        <footer>
-            <form method="dialog">
-                <button autofocus class="ok btn primary" data-localise="modal.ok"></button>
-            </form>
-        </footer>
-    </section>
-</dialog>
-
-<dialog class="modal" id="confirm-modal" aria-labelledby="confirm-modal-title" aria-describedby="confirm-modal-body" data-bind="modal: {submit: $root.modal.ok, cancel: $root.modal.cancel}">
-    <section>
-        <header>
-            <h2 id="confirm-modal-title" data-localise="modal.confirm"></h2>
-        </header>
-        <div class="modal-body" id="confirm-modal-body">
-        </div>
-        <footer>
-            <form method="dialog">
-                <button autofocus value="cancel" class="cancel btn" value="cancel" data-localise="modal.cancel"></button>
-                <button class="ok btn primary" data-localise="modal.ok"></button>
-            </form>
-        </footer>
-    </section>
-</dialog>
-
-<dialog class="modal" id="confirm-end-exam-modal" aria-labelledby="confirm-end-exam-modal-title" aria-describedby="confirm-end-exam-modal-body">
-    <form method="dialog">
-        <header>
-            <h4 id="confirm-end-exam-modal-title" data-localise="modal.confirm"></h4>
-        </header>
-        <div class="modal-body" id="confirm-end-exam-modal-body" data-bind="with: $root.exam">
-            <p id="confirm-end-exam-modal-message"></p>
-            <form class="form-inline" data-bind="submit: $root.modal.ok">
-                <label for="confirm-end-text-input" id="confirm-end-exam-modal-input-message"></label>
-                <input autofocus id="confirm-end-text-input" type="text" data-bind="textInput: confirmEndHandler.value, autosize: confirmEndHandler.value">
-                <span class="password-feedback feedback-icon" data-bind="css: confirmEndHandler.feedback().iconClass, attr: {title: confirmEndHandler.feedback().title}"></span>
-            </form>
-        </div>
-        <footer>
-            <button value="cancel" class="cancel btn" data-localise="modal.cancel"></button>
-            <button  class="ok btn primary" data-bind="disable: !confirmEndHandler.valid(), css: confirmEndHandler.feedback().buttonClass" data-localise="modal.end exam button"></button>
-        </footer>
-    </form>
-</dialog>
-
-<dialog class="modal" id="style-modal" aria-labelledby="style-modal-title" aria-describedby="style-modal-explanation" data-bind="with: $root.style, modal: {submit: $root.saveStyle}">
-    <form method="dialog">
-        <header>
-            <h4 id="style-modal-title" data-localise="control.style options"></h4>
-        </header>
-
-        <p class="help-block" id="style-modal-explanation" data-localise="modal.style.explanation"></p>
-
-        <p class="help-block warning" data-bind="visible: $root.forced_colors" data-localise="modal.forced colours warning"></p>
-
-        <section class="style-controls">
-            <fieldset>
-                <label for="main-font-picker" data-localise="modal.style.main font"></label>
-                <select id="main-font-picker" data-bind="value: $root.staged_style['--main-font'], options: $root.font_options, optionsText: 'label', optionsValue: 'name'">
-                </select>
-            </fieldset>
-            <fieldset>
-                <label for="text-size-picker" data-localise="modal.style.text size"></label>
-                <input id="text-size-picker" type="number" step="0.1" min="0.5" max="4" data-bind="value: $root.staged_style['--text-size']">
-                <output id="text-size-preview" class="big" data-localise="modal.style.text preview"></output>
-            </fieldset>
-            <fieldset>
-                <label for="spacing-picker" data-localise="modal.style.spacing"></label>
-                <input id="spacing-picker" type="range" step="0.1" min="0.1" max="3" data-bind="value: $root.staged_style['--spacing-scale'], valueUpdate: 'input'">
-                <output id="spacing-preview" data-bind="percentage: parseFloat($root.staged_style['--spacing-scale']())"></output>
-            </fieldset>
-            <fieldset>
-                <label for="font-weight-picker" data-localise="modal.style.font weight"></label>
-                <input id="font-weight-picker" type="range" step="100" min="200" max="800" data-bind="value: $root.staged_style['--font-weight'], valueUpdate: 'input'">
-                <output id="font-weight-preview" data-bind="text: $root.staged_style['--font-weight']"></output>
-            </fieldset>
-            <fieldset>
-                <label for="color-scheme-picker" data-localise="modal.style.colour scheme"></label>
-                <select id="color-scheme-picker" data-bind="value: $root.color_scheme">
-                    <option value="automatic" data-localise="modal.style.automatic colour scheme"></option>
-                    <option value="light" data-localise="modal.style.light colour scheme"></option>
-                    <option value="dark" data-localise="modal.style.dark colour scheme"></option>
-                    <option value="custom" data-localise="modal.style.custom colour scheme"></option>
-                </select>
-            </fieldset>
-        </section>
-
-        <section class="style-controls" data-bind="visible: $root.using_custom_color_scheme">
-            <fieldset>
-                <label for="background-colour-picker" data-localise="modal.style.background colour"></label>
-                <input id="background-colour-picker" type="color" data-bind="value: $data['--custom-background-color']">
-            </fieldset>
-            <fieldset>
-                <label for="text-colour-picker" data-localise="modal.style.text colour"></label>
-                <input id="text-colour-picker" type="color" data-bind="value: $data['--custom-text-color']">
-            </fieldset>
-            <fieldset>
-                <label for="main-colour-picker" data-localise="modal.style.main colour"></label>
-                <input id="main-colour-picker" type="color" data-bind="value: $data['--custom-main-color']">
-            </fieldset>
-            <fieldset>
-                <label for="primary-colour-picker" data-localise="modal.style.primary colour"></label>
-                <input id="primary-colour-picker" type="color" data-bind="value: $data['--custom-primary-color']">
-            </fieldset>
-            <fieldset>
-                <label for="link-colour-picker" data-localise="modal.style.link colour"></label>
-                <input id="link-colour-picker" type="color" data-bind="value: $data['--custom-link-color']">
-            </fieldset>
-            <fieldset>
-                <label for="success-colour-picker" data-localise="modal.style.success colour"></label>
-                <input id="success-colour-picker" type="color" data-bind="value: $data['--custom-success-color']">
-            </fieldset>
-            <fieldset>
-                <label for="info-colour-picker" data-localise="modal.style.info colour"></label>
-                <input id="info-colour-picker" type="color" data-bind="value: $data['--custom-info-color']">
-            </fieldset>
-            <fieldset>
-                <label for="warning-colour-picker" data-localise="modal.style.warning colour"></label>
-                <input id="warning-colour-picker" type="color" data-bind="value: $data['--custom-warning-color']">
-            </fieldset>
-            <fieldset>
-                <label for="danger-colour-picker" data-localise="modal.style.danger colour"></label>
-                <input id="danger-colour-picker" type="color" data-bind="value: $data['--custom-danger-color']">
-            </fieldset>
-            <fieldset>
-                <label for="muted-colour-picker" data-localise="modal.style.muted colour"></label>
-                <input id="muted-colour-picker" type="color" data-bind="value: $data['--custom-muted-color']">
-            </fieldset>
-            <fieldset>
-                <label for="highlight-colour-picker" data-localise="modal.style.highlight colour"></label>
-                <input id="highlight-colour-picker" type="color" data-bind="value: $data['--custom-highlight-color']">
-            </fieldset>
-        </section>
-
-        
-        <hr/>
-        <p class="help-block"><a href="https://docs.numbas.org.uk/en/latest/accessibility/exam.html" target="_blank" data-localise="accessibility statement"></a></p>
-        
-
-        <footer>
-            <button type="button" class="btn danger sm" data-localise="modal.style.reset to defaults" data-bind="click: $root.resetStyle"></button>
-            <button class="cancel btn" value="cancel" autofocus data-localise="modal.cancel"></button>
-            <button class="ok btn primary" data-localise="modal.ok"></button>
-        </footer>
-    </form>
-</dialog>
-
-<dialog class="modal" id="next-actions-modal" aria-labelledby="next-actions-modal-title">
-    <form method="dialog" data-bind="with: diagnostic_next_actions">
-        <header>
-            <h4 id="next-actions-modal-title" data-localise="diagnostic.make a choice"></h4>
-        </header>
-        <div data-bind="latex: feedback"></div>
-
-        <menu data-bind="foreach: actions" class="list-unstyled actions">
-            <li>
-                <button type="button" data-bind="click: go"><span data-bind="latex: label"></span></button>
-            </li>
-        </menu>
-    </form>
-</dialog>
-
-<dialog id="lightbox"></dialog>
-        <div id="everything">
-            <a class="sr-only" id="skip-link" data-bind="attr: {href: infoPage() ? '#infoDisplay' : '#questionContainer'}" data-localise="page.skip to content"></a>
-            <div class="question-nav">
-    <!-- side menu -->
-</div>
-
-
-            <!-- main content area - info pages or questions go in here -->
-            <main class="mainDisplay" role="main" data-bind="attr: {'aria-labelledby': main_labelledby}">
-                <div id="infoDisplay" class="main-content" data-bind="visible: infoPage">
-    <div id="frontpage" data-bind="visible: infoPage()=='frontpage', if: infoPage()=='frontpage'">
-        <h1 class="break-words" id="infopage-frontpage-header" data-bind="html: exam.settings.name"></h1>
-<table class="summary">
-    <tbody>
-    <!-- ko if: exam.settings.navigateMode != 'diagnostic' -->
-    <tr>
-        <th data-localise="exam.number of questions"></th>
-        <td class="rtd" data-bind="html: numAssessedQuestions"></td>
-    </tr>
-    <tr data-bind="visible: exam.settings.showTotalMark">
-        <th data-localise="exam.marks available"></th>
-        <td class="rtd" data-bind="niceNumber: marks"></td>
-    </tr>
-    <!-- /ko -->
-    <tr data-bind="visible: exam.settings.percentPass>0">
-        <th data-localise="exam.pass percentage"></th>
-        <td class="rtd" data-bind="text: percentPass"></td>
-    </tr>
-    <tr data-bind="visible: duration()>0">
-        <th data-localise="exam.time allowed"></th>
-        <td class="rtd"><time data-bind="duration: duration"></time></td>
-    </tr>
-    <tr data-bind="visible: exam.settings.showStudentName && exam.student_name && !needsStudentName">
-        <th data-localise="exam.student name"></th>
-        <td><span data-bind="text: exam.student_name"></span><span data-bind="visible: exam.student_id"> (<span data-bind="text: exam.student_id"></span>)</span></td>
-    </tr>
-    </tbody>
-</table>
-
-<div id="intro" data-bind="visible: exam.hasIntro, latex: exam.introMessage" localise-data-jme-context-description="exam.introduction"></div>
-
-<div class="alert danger" data-bind="visible: showAttemptDownloadSecurityWarning">
-    <p data-localise="exam.attempt download security warning"></p>
-</div>
-<div id="standalone-warning" class="alert info" data-bind="visible: !Numbas.storage.lmsConnected && !allowAttemptDownload" data-localise="frontpage.scorm.lms not connected"></div>
-
-<form data-bind="submit: beginExam" class="info-buttons">
-    <button class="btn display-options force-original-color" type="button" data-bind="click: $root.showStyleModal" data-localise="control.style options"></button>
-    <div class="student-name" data-bind="visible: needsStudentName">
-        <label for="begin-exam-student-name" data-localise="exam.enter your name"></label>
-        <input id="begin-exam-student-name" name="begin-exam-student-name" type="text" data-bind="textInput: student_name, autosize: student_name"/>
-    </div>
-    <div class="password" data-bind="visible: needsPassword">
-        <label for="begin-exam-password" data-localise="exam.enter password"></label>
-        <input id="begin-exam-password" autocomplete="off" name="begin-exam-password" type="text" data-bind="textInput: passwordHandler.value, autosize: passwordHandler.value, css: {'has-errors': passwordHandler.value().length && !passwordHandler.valid(), 'success': passwordHandler.valid()}"/>
-        <span class="password-feedback feedback-icon" data-bind="css: passwordHandler.feedback().iconClass, attr: {title: passwordHandler.feedback().title}"></span>
-    </div>
-    <button class="btn" id="startBtn" type="submit" data-bind="disable: !canBegin(), css: passwordHandler.feedback().buttonClass" data-localise="frontpage.start"></button>
-</form>
-    </div>
-    <div id="menu" data-bind="visible: infoPage()=='menu', if: infoPage()=='menu'">
-        <h1 id="infopage-menu-header" class="break-words" data-bind="html: exam.settings.name"></h1>
-
-<div class="intro" class="alert" data-bind="visible: exam.hasIntro, latex: exam.introMessage" localise-data-jme-context-description="exam.introduction"></div>
-
-<nav id="question-chooser">
-    <table class="table questionSelector">
-        <colgroup>
-            <col class="question">
-            <col class="score">
-            <col class="icon">
-        </colgroup>
-        <tbody>
-        <!-- ko foreach: question_groups -->
-            <!-- ko if: $parent.showQuestionGroupNames -->
-            <tr>
-                <th data-bind="visible: $parent.question_groups.length>1">
-                    <span data-bind="latex: name"></span>
-                </th>
-                <th class="messages">
-                    <span class="score" data-bind="html: feedback.plainMessage"></span>
-                </th>
-                <th class="icon">
-                    <span class="feedback-icon" data-bind="css: feedback.iconClass, attr: feedback.iconAttr" aria-hidden="true"></span>
-                </th>
-            </tr>
-            <!-- /ko -->
-            <!-- ko foreach: questions -->
-            <tr class="" role="button" data-bind="click: Numbas.controls.makeQuestionJumper(question.number, question.exam), attr: {'aria-labelledby': question.path+'-menu-name'}">
-                <td class="info">
-                    <button class="btn link" type="button" class="name" data-bind="latex: displayName, attr: {id: question.path+'-menu-name'}"></button>
-                </td>
-                <td class="messages">
-                    <span class="sr-only" data-bind="text: scoreFeedback.iconAttr().title"></span>
-                    <span class="score" data-bind="html: scoreFeedback.plainMessage"></span>
-                    <div class="answered-state" data-bind="">
-                        <span data-bind="text: scoreFeedback.attemptedString"></span>
-                    </div>
-                    <div data-bind="visible: isDirty" class="dirty-message">
-                        <span class="warning-icon icon-exclamation-sign"></span>
-                        <span data-localise="question.selector.unsubmitted changes"></span>
-                    </div>
-                </td>
-                <td class="icon">
-                    <span class="feedback-icon" data-bind="css: scoreFeedback.iconClass, attr: scoreFeedback.iconAttr" aria-hidden="true"></span>
-                </td>
-            </tr>
-            <!-- /ko -->
-        <!-- /ko -->
-        </tbody>
-    </table>
-</nav>
-
-<menu class="nav navmenu-nav menuButtons">
-    <li><button class="btn thin-button" type="button" data-bind="click: $root.showStyleModal" data-localise="control.style options"></button></li>
-    <li><button class="btn danger thin-button" id="endBtn" data-localise="control.end exam" data-bind="click: endExam"></button></li>
-</menu>
-    </div>
-    <div id="introduction" data-bind="visible: infoPage()=='introduction', if: infoPage()=='introduction'">
-        <h1 id="infopage-introduction-header" data-localise="exam.introduction"></h1>
-<div data-bind="latex: exam.introMessage" localise-data-jme-context-description="exam.introduction"></div>
-    </div>
-    <div id="suspend" data-bind="visible: infoPage()=='paused' || infoPage()=='resumed', if: infoPage()=='paused' || infoPage()=='resumed'">
-        <h1 id="infopage-suspend-header">
-    <span data-bind="visible: infoPage()=='paused'" data-localise="suspend.paused header" ></span>
-    <span data-bind="visible: infoPage()=='resumed'" data-localise="suspend.resumed header" ></span>
-</h1>
-<p data-localise="suspend.exam suspended"></p>
-<p data-localise="suspend.you can resume"></p>
-<button class="btn primary" id="resumeBtn" data-bind="click: resumeExam" data-localise="suspend.resume"></button>
-    </div>
-    <div id="results" data-bind="visible: infoPage()=='result', if: infoPage()=='result'">
-        <header>
-    <h1 class="exam-name text-center break-words" data-bind="latex: exam.settings.name"></h1>
-</header>
-
-<!-- ko if: exam.settings.navigateMode=='diagnostic' -->
-    <table id="diagnostic-breakdown">
-    <colgroup>
-        <col>
-        <col>
-    </colgroup>
-    <thead>
-        <th data-localise="result.learning objective"></th>
-        <!-- ko if: showActualMark -->
-        <th data-localise="result.question score"></th>
-        <!-- /ko -->
-    </thead>
-    <tbody>
-        <!-- ko foreach: diagnostic_progress -->
-            <tr data-bind="css: {total: $index()==$parent.diagnostic_progress().length-1}">
-                <td class="name" data-bind="latex: name"></td>
-                <!-- ko if: $parent.showActualMark -->
-                <td class="score" data-bind="text: Math.floor(100*credit)+'%'"></td>
-                <!-- /ko -->
-            </tr>
-        <!-- /ko -->
-    </tbody>
-</table>
-<!-- /ko -->
-
-<!-- ko if: exam.settings.navigateMode=='sequence' || exam.settings.navigateMode=='menu' -->
-<p data-localise="result.click a question to review"></p>
-<table id="question-breakdown">
-    <colgroup>
-        <col>
-        <col span="3" class="score">
-        <col>
-    </colgroup>
-    <thead>
-        <tr>
-        <!-- ko if: exam.settings.navigateMode=='sequence' -->
-            <th data-localise="result.question number"></th>
-        <!-- /ko -->
-        <!-- ko if: exam.settings.navigateMode=='menu' -->
-            <th data-localise="question"></th>
-        <!-- /ko -->
-        <th data-bind="text: resultsScoreColumnHeader"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- ko foreach: question_groups -->
-            <!-- ko if: $root.exam().showQuestionGroupNames -->
-            <tr class="question-group-header" data-bind="visible: show_name">
-                <th data-bind="text: name, typeset: name"></th>
-                <th class="score-cell" data-bind="html: feedback.plainMessage"></th>
-            </tr>
-            <!-- /ko -->
-            <!-- ko foreach: questions -->
-            <tr class="question" data-bind="click: review, attr: {title: R('result.question review title')}">
-                <td class="name"><a href="#" data-bind="latex: displayName"></a></td>
-                <td class="score-cell" data-bind="html: scoreFeedback.plainMessage"></td>
-            </tr>
-            <!-- /ko -->
-        <!-- /ko -->
-        <!-- ko if: scoreFeedback.showActualMark() || scoreFeedback.showTotalMark() -->
-        <tr class="total">
-            <th scope="row" data-localise="Total"></th>
-            <td class="score-cell">
-                <span class="score" data-bind="html: scoreFeedback.plainMessage"></span>
-                <!-- ko if: scoreFeedback.showActualMark() && scoreFeedback.showTotalMark() -->(<span data-bind="text: percentScore"></span>%)<!-- /ko -->
-            </td>
-        </tr>
-        <!-- /ko -->
-    </tbody>
-</table>
-
-<!-- /ko -->
-
-<div id="end-message" class="alert" data-bind="visible: exam.has_end_message, latex: exam.end_message" localise-data-jme-context-description="exam.end_message"></div>
-
-<!-- ko if: scoreFeedback.showActualMark -->
-<div id="feedback" class="alert results-feedback" data-bind="visible: feedbackMessage()!==null, latex: feedbackMessage" localise-data-jme-context-description="exam.feedback"></div>
-<!-- /ko -->
-
-<div id="performance-summary">
-    <h2 data-localise="result.performance summary"></h2>
-
-    <table class="summary">
-        <tr>
-            <th data-localise="exam.exam name"></th>
-            <td class="break-words" data-bind="html: exam.settings.name"></td>
-        </tr>
-        <tr>
-            <th data-localise="exam.random seed"></th>
-            <td class="break-words" data-bind="html: exam.seed"></td>
-        </tr>
-        <tr data-bind="visible: exam.settings.showStudentName && exam.student_name">
-            <th data-localise="exam.student name"></th>
-            <td class="break-words"><span data-bind="text: exam.student_name"></span><span data-bind="visible: exam.student_id"> (<span data-bind="text: exam.student_id"></span>)</span></td>
-        </tr>
-        <tr>
-            <th data-localise="result.exam start"></th>
-            <td class="break-words"><time data-bind="datetime: startTime"></time></td>
-        </tr>
-        <tr>
-            <th data-localise="result.exam stop"></th>
-            <td class="break-words"><time data-bind="datetime: endTime"></time></td>
-        </tr>
-        <tr>
-            <th data-localise="result.time spent"></th>
-            <td class="break-words"><time data-bind="duration: timeSpent"></time></td>
-        </tr>
-    </table>
-</div>
-
-
-
-<div class="info-buttons">
-    <button class="btn info" data-bind="visible: allowPrinting, click: function(){ window.print(); }, text: printLabel"></button>
-    <button class="btn info" data-bind="visible: allowAttemptDownload, click: download_attempt_data" data-localise="result.download exam object"></button>
-</div>
-
-<p id="finished-text" class="text-center" data-localise="end.exam has finished"></p>
-    </div>
-
-    
-<footer>
-    <div class="copyright-footer">
-        <img class="logo center-block" src="images/numbas-logo.svg" alt="Numbas"/>
-        <p>Created using <a target="_blank" href="https://www.numbas.org.uk">Numbas</a>, developed by <a target="_blank" href="http://www.newcastle.ac.uk">Newcastle University</a>.</p>
-        <button class="btn btn-default xs" type="button" data-bind="click: $root.showStyleModal" data-localise="control.style options"></button>
-    </div>
-</footer>
-</div>
-
-                <div id="questionContainer" class="print-visible" data-bind="visible: currentQuestion, css: {review: mode()=='review'}">
-    <div class="contentArea ">
-        <div id="diagnostic-feedback" class="diagnostic-feedback" data-bind="visible: diagnostic_feedback, latex: diagnostic_feedback"></div>
-
-        <div id="questionDisplay" data-bind="foreach: questions">
-            <div class="question-wrapper print-visible" data-bind="promise: html_promise, visible: isCurrentQuestion">
-            </div>
-        </div>
-
-        
-<footer>
-    <div class="copyright-footer">
-        <img class="logo center-block" src="images/numbas-logo.svg" alt="Numbas"/>
-        <p>Created using <a target="_blank" href="https://www.numbas.org.uk">Numbas</a>, developed by <a target="_blank" href="http://www.newcastle.ac.uk">Newcastle University</a>.</p>
-        <button class="btn btn-default xs" type="button" data-bind="click: $root.showStyleModal" data-localise="control.style options"></button>
-    </div>
-</footer>
-    </div>
-
-</div>
-            </main>
-        </div>
-    </exam-container>
-</template>
-
-    </body>
+  <head>
+    <base target="_blank">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" id="theme">
+    <script src="presentation.js" type="module"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <title>Accessibility of e‑assessment</title>
+  </head>
+  <body class="poo">
+    <header>
+      <p><a href="https://ncl.ac.uk"><svg aria-label="Newcastle University" viewBox="0 0 793.45331 225.10667" xmlns="http://www.w3.org/2000/svg"><use href="images/ncl-logo.svg#logo" width="793" height="225"></use></svg></a><span style="white-space: pre-wrap">&#x20;</span><a id="qrcode"></a></p>
+      <h1>Accessibility of e‑assessment</h1>
+    </header>
+    <main>
+      <section id="start">
+        <h1>Accessibility of e‑assessment</h1>
+        <p>Christian Lawson-Perfect<br>Newcastle University</p>
+        <p class="event">Durham University Education and Pedagody seminar, 2026-03-18</p>
+      </section>
+      <section id="TO-DO" style="--slide-number: 1">
+        <h1>TO DO</h1>
+        <ul>
+          <li>Look at Numbas interface and spot accessibility things.</li>
+          <li>Think about different kinds of access needs, and how you resolve them.</li>
+          <li>Examples</li>
+        </ul>
+      </section>
+      <section id="Situations-a-person-might-find-themself-in" style="--slide-number: 2">
+        <h1>Situations a person might find themself in</h1>
+        <ul>
+          <li>Blind</li>
+          <li>Colourblind</li>
+          <li>Deaf</li>
+          <li>Visual sensitivity</li>
+          <li>Limited mobility</li>
+          <li>Dyslexia</li>
+          <li>Fatigue</li>
+          <li>Processing disorder</li>
+          <li>Memory loss</li>
+          <li>EAL</li>
+          <li>Autism</li>
+          <li>ADHD</li>
+          <li>Poor internet connection</li>
+          <li>Small screen</li>
+          <li>Limited keyboard</li>
+          <li>Slow computer</li>
+          <li>Limited time</li>
+        </ul>
+      </section>
+      <section id="Abstract" style="--slide-number: 3">
+        <h1>Abstract</h1>
+        <p>I’ll give a brief introduction to the topic of accessibility, then talk about particular access considerations for mathematical e-assessment.</p>
+      </section>
+      <section id="About-me" style="--slide-number: 4">
+        <h1>About me</h1>
+        <p>Learning software developer in the digital learning unit of Newcastle University’ school of Maths, Stats and Physics.</p>
+        <hr>
+        <p>Developer of <a href="https://numbas.org.uk">Numbas</a> and <a href="https://chirun.org.uk">Chirun</a>.</p>
+        <p>Disabled in a few ways.</p>
+      </section>
+      <section id="What-does-accessibility-mean-" style="--slide-number: 5">
+        <h1>What does 'accessibility' mean?</h1>
+        <details><summary></summary><blockquote cite="https://accessibility.blog.gov.uk/2016/05/16/what-we-mean-when-we-talk-about-accessibility-2/">Accessibility means that people can do what they need to do in a similar amount of time and effort as someone that does not have a disability. It means that people are empowered, can be independent, and will not be frustrated by something that is poorly designed or implemented.</blockquote><p>— <a href="https://accessibility.blog.gov.uk/2016/05/16/what-we-mean-when-we-talk-about-accessibility-2/">Alistair Duggin, Accessibility in government</a></p><p>I’ll extend “disability” to “any circumstance that poses an obstacle”.</p></details>
+      </section>
+      <section id="Our-obligations-under-law" style="--slide-number: 6">
+        <h1>Our obligations under law</h1>
+        <details><summary></summary><p>The Equality Act 2010 and <abbr title="Public Sector Bodies Accessibility Regulations">PSBAR</abbr> 2018 requires all public sector organisations to provide online content that meets the <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 AA standard.</p><p><a href="https://accessibility.education.gov.uk/">accessibility.education.gov.uk</a> and <a href="https://www.jisc.ac.uk/guides/accessibility-regulations-what-you-need-to-know">JISC</a> have helpful pages.</p><p><strong>In short:</strong></p><ul><li>You’ve got to do it.</li><li>Unless it would impose a <em>disproportionate burden</em>.</li><li>But that doesn’t mean what you think it means.</li><li>Just do it.</li></ul></details>
+      </section>
+      <section id="The-principle" style="--slide-number: 7">
+        <h1>The principle</h1>
+        <p>Let the student show you what they can do.</p>
+        <p>Help them to feel comfortable while they do that.</p>
+      </section>
+      <section id="slide-8" style="--slide-number: 8">
+        <h1></h1>
+        <p>Perfect is not possible.</p>
+        <p>Good is possible.</p>
+      </section>
+      <section id="Some-access-needs" style="--slide-number: 9">
+        <h1>Some access needs</h1>
+        <div contenteditable></div>
+        <details><summary></summary><ul class="row"><li>Visual</li><p><br></p><li>Cognitive</li><p><br></p><li>Hearing</li><p><br></p><li>Motor</li><p><br></p><li>Tiredness</li></ul><ul class="row"><li>Permanent</li><p><br></p><li>Temporary</li><p><br></p><li>Situational</li></ul></details>
+      </section>
+      <section id="Why-should-you-care-" style="--slide-number: 10">
+        <h1>Why should you care?</h1>
+        <p>Accessible teaching can:</p>
+        <ul class="markers">
+          <li style="--marker: '🧑‍🦽 '">Allow students to access teaching!</li>
+          <li style="--marker: '🤗 '">Make students feel welcome.</li>
+          <li style="--marker: '🥱 '">Reduce mental load.</li>
+          <li style="--marker: '💰 '">Be the difference between staying on the course and dropping out.</li>
+        </ul>
+      </section>
+      <section id="How-WCAG-thinks-about-it" style="--slide-number: 11">
+        <h1>How WCAG thinks about it</h1>
+        <p>The Web Content Accessibility Guidelines are concerned with whether content is:</p>
+        <ul>
+          <li>Perceivable</li>
+          <li>Operable</li>
+          <li>Understandable</li>
+        </ul>
+      </section>
+      <section id="Perceivable" style="--slide-number: 12">
+        <h1>Perceivable</h1>
+        <p>Can mathematical notation be read?</p>
+        <p>Horizontal scrolling is tricky.</p>
+        <ul>
+          <li>Break up long lines of maths.</li>
+          <li>Tables with lots of columns can overflow.</li>
+        </ul>
+        <p>Does the student have to scroll up and down lots, to refer back to data? If an input is linked to a diagram or some other output, can they be on screen at the same time?</p>
+        <p>Colour: try not to. Don’t use only colour to convey meaning. Some colour combinations are invisible to colourblind people, e.g. red on black.</p>
+        <p>The system should allow students to change the interface to suit their needs, e.g. colours, text, scaling. Make sure your content is still accessible after this.</p>
+        <p>Data in a table</p>
+        <ul>
+          <li>Include headers</li>
+          <li>Avoid horizontal scrolling</li>
+        </ul>
+        <p>Be consistent with text formatting. This includes mathematical notation.</p>
+        <p>Answer input: can you tell how your answer will be interpreted?</p>
+        <p>Make sure referenced values from other sources such as textbooks are accessible.</p>
+        <p>Diagrams:</p>
+        <ul>
+          <li>Need text descriptions</li>
+          <li>If they contain text, why not put it in text too/instead?</li>
+          <li>Should be high enough resolution to be legible when zoomed in.</li>
+          <li>Label things and refer to them by that label.</li>
+        </ul>
+      </section>
+      <section id="Operable" style="--slide-number: 13">
+        <h1>Operable</h1>
+        <p>Most e-assessment systems are delivered as web apps. The usual concerns about operability of the interface apply: moving between questions; navigating between sections.</p>
+        <p>Can the student enter answers?</p>
+        <p>When the answer is a mathematical expression, are they able to enter it?</p>
+        <ul>
+          <li>Syntax - well understood? Do they need guidance? <strong>Greek letters</strong> Names of functions, e.g. <code>sqrt</code>. <strong>Symbols - must they type the name? If so, tell them. Some students will go and find the Unicode character.</strong> Objects outside polynomials/trig usually have different notation on computer to handwritten.</li>
+          <li>Special characters - can their keyboard type the necessary characters? People with e.g. Chinese keyboards have different sets of symbols available. Limited mobility makes typing non-alphanumeric characters difficult.</li>
+          <li>Spacing - mobile keyboards like to add spaces and punctuation unless told otherwise.</li>
+        </ul>
+        <p>State the expected precision, precisely.</p>
+        <p>Timing</p>
+        <ul>
+          <li>An extended or removed time limit is a really common adjustment. Consider just not doing it!</li>
+        </ul>
+        <p>Why limit number of submissions? Students might mistakes entering their answers (and might be more likely to make mistakes due to disability). Anxiety might prevent students from entering an answer if it’s their only chance.</p>
+        <p>Allow students to undo anything they’ve done. But beware of save-scumming.</p>
+        <p>Don’t let students submit an answer that is obviously wrong. e.g. if expected answer only has free variable <code>x</code>, student answer using <code>s</code>, <code>i</code> and <code>n</code> is a sign that they’ve made a syntax error.</p>
+        <p>Try to give marks when they make input errors. e.g. <code>sin2x</code> - you know the student had the right thing in mind, so either prompt them to fix the input or give the marks.</p>
+        <p>Students have good reasons to complete homework in several sessions. Make sure they can come back to an assessment and carry on where they were.</p>
+      </section>
+      <section id="Understandable" style="--slide-number: 14">
+        <h1>Understandable</h1>
+        <p>This is the thing that most question authors can actually do something about.</p>
+        <p>Does the student understand what they need to do? Remember to tell them!</p>
+        <aside>The prompt should tell the student what to do, unambiguously. It’s important to make sure you give enough information. Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.</aside>
+        <p>Can they make sense of feedback?</p>
+        <p>WCAG has a “reading level” criterion. But can we assume undergrad maths students have a higher reading level? Think about dyslexia, EAL.</p>
+        <p>Students taking maths service courses have a lower maths reading level. Adapt your language accordingly.</p>
+        <p>Minimise what the student needs to keep in their head. They might forget what you’ve just told them, or misremember.</p>
+        <ul>
+          <li>Multiple choice questions of the form “pick between these four similar statements” are very difficult if you’re dyslexic.</li>
+        </ul>
+        <p>Not everyone uses the same words for things, e.g. ‘brackets’ vs ‘parentheses’.</p>
+        <p>Feedback should explain how the score was calculated. When referring back to things, use the same names, e.g. “gap 1” vs “coefficient of friction”.</p>
+        <p>If parts are linked, explain that.</p>
+        <ul>
+          <li>If the answer from a previous part is used in this part for error-carried-forward, explain that.</li>
+        </ul>
+        <p>Error messages should tell the student what was wrong, and ideally suggest a way of fixing it.</p>
+        <p>Sometimes you only want the student to enter part of an expression, giving them a scaffold, necessarily introducing new symbols as placeholders for their answer. This can be confusing.</p>
+        <p>e.g. “write the integral as (int frac{1}{f(x)} + frac{x}{g(x)} dx)”, so they must give (f(x))and (g(x)).</p>
+        <p>Or “rearrange for (y): (x = f(y)). Then the prompt is (y = ) <code>input</code>. Some students will start their answers with <code>y = </code>.</p>
+      </section>
+      <section id="Mathematical-notation" style="--slide-number: 15">
+        <h1>Mathematical notation</h1>
+        <p>Mathematical notation is not consistent, unambiguous, or universal.</p>
+        <p>See <a href="https://whystartat.xyz">WhyStartAt.xyz</a>.</p>
+        <p>Ensure that students understand the notation you use.</p>
+        <p>If the system forces a particular convention, either use that convention in your other teaching material, or explain it in the assignment. e.g. notation for gcd.</p>
+        <p>But students can not reliably notice the small differences in e.g. font styles that convey information in maths notation. e.g. italic vs roman letters, Greek letters that look like Roman ones. This can trip them up when entering their answers - you show them a preview with the “wrong” font, but they don’t notice.</p>
+        <p>Diacritics convey meaning but are easily missed or confused. e.g. prime too close to brackets.</p>
+      </section>
+      <section id="Diagrams" style="--slide-number: 16">
+        <h1>Diagrams</h1>
+        <p>There isn’t a good automatic solution for describing diagrams.</p>
+        <p>Write short alt text, and a longer description of the important information elsewhere.</p>
+        <p>Interactive diagrams pose many challenges.</p>
+        <p>Make it possible to reset interactive diagrams.</p>
+        <p>Defo aim for keyboard accessibility. Show coordinates in text, and allow the student to type them as well as moving a point.</p>
+        <p>Snap to grid points or objects when it makes sense to.</p>
+        <p>Consider the “grab radius” of objects.</p>
+      </section>
+      <section id="Using-other-software" style="--slide-number: 17">
+        <h1>Using other software</h1>
+        <p>e.g. coding in Python or R</p>
+        <p>Explain how to get answers from the other software into the assessment. Make this as easy as you can.</p>
+      </section>
+      <section id="Iterating" style="--slide-number: 18">
+        <h1>Iterating</h1>
+        <p>After an assessment has run, look at the answers students gave, for signs that:</p>
+        <ul>
+          <li>instructions were unclear</li>
+          <li>students didn’t know how to enter their answers</li>
+          <li>students accidentally entered something other than their intention</li>
+          <li>students got confused</li>
+        </ul>
+      </section>
+      <section id="Other-aspects-of-accessibility" style="--slide-number: 19">
+        <h1>Other aspects of accessibility</h1>
+        <p>Work with Scarlett Spackman in 2024:</p>
+        <p><a href="https://www.mas.ncl.ac.uk/accessible-teaching/">Accessible teaching for Maths, Stats and Physics</a></p>
+        <ul>
+          <li>Upload course material in advance.</li>
+          <li>Make recordings of lectures.</li>
+          <li>Communicate clearly.</li>
+        </ul>
+      </section>
+      <section id="People-working-on-maths-accessibility" style="--slide-number: 20">
+        <h1>People working on maths accessibility</h1>
+        <ul>
+          <li><a href="https://sites.google.com/view/accessible-maths/home">JISC accessible maths working group</a> - please join!</li>
+          <li><a href="https://www.birmingham.ac.uk/staff/profiles/computer-science/academic-staff/sorge-volker">Volker Sorge</a></li>
+          <li><a href="https://www.peterkrautzberger.org/about/">Peter Krautzberger</a></li>
+          <li><a href="https://people.bath.ac.uk/cspehj/">Emma Cliffe</a></li>
+        </ul>
+      </section>
+      <section id="Thanks-" style="--slide-number: 21">
+        <h1>Thanks!</h1>
+        <dl>
+          <dt>Numbas</dt>
+          <dd><a href="https://www.numbas.org.uk">numbas.org.uk</a></dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:msp.digital.learning@ncl.ac.uk">msp.digital.learning@ncl.ac.uk</a></dd>
+        </dl>
+      </section>
+      <section id="config">
+        <p>This is the screen where I configure the display to suit the audience. This text is here so I can see what a long line of text will look like!</p>
+        <hr>
+        <div id="controls"></div>
+      </section>
+    </main>
+    <footer><a id="url"></a></footer>
+  </body>
 </html>

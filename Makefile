@@ -1,22 +1,16 @@
-BRANCH=$(shell jj log -T 'bookmarks.map(|b| b.name()) ++ "\n"' --no-graph | head | xargs)
+BRANCH=$(shell jj bookmark list -r "heads(::@- & bookmarks())" -T name ++ " ")
+VIDEOS=$(wildcard videos/*.webm)
 
-RUNTIME_PATH=../editor/editor/static/previews/question
+THUMBNAILS=$(patsubst %.webm, %.png, $(VIDEOS))
 
-index.html: talk.md numbas-runtime/numbas.css numbas-runtime/numbas.js numbas-runtime/iconfont numbas-runtime/exam_template.html
-	python3 make_talk.py
-
-numbas-runtime/iconfont: $(RUNTIME_PATH)/resources/iconfont
-	cp -r $< $@
-
-numbas-runtime/numbas.css: $(RUNTIME_PATH)/numbas.css
-	cp $< $@
-
-numbas-runtime/numbas.js: $(RUNTIME_PATH)/numbas.js
-	cp $< $@
+index.html: talk.typ
+	TYPST_FEATURES=html typst compile $< --format html $@
 
 upload:
-	@if [ "" = "$(BRANCH)" ]; then\
-		echo "Can't work out what the current branch is.";\
-	else\
-		rsync -avzr ./* numbas:/srv/www/numbas/talks/$(BRANCH);\
-	fi
+	rsync -avzr ./* chirun:/var/www/chirun.org.uk/talks/$(BRANCH)
+	@echo "The slides are online at https://chirun.org.uk/talks/$(BRANCH)"
+
+videos/%.png: videos/%.webm
+	ffmpeg -nostdin -y -ss 0 -i $< -vf "scale=iw*sar:ih,select=eq(n\,0)" -vframes 1 $@
+
+thumbnails: $(THUMBNAILS)

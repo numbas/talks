@@ -3,4 +3,4 @@ default_make:
 path:
     - .
 extensions:
-    - .md
+    - .typ
