@@ -1,4 +1,4 @@
-BRANCH=$(shell jj bookmark list -r "heads(::@- & bookmarks())" -T name ++ " ")
+BRANCH=$(shell jj bookmark list -r "heads(::@- & bookmarks())" -T name)
 VIDEOS=$(wildcard videos/*.webm)
 
 THUMBNAILS=$(patsubst %.webm, %.png, $(VIDEOS))
