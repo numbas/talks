@@ -1,11 +1,13 @@
 #import "slideshow.typ": slideshow, slide, abbr, freetext, aside, reveal, marker, rowlist
 
+#show "e.g.": [_e.g._]
+
 
 #show: doc => slideshow(
     title: [Accessibility of e-!assessment],
     presenter: "Christian Lawson-Perfect",
     affiliation: "Newcastle University",
-    event: "Durham University Education and Pedagody seminar, 2026-03-18",
+    event: "Durham University Education and Pedagogy seminar, 2026-03-18",
     doc
 )
 
@@ -14,28 +16,6 @@
     - Look at Numbas interface and spot accessibility things.
     - Think about different kinds of access needs, and how you resolve them.
     - Examples
-
-]
-
-#slide(title: "Situations a person might find themself in")[
-
-    - Blind
-    - Colourblind
-    - Deaf
-    - Visual sensitivity
-    - Limited mobility
-    - Dyslexia
-    - Fatigue
-    - Processing disorder
-    - Memory loss
-    - EAL
-    - Autism
-    - ADHD
-    - Poor internet connection
-    - Small screen
-    - Limited keyboard
-    - Slow computer
-    - Limited time
 
 ]
 
@@ -105,23 +85,38 @@
 
 #slide(title: "Some access needs")[
 
-    #freetext
+    / Sensory:
+        Blind,
+        Colourblind,
+        Deaf,
+        Visual sensitivity
 
-    #reveal[
-        #rowlist(
-            [Visual],
-            [Cognitive],
-            [Hearing],
-            [Motor],
-            [Tiredness]
-        )
+    / Cognitive:
+        Dyslexia,
+        Dyspraxia,
+        Processing disorder,
+        Memory loss,
+        Autism,
+        ADHD
+        
+    / Physical:
+        Limited mobility,
+        Tremors,
+        Fatigue
 
-        #rowlist(
-            [Permanent],
-            [Temporary],
-            [Situational]
-        )
-    ]
+    / Cultural:
+        English as an additional language,
+        Anxiety
+
+    / Resources:
+        Poor internet connection,
+        Small screen,
+        Limited keyboard,
+        Slow computer,
+        Limited time
+
+
+    These can be permanent, temporary or situational.
 ]
 
 #slide(title: "Why should you care?")[
@@ -139,7 +134,7 @@ Accessible teaching can:
 
 #slide(title: "How WCAG thinks about it")[
 
-The Web Content Accessibility Guidelines are concerned with whether content is:
+The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Accessibility Guidelines] are concerned with whether content is:
 
 - Perceivable
 - Operable
@@ -147,216 +142,393 @@ The Web Content Accessibility Guidelines are concerned with whether content is:
 
 ]
 
-#slide(title: "Perceivable")[
+#slide(title: "Perceivable: Can mathematical notation be read?")[
 
-Can mathematical notation be read?
+    If you use MathJax, it provides lots of tools to make notation accessible.
 
-Horizontal scrolling is tricky.
-- Break up long lines of maths.
-- Tables with lots of columns can overflow.
-
-Does the student have to scroll up and down lots, to refer back to data?
-If an input is linked to a diagram or some other output, can they be on screen at the same time?
-
-Colour: try not to.
-Don't use only colour to convey meaning.
-Some colour combinations are invisible to colourblind people, e.g. red on black.
-
-The system should allow students to change the interface to suit their needs, e.g. colours, text, scaling.
-Make sure your content is still accessible after this.
-
-Data in a table
-- Include headers
-- Avoid horizontal scrolling
-
-Be consistent with text formatting.
-This includes mathematical notation.
-
-Answer input: can you tell how your answer will be interpreted?
-
-Make sure referenced values from other sources such as textbooks are accessible.
-
-Diagrams:
-
-- Need text descriptions
-- If they contain text, why not put it in text too/instead?
-- Should be high enough resolution to be legible when zoomed in.
-- Label things and refer to them by that label.
+    _More on this later_
 
 ]
 
-#slide(title: "Operable")[
+#slide(title: "Perceivable: Horizontal scrolling is tricky")[
 
-Most e-assessment systems are delivered as web apps.
-The usual concerns about operability of the interface apply: moving between questions; navigating between sections.
+    Break up long lines of maths.
 
-Can the student enter answers?
+    Tables with lots of columns can overflow.
+]
 
-When the answer is a mathematical expression, are they able to enter it?
+#slide(title: "Perceivable: Minimise vertical scrolling")[
 
-- Syntax - well understood? Do they need guidance? 
-    * Greek letters
-    * Names of functions, e.g. `sqrt`.
-    * Symbols - must they type the name? If so, tell them. Some students will go and find the Unicode character.
-    * Objects outside polynomials/trig usually have different notation on computer to handwritten.
-- Special characters - can their keyboard type the necessary characters? People with e.g. Chinese keyboards have different sets of symbols available. Limited mobility makes typing non-alphanumeric characters difficult.
-- Spacing - mobile keyboards like to add spaces and punctuation unless told otherwise.
+    Does the student have to scroll up and down lots, to refer back to data?
 
-State the expected precision, precisely.
+    If an input is linked to a diagram or some other output, can they be on screen at the same time?
 
-Timing
+]
 
-- An extended or removed time limit is a really common adjustment. Consider just not doing it!
+#slide(title: "Perceivable: Colour - try not to")[
 
-Why limit number of submissions?
-Students might mistakes entering their answers (and might be more likely to make mistakes due to disability).
-Anxiety might prevent students from entering an answer if it's their only chance.
+    Don't use only colour to convey meaning.
 
-Allow students to undo anything they've done.
-But beware of save-scumming.
+    Some colour combinations are invisible to colourblind people, e.g. red on black.
 
-Don't let students submit an answer that is obviously wrong.
-e.g. if expected answer only has free variable `x`, student answer using `s`, `i` and `n` is a sign that they've made a syntax error.
+]
 
-Try to give marks when they make input errors.
-e.g. `sin2x` - you know the student had the right thing in mind, so either prompt them to fix the input or give the marks.
+#slide(title: "Perceivable: cope with customised display")[
 
-Students have good reasons to complete homework in several sessions.
-Make sure they can come back to an assessment and carry on where they were.
+    The system should allow students to change the interface to suit their needs, e.g. colours, text, scaling.
+
+    Make sure your content is still accessible after this.
+
+]
+
+#slide(title: "Perceivable: Data in a table")[
+
+    Include headers
+
+    Avoid horizontal scrolling
+
+]
+
+#slide(title: "Perceivable: Text formatting")[
+
+    Be consistent with text formatting.
+
+    This includes mathematical notation.
+
+]
+
+#slide(title: "Perceivable: Answer input")[
+
+    Can the student tell how their answer will be interpreted?
+
+    If they're shown a live preview, make sure it is announced by screen readers.
+
+]
+
+#slide(title: "Perceivable: References")[
+
+    Make sure referenced values from other sources such as textbooks are accessible.
+
+]
+
+#slide(title: "Perceivable: Diagrams")[
+
+    Diagrams must have text descriptions.
+
+    If they contain text, why not put it in the prose too/instead?
+
+    Should be high enough resolution to be legible when zoomed in.
+
+    Label things and refer to them by that label.
+
+]
+
+#slide(title: "Operable: Basic operability")[
+
+    Most e-assessment systems are delivered as web apps.
+
+    The usual concerns about operability of the interface apply: moving between questions; navigating between sections.
+
+]
+
+#slide(title: "Operable: Entering answers")[
+
+    Can the student enter answers?
+
+    This requires both knowledge and ability.
+
+    Particularly challenging for mathematical expressions.
+
+]
+
+#slide(title: "Operable: Numbers")[
+
+    Different conventions around number notation exist, across countries and disciplines.
+
+    Make sure the student knows which convention to use.
+
+]
+
+#slide(title: "Operable: Syntax")[
+
+    Is the syntax well understood? Do they need guidance? 
+
+    - Greek letters
+    - Names of functions, e.g. `sqrt`.
+    - Symbols - must they type the name? If so, tell them. Some students will go and find the Unicode character.
+    - Objects outside polynomials/trig usually have different notation on computer to handwritten.
+
+]
+
+#slide(title: "Operable: Special characters")[
+    
+    Can their keyboard type the necessary characters?
+
+    People with e.g. Chinese keyboards have different sets of symbols available.
+
+    Limited mobility makes typing non-alphanumeric characters difficult.
+
+]
+
+#slide(title: "Operable: Mobile keyboards")[
+
+    Mobile keyboards like to add spaces and punctuation unless told otherwise.
+
+]
+
+#slide(title: "Operable: Precision")[
+
+    State the expected precision, precisely.
+
+]
+
+#slide(title: "Operable: Timing")[
+
+    An extended or removed time limit is a really common adjustment. Consider just not having one!
+
+]
+
+#slide(title: "Operable: Submission")[
+
+    Why limit the number of submissions?
+
+    Students might mistakes entering their answers (and might be more likely to make mistakes due to disability).
+
+    Anxiety might prevent students from entering an answer if it's their only chance.
+
+]
+
+#slide(title: "Operable: Allow operator error")[
+
+    Allow students to undo anything they've done.
+
+    But beware of save-scumming.
+
+]
+
+#slide(title: "Operable: Invalid answers")[
+
+    Don't let students submit an answer that is obviously wrong.
+
+    e.g. if expected answer only has free variable `x`, an answer using `f` is a sign that they've made a syntax error.
+
+]
+
+#slide(title: "Operable: Anticipate mistakes")[
+
+    Try to give marks when they make input errors.
+    e.g. `sin2x` - you know the student had the right thing in mind, so either prompt them to fix the input or give the marks.
+
+]
+
+#slide(title: "Operable: Several sessions")[
+
+    Students have good reasons to complete homework in several sessions.
+
+    Make sure they can come back to an assessment and carry on where they were.
 
 ]
 
 #slide(title: "Understandable")[
 
-This is the thing that most question authors can actually do something about.
+    This is the thing that most question authors can actually do something about.
 
-Does the student understand what they need to do?
-Remember to tell them!
+    Does the student understand what they need to do?
 
-#aside[
+    Remember to tell them!
+]
+
+
+#slide(title: "Understandable: Prompt")[
     The prompt should tell the student what to do, unambiguously.
     It's important to make sure you give enough information.
     Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.
+
 ]
 
-Can they make sense of feedback?
+#slide(title: "Understandable: Feedback")[
 
-WCAG has a "reading level" criterion.
-But can we assume undergrad maths students have a higher reading level?
-Think about dyslexia, EAL.
+    Can the student make sense of feedback?
 
-Students taking maths service courses have a lower maths reading level.
-Adapt your language accordingly.
+    Write in full sentences.
 
-Minimise what the student needs to keep in their head.
-They might forget what you've just told them, or misremember.
+    Try not to show the student codes that they don't recognise.
 
-- Multiple choice questions of the form "pick between these four similar statements" are very difficult if you're dyslexic.
+    Feedback should explain how the score was calculated.
 
-Not everyone uses the same words for things, e.g. 'brackets' vs 'parentheses'.
+    When referring back to things, use the same names, e.g. "gap 1" vs "coefficient of friction".
 
-Feedback should explain how the score was calculated.
-When referring back to things, use the same names, e.g. "gap 1" vs "coefficient of friction".
+]
 
-If parts are linked, explain that.
+#slide(title: "Understandable: Reading level")[
 
-- If the answer from a previous part is used in this part for error-carried-forward, explain that.
+    WCAG has a "reading level" criterion. \
+    But can we assume undergrad maths students have a higher reading level? \
+    Think about dyslexia, EAL.
 
-Error messages should tell the student what was wrong, and ideally suggest a way of fixing it.
+    Students taking maths service courses have a lower maths reading level. \
+    Adapt your language accordingly.
 
-Sometimes you only want the student to enter part of an expression, giving them a scaffold, necessarily introducing new symbols as placeholders for their answer.
-This can be confusing.
+]
 
-e.g. "write the integral as \(\int \frac{1}{f(x)} + \frac{x}{g(x)} dx\)", so they must give \(f(x)\)and \(g(x)\).
+#slide(title: "Understandable: Memory")[
 
-Or "rearrange for \(y\): \(x = f(y)\). Then the prompt is \(y = \) `input`.
-Some students will start their answers with `y = `.
+    Minimise what the student needs to keep in their head.
+    They might forget what you've just told them, or misremember.
+
+    e.g. multiple statements differing only slightly are difficult to differentiate if you're dyslexic.
+
+]
+
+#slide(title: "Understandable: Terminology")[
+
+    Not everyone uses the same words for things, e.g. 'brackets' vs 'parentheses'.
+
+    Make sure students agree with you on what words and symbols mean.
+
+]
+
+#slide(title: "Understandable: Linked parts")[
+
+    If parts are linked, explain that.
+
+    If the answer from a previous part is used in this part for error-carried-forward, explain that.
+
+]
+
+#slide(title: "Understandable: Error messages")[
+
+    Error messages should tell the student what was wrong, and ideally suggest a way of fixing it.
+
+]
+
+#slide(title: "Understandable: Parts of expressions")[
+
+    Sometimes you only want the student to enter part of an expression, giving them a scaffold, necessarily introducing new symbols as placeholders for their answer.
+    This can be confusing.
+
+    e.g. "write the integral as \\(\\int \\frac{1}{f(x)} + \\frac{x}{g(x)} \\, dx\\)", so they must give \\(f(x)\\)and \\(g(x)\\).
+
+    Or "rearrange for \\(y\\)". \
+    Then the prompt is \\(y = \\) `input`. \
+    Some students will start their answers with `y = `.
 
 ]
 
 #slide(title: "Mathematical notation")[
 
-Mathematical notation is not consistent, unambiguous, or universal.
+    Mathematical notation is not consistent, unambiguous, or universal.
 
-See #link("https://whystartat.xyz")[WhyStartAt.xyz].
+    See #link("https://whystartat.xyz")[WhyStartAt.xyz].
 
-Ensure that students understand the notation you use.
+    Ensure that students understand the notation you use.
 
-If the system forces a particular convention, either use that convention in your other teaching material, or explain it in the assignment.
-e.g. notation for gcd.
+]
 
-But students can not reliably notice the small differences in e.g. font styles that convey information in maths notation.
-e.g. italic vs roman letters, Greek letters that look like Roman ones.
-This can trip them up when entering their answers - you show them a preview with the "wrong" font, but they don't notice.
+#slide(title: "Mathematical notation: Conventions")[
 
-Diacritics convey meaning but are easily missed or confused.
-e.g. prime too close to brackets.
+    If the system forces a particular convention, either use that convention in your other teaching material, or explain it in the assignment.
+
+    e.g. `(a,b)` could mean:
+
+    - The gcd of \\(a\\) and \\(b\\)
+    - A 2D vector
+    - A cyclic permutation
+    - The ideal generated by \\(a\\) and \\(b\\)
+    - The open interval between \\(a\\) and \\(b\\)
+]
+
+#slide(title: "Mathematical notation: Small details")[
+
+    Many students can not reliably notice the small differences in font styles that convey information in maths notation.
+
+    e.g. italic vs roman letters, Greek letters that look like Roman ones.
+
+    #aside[This can trip them up when entering their answers - you show them a preview with the "wrong" font, but they don't notice.]
+
+    Diacritics convey meaning but are easily missed or confused.
+
+    e.g. prime too close to brackets.
 
 ]
 
 #slide(title: "Diagrams")[
 
-There isn't a good automatic solution for describing diagrams.
+    There isn't a good automatic solution for describing diagrams.
 
-Write short alt text, and a longer description of the important information elsewhere.
+    Write short alt text, and a longer description of the important information elsewhere.
 
-Interactive diagrams pose many challenges.
+    Get an LLM to write alt text *AT YOUR PERIL*.
 
-Make it possible to reset interactive diagrams.
+    Interactive diagrams pose many challenges.
+]
 
-Defo aim for keyboard accessibility.
-Show coordinates in text, and allow the student to type them as well as moving a point.
+#slide(title: "Interactive diagrams: Allow reset")[
 
-Snap to grid points or objects when it makes sense to.
+    Make it possible to reset interactive diagrams.
 
-Consider the "grab radius" of objects.
+]
+
+#slide(title: "Interactive diagrams: Input devices")[
+
+    Interactive diagrams must be usable with only the keyboard, as well as with only a touch screen.
+
+    Show coordinates in text, and allow the student to type new coordinates.
+
+]
+
+#slide(title: "Interactive diagrams: precision")[
+
+    Snap to grid points or objects when it makes sense to.
+
+    Consider the "grab radius" of objects.
 
 ]
 
 #slide(title: "Using other software")[
 
-e.g. coding in Python or R
+    e.g. coding in Python or R
 
-Explain how to get answers from the other software into the assessment.
-Make this as easy as you can.
+    Explain how to get answers from the other software into the assessment.
+    Make this as easy as you can.
 
 ]
 
 #slide(title: "Iterating")[
 
-After an assessment has run, look at the answers students gave, for signs that:
+    After an assessment has run, look at the answers students gave, for signs that:
 
-- instructions were unclear
-- students didn't know how to enter their answers
-- students accidentally entered something other than their intention
-- students got confused
+    - instructions were unclear
+    - students didn't know how to enter their answers
+    - students accidentally entered something other than their intention
+    - students got confused
 
 ]
 
 #slide(title: "Other aspects of accessibility")[
 
-Work with Scarlett Spackman in 2024: 
+    Work with Scarlett Spackman in 2024: 
 
-#link("https://www.mas.ncl.ac.uk/accessible-teaching/")[Accessible teaching for Maths, Stats and Physics]
+    #link("https://www.mas.ncl.ac.uk/accessible-teaching/")[Accessible teaching for Maths, Stats and Physics]
 
-- Upload course material in advance.
-- Make recordings of lectures.
-- Communicate clearly.
+    - Upload course material in advance.
+    - Make recordings of lectures.
+    - Communicate clearly.
 
 ]
 
 #slide(title: "People working on maths accessibility")[
 
-- #link("https://sites.google.com/view/accessible-maths/home")[JISC accessible maths working group] - please join!
-- #link("https://www.birmingham.ac.uk/staff/profiles/computer-science/academic-staff/sorge-volker")[Volker Sorge]
-- #link("https://www.peterkrautzberger.org/about/")[Peter Krautzberger]
-- #link("https://people.bath.ac.uk/cspehj/")[Emma Cliffe]
+    - #link("https://sites.google.com/view/accessible-maths/home")[JISC accessible maths working group] - please join!
+    - #link("https://www.birmingham.ac.uk/staff/profiles/computer-science/academic-staff/sorge-volker")[Volker Sorge]
+    - #link("https://www.peterkrautzberger.org/about/")[Peter Krautzberger]
+    - #link("https://people.bath.ac.uk/cspehj/")[Emma Cliffe]
 
 ]
 
 #slide(title: "Thanks!")[
 
-/ Numbas: #link("https://www.numbas.org.uk")[numbas.org.uk]
-/ Email: #link("mailto:msp.digital.learning@ncl.ac.uk")[#"msp.digital.learning@ncl.ac.uk"]
+    / Numbas: #link("https://www.numbas.org.uk")[numbas.org.uk]
+    / Email: #link("mailto:msp.digital.learning@ncl.ac.uk")[#"msp.digital.learning@ncl.ac.uk"]
 
 ]

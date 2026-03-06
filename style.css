@@ -162,6 +162,11 @@ a {
     text-decoration-color: var(--text-decoration-color);
 }
 
+code {
+    background: color-mix(in oklab, gray, var(--background-color) 65%);
+    padding-inline: 0.25ch;
+}
+
 header {
     padding: 1rem;
     & #uni svg {
@@ -220,7 +225,7 @@ main {
         grid-auto-rows: max-content;
         align-content: center;
         overflow-y: hidden;
-        --background-color: color-mix(in oklch longer hue,  var(--start-bg), var(--end-bg) calc(100% * var(--slide-number)));      
+        --background-color: color-mix(in oklch longer hue,  var(--start-bg), var(--end-bg) calc(100% * var(--slide-number) / var(--num-slides)));      
         background-color: var(--background-color);
         padding: 1svw;
 
@@ -343,9 +348,10 @@ main {
                 margin-top: 0.5lh;
             }
 
-            &.row {
+            .rowlist > & {
                 display: flex;
-                column-gap: 2em;
+                column-gap: 4em;
+                row-gap: 0.5lh;
                 flex-wrap: wrap;
 
                 & > li ~ li {
@@ -442,7 +448,7 @@ main {
                 font-weight: bold;
             }
             & dd ~ dt {
-                margin-top: 1lh;
+                margin-top: 0.5lh;
             }
         }
 
@@ -539,6 +545,10 @@ footer {
 
 header {
     font-size: 0.5rem;
+
+    & h1 {
+        font-size: 0.6rem;
+    }
 
     & hr {
         flex-grow: 1;

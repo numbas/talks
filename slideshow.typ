@@ -1,6 +1,9 @@
 #let nslide = counter("slide")
 
-#let rowlist(..items) = html.ul(class: "row")[#items.pos().map(item => html.li[#item]).join("\n")]
+// FIXME: I can't work out how to construct a `html.ul` without adding `<p>` tags between items,
+// so this just wraps the standard list in a `<div>` with the right class.
+// forum thread: https://forum.typst.app/t/how-do-i-control-when-the-html-export-produces-p-tags-specifically-for-customising-lists/8128
+#let rowlist(content) = html.div(class: "rowlist", content)
 
 #let freetext = html.elem("div", attrs: (contenteditable: ""))
 
@@ -17,19 +20,24 @@
 
 #let abbr(long, short) = html.abbr(title: long)[#short]
 
-#let slide(title: "", it) = [
-    #let slug(t) = if t == "" {"slide-" + nslide.display()} else {t.replace(regex("\W"),"-").replace(regex("-+"),"-")}
+#let slide(title: "", it) = context {
+    let slug(t) = if t == "" {"slide-" + nslide.display()} else {t.replace(regex("\W"),"-").replace(regex("-+"),"-")}
 
-    #nslide.step()
-    #context html.section(id: slug(title), style: "--slide-number: "+nslide.display())[
-        #html.h1[#title]
+    let title_slug = slug(title)
+
+    nslide.step()
+
+    context html.section(id: title_slug, style: "--slide-number: "+nslide.display())[
+        = #title
         #it
     ]
-]
+}
 
 #let slideshow(title: "", presenter: "", affiliation: "", event: "", content) = {
 html.html(lang: "en")[
     #show "-!": sym.hyph.nobreak
+
+    #show heading: it => html.h1(it.body)
 
     #set quote(block: true)
 
@@ -42,7 +50,7 @@ html.html(lang: "en")[
         #html.script(id: "MathJax-script", async: true, src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js")
         #html.title[#title]
     ]
-    #html.body(class: "poo")[
+    #context html.body(class: "poo", style: "--num-slides: " + str(nslide.final().at(0)))[
 
         #html.header[
             #html.a(href: "https://ncl.ac.uk")[
@@ -56,7 +64,7 @@ html.html(lang: "en")[
 
         #html.main[
             #html.section(id: "start")[
-                #html.h1[#title]
+                = #title
 
                 #presenter \
                 #affiliation
@@ -65,6 +73,10 @@ html.html(lang: "en")[
             ]
 
             #content
+
+            #html.section[
+                #outline(target: heading)
+            ]
 
             #html.section(id: "config")[
                 This is the screen where I configure the display to suit the audience. This text is here so I can see what a long line of text will look like!
