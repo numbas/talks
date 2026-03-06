@@ -11,14 +11,6 @@
     doc
 )
 
-#slide(title: "TO DO")[
-
-    - Look at Numbas interface and spot accessibility things.
-    - Think about different kinds of access needs, and how you resolve them.
-    - Examples
-
-]
-
 #slide(title: "Abstract")[
 
     I'll give a brief introduction to the topic of accessibility, then talk about particular access considerations for mathematical e-assessment.

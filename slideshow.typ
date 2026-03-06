@@ -50,7 +50,7 @@ html.html(lang: "en")[
         #html.script(id: "MathJax-script", async: true, src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js")
         #html.title[#title]
     ]
-    #context html.body(class: "poo", style: "--num-slides: " + str(nslide.final().at(0)))[
+    #context html.body(style: "--num-slides: " + str(nslide.final().at(0)))[
 
         #html.header[
             #html.a(href: "https://ncl.ac.uk")[
@@ -74,9 +74,9 @@ html.html(lang: "en")[
 
             #content
 
-            #html.section[
-                #outline(target: heading)
-            ]
+//            #html.section[
+//                #outline(target: heading)
+//            ]
 
             #html.section(id: "config")[
                 This is the screen where I configure the display to suit the audience. This text is here so I can see what a long line of text will look like!
