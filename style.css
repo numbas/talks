@@ -348,10 +348,10 @@ main {
                 margin-top: 0.5lh;
             }
 
-            .rowlist > & {
+            &.rowlist {
                 display: flex;
-                column-gap: 4em;
-                row-gap: 0.5lh;
+                column-gap: 2em;
+                row-gap: 0.25lh;
                 flex-wrap: wrap;
 
                 & > li ~ li {

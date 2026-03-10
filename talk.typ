@@ -78,34 +78,44 @@
 #slide(title: "Some access needs")[
 
     / Sensory:
-        Blind,
-        Colourblind,
-        Deaf,
-        Visual sensitivity
+        #rowlist[
+          - Blind
+          - Colourblind
+          - Deaf
+          - Visual sensitivity
+        ]
 
     / Cognitive:
-        Dyslexia,
-        Dyspraxia,
-        Processing disorder,
-        Memory loss,
-        Autism,
-        ADHD
+        #rowlist[
+          - Dyslexia
+          - Dyspraxia
+          - Processing disorder
+          - Memory loss
+          - Autism
+          - ADHD
+        ]
         
     / Physical:
-        Limited mobility,
-        Tremors,
-        Fatigue
+        #rowlist[
+        - Limited mobility
+        - Tremors
+        - Fatigue
+        ]
 
     / Cultural:
-        English as an additional language,
-        Anxiety
+        #rowlist[
+        - English as an additional language
+        - Anxiety
+        ]
 
     / Resources:
-        Poor internet connection,
-        Small screen,
-        Limited keyboard,
-        Slow computer,
-        Limited time
+        #rowlist[
+        - Poor internet connection
+        - Small screen
+        - Limited keyboard
+        - Slow computer
+        - Limited time
+        ]
 
 
     These can be permanent, temporary or situational.

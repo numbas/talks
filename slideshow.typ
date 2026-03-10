@@ -1,9 +1,6 @@
 #let nslide = counter("slide")
 
-// FIXME: I can't work out how to construct a `html.ul` without adding `<p>` tags between items,
-// so this just wraps the standard list in a `<div>` with the right class.
-// forum thread: https://forum.typst.app/t/how-do-i-control-when-the-html-export-produces-p-tags-specifically-for-customising-lists/8128
-#let rowlist(content) = html.div(class: "rowlist", content)
+#let rowlist(content) = html.elem("ul", attrs: (class: "rowlist"))[#content.children.filter(x=> x.has("body")).map(x=>html.li(x.body)).join()]
 
 #let freetext = html.elem("div", attrs: (contenteditable: ""))
 
