@@ -1,4 +1,4 @@
-#import "slideshow.typ": slideshow, slide, abbr, freetext, aside, reveal, marker, rowlist
+#import "slideshow.typ": slideshow, slide, abbr, freetext, aside, reveal, marker, rowlist, video
 
 #show "e.g.": [_e.g._]
 
@@ -33,7 +33,7 @@
 
     #reveal[
         #quote(attribution: [#link("https://accessibility.blog.gov.uk/2016/05/16/what-we-mean-when-we-talk-about-accessibility-2/")[Alistair Duggin, Accessibility in government]])[
-            Accessibility means that people can do what they need to do in a similar amount of time and effort as someone that does not have a disability. It means that people are empowered, can be independent, and will not be frustrated by something that is poorly designed or implemented.
+            "Accessibility means that people can do what they need to do in a similar amount of time and effort as someone that does not have a disability. It means that people are empowered, can be independent, and will not be frustrated by something that is poorly designed or implemented."
         ]
     
         I'll extend "disability" to "any circumstance that poses an obstacle".
@@ -154,6 +154,20 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Perceivable: Horizontal scrolling is tricky")[
 
+  #figure(
+    video(
+      "videos/horizontal-scroll-maths.webm",
+      alt: "An equation that has overflowed horizontally, so the last couple of terms have been cut off."
+    )
+  )
+
+  #figure(
+    image(
+      "images/horizontal-scroll-maths-fixed.webp",
+      alt: "The same equation, split across two lines, so you can see all of it."
+    )
+  )
+
     Break up long lines of maths.
 
     Tables with lots of columns can overflow.
@@ -161,21 +175,63 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Perceivable: Minimise vertical scrolling")[
 
-    Does the student have to scroll up and down lots, to refer back to data?
+    #figure(
+      video(
+        "videos/vertical-scrolling.webm",
+        alt: "A question with a 9 digit number at the top, and an input box asking for that number, a couple of screens down. I scroll down to the input box and back up to the number several times, as I transcribe a few digits at a time."
+      )
+    )
 
-    If an input is linked to a diagram or some other output, can they be on screen at the same time?
+    Does the student have to scroll up and down lots, to refer back to data?
 
 ]
 
 #slide(title: "Perceivable: Colour - try not to")[
+    #figure(
+        image(
+            "images/red-text.webp",
+            alt: "The following data were collected: 11, 14 (red), 7, 3, 18 (red). The measurements in red were found to be invalid and removed from the data set. What is the mean of the remaining data?"
+        )
+    )
 
     Don't use only colour to convey meaning.
+]
 
-    Some colour combinations are invisible to colourblind people, e.g. red on black.
+
+#slide(title: "Perceivable: Colour - annotate instead")[
+    #figure(
+        image(
+            "images/underlined-text.webp",
+            alt: "The following data were collected: 11, 14 (underlined), 7, 3, 18 (underlined). The underlined measurements, 14 and 18, were found to be invalid and removed from the data set. What is the mean of the remaining data?"
+        )
+    )
+
+    Decorations or annotations can work instead of or as well as colour.
+
+    Check that annotations are announced by screen readers.
+]
+
+#slide(title: "Perceivable: Colour - beware missing contrast")[
+
+    #figure(
+        image(
+            "images/bad-colour-boxes.svg",
+            alt: "Three boxes, with white, red and green backgrounds respectively, and black text inside them."
+        )
+    )
+
+    Some colour combinations are invisible to colourblind people, e.g. red and black.
 
 ]
 
 #slide(title: "Perceivable: cope with customised display")[
+
+    #figure(
+        image(
+            "images/hardcoded-colour.webp",
+            alt: "The same screenshot twice, once with black text on a white background, and the other with white text on black. There is a diagram of a sequence, with black text in both screenshots. It's invisible against the black background."
+        )
+    )
 
     The system should allow students to change the interface to suit their needs, e.g. colours, text, scaling.
 
@@ -185,6 +241,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Perceivable: Data in a table")[
 
+    #figure(
+        image(
+            "images/data-table.webp",
+            alt: "A table with 10 columns and 4 rows. The column headers are Width (cm) and Height (cm), repeated twice. There is a thick line between the top and bottom two rows, and dashed lines between other adjacent rows."
+        )
+    )
+
     Include headers
 
     Avoid horizontal scrolling
@@ -192,6 +255,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 ]
 
 #slide(title: "Perceivable: Text formatting")[
+
+    #figure(
+        image(
+            "images/inconsistent-formatting.webp",
+            alt: "Italic capital letter M equals a two-by-two matrix. Give an eigenvalue (bold) of bold upright capital letter M. Let bold letter v equal upright capital letter M inverse italic letter x. What is italic letter v?"
+        )
+    )
 
     Be consistent with text formatting.
 
@@ -201,6 +271,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Perceivable: Answer input")[
 
+    #figure(
+        image(
+            "images/explain-answer-input.webp",
+            alt: "Part a: What are the roots of x? Answers: 2 and 1. Marked incorrect. Expected answer: 1 and 2. Part b: What is the product of x, y and z? Answer: xyz, with a preview rendering showing xyz in monospaced font. Expected answer: x*y*z, with a review showing xyz in italic mathematical letters."
+        )
+    )
+
     Can the student tell how their answer will be interpreted?
 
     If they're shown a live preview, make sure it is announced by screen readers.
@@ -208,6 +285,14 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 ]
 
 #slide(title: "Perceivable: References")[
+
+    #figure(
+        image(
+            "images/reference-table.webp",
+            width: 100%,
+            alt: "A very low resolution photo of a table headed \"Dry Measure\"."
+        )
+    )
 
     Make sure referenced values from other sources such as textbooks are accessible.
 
@@ -231,23 +316,23 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     The usual concerns about operability of the interface apply: moving between questions; navigating between sections.
 
+    Don't mess with the tab key!
+
 ]
 
 #slide(title: "Operable: Entering answers")[
 
+    #figure(
+        image(
+            "images/difficult-maths-input.webp",
+            alt: "Rearrange in terms of x: y equals alpha x plus beta subscript zero. Input box contains (y-ß0)/alfa. Marked incorrect. Expected answer: (y-beta_0)/alpha."
+        )
+    )
+
     Can the student enter answers?
 
     This requires both knowledge and ability.
-
     Particularly challenging for mathematical expressions.
-
-]
-
-#slide(title: "Operable: Numbers")[
-
-    Different conventions around number notation exist, across countries and disciplines.
-
-    Make sure the student knows which convention to use.
 
 ]
 
@@ -259,6 +344,21 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     - Names of functions, e.g. `sqrt`.
     - Symbols - must they type the name? If so, tell them. Some students will go and find the Unicode character.
     - Objects outside polynomials/trig usually have different notation on computer to handwritten.
+
+]
+
+#slide(title: "Operable: Numbers")[
+
+    #figure(
+        image(
+            "images/number-notation.webp",
+            alt: "Part a: what is the maximum height, in cm? Answer: 195,6. Marked incorrect. Expected answer: 195.6. Part b: what is the radius of the planet Vumjum, in m? Answer: 5.53*10^12, marked incorrect. Expected answer: 5.53e12"
+        )
+    )
+
+    Different conventions around number notation exist, across countries and disciplines.
+
+    Make sure the student knows which convention to use.
 
 ]
 
@@ -280,17 +380,38 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Operable: Precision")[
 
+    #figure(
+        image(
+            "images/state-precision.webp",
+            alt: "Write 1/7 as a decimal. Round your answer to 3 decimal places."
+        )
+    )
+
     State the expected precision, precisely.
 
 ]
 
 #slide(title: "Operable: Timing")[
 
+    #figure(
+        video(
+            "videos/time-limit.webm",
+            alt: "Very slowly typing in an answer. While still typing, a box pops up saying \"You only have 5 minutes left. Hurry up, you absolute loser!\""
+        )
+    )
+
     An extended or removed time limit is a really common adjustment. Consider just not having one!
 
 ]
 
 #slide(title: "Operable: Submission")[
+
+    #figure(
+        video(
+            "videos/limited-submissions.webm",
+            alt: "This one's really easy. The answer is pi. Round your answer to 2 decimal places. I enter 3.141592, marked incorrect. Then delete to 3.1, also marked incorrect. I then submit 3.14, marked incorrect with the feedback \"lol noob.\""
+        )
+    )
 
     Why limit the number of submissions?
 
@@ -302,13 +423,20 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Operable: Allow operator error")[
 
-    Allow students to undo anything they've done.
+    Allow students to undo anything they've done, within reason.
 
-    But beware of save-scumming.
+    But beware of feedback.
 
 ]
 
 #slide(title: "Operable: Invalid answers")[
+
+    #figure(
+        image(
+            "images/invalid-input.webp",
+            alt: "Answer: f(sinx). Marked incorrect. Warning box: your answer was interpreted to use the unexpected variable name 'sinx'."
+        )
+    )
 
     Don't let students submit an answer that is obviously wrong.
 
@@ -343,9 +471,10 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Understandable: Prompt")[
     The prompt should tell the student what to do, unambiguously.
-    It's important to make sure you give enough information.
-    Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.
 
+    It's important to make sure you give enough information.
+
+    Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.
 ]
 
 #slide(title: "Understandable: Feedback")[
@@ -358,7 +487,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     Feedback should explain how the score was calculated.
 
-    When referring back to things, use the same names, e.g. "gap 1" vs "coefficient of friction".
+    When referring back to things, use the same names, e.g. prefer "coefficient of friction" to "input 1".
 
 ]
 
@@ -375,6 +504,14 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Understandable: Memory")[
 
+    #figure(
+        image(
+            "images/confusing-multiple-choice.webp",
+            width: 80%,
+            alt: "Which statement is false? Let x = (1,2)(3,4,5,6). Then x is in the same coset as the inverse of y. Let x = (1,2)(3,4,5,6). Then the inverse of x is in the same coset as the inverse of y. Let x = (1,2,3)(4,5,6). Then the inverse of x is in the same coset as y. Let x = (1,2)(3,4,5,6). Then the inverse of x is in the same coset as y. Let x = (1,2)(3,4,5,6). Then x is in the same coset as y."
+        )
+    )
+
     Minimise what the student needs to keep in their head.
     They might forget what you've just told them, or misremember.
 
@@ -387,14 +524,6 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Not everyone uses the same words for things, e.g. 'brackets' vs 'parentheses'.
 
     Make sure students agree with you on what words and symbols mean.
-
-]
-
-#slide(title: "Understandable: Linked parts")[
-
-    If parts are linked, explain that.
-
-    If the answer from a previous part is used in this part for error-carried-forward, explain that.
 
 ]
 
@@ -442,27 +571,47 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Mathematical notation: Small details")[
 
-    Many students can not reliably notice the small differences in font styles that convey information in maths notation.
+    #figure(
+        image(
+            "images/visually-similar-symbols.webp",
+            alt: "4 v plus 3 nu equals 2 rho plus 5 p. Italic small letter x = 1, upright small letter x = (1,2). f prime of x plus f of x equals 0, but the prime is drawn on top of the bracket around x."
+        )
+    )
 
-    e.g. italic vs roman letters, Greek letters that look like Roman ones.
+    Many students can not reliably notice the small differences in font styles that convey information in maths notation.
 
     #aside[This can trip them up when entering their answers - you show them a preview with the "wrong" font, but they don't notice.]
 
     Diacritics convey meaning but are easily missed or confused.
 
-    e.g. prime too close to brackets.
-
 ]
 
-#slide(title: "Diagrams")[
+#slide(title: "Diagrams: Descriptions")[
+
+    #figure(
+        image(
+            "images/scatter-plot.webp",
+            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60."
+        )
+    )
 
     There isn't a good automatic solution for describing diagrams.
 
     Write short alt text, and a longer description of the important information elsewhere.
+]
+
+#slide(title: "Diagrams: write descriptions yourself")[
+
+    #image(
+            "images/scatter-plot.webp",
+            width: 40%,
+            height: 50%,
+            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60.",
+        )
+
+    #quote["An abstract image featuring a gradient of horizontal green lines fading into a white background, creating a soft contrasting effect. The design is minimalistic with an emphasis on simplicity."]
 
     Get an LLM to write alt text *AT YOUR PERIL*.
-
-    Interactive diagrams pose many challenges.
 ]
 
 #slide(title: "Interactive diagrams: Allow reset")[
@@ -473,6 +622,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 #slide(title: "Interactive diagrams: Input devices")[
 
+    #figure(
+        video(
+            "videos/diagram-linked-input.webm",
+            alt: "Prompt: move the point to (1,-1). A diagram showing a Cartesian grid and a point at the origin. I use the mouse to drag the point to the coordinates. Marked correct. I then restart the question and type coordinates in a box below the diagram, which moves the point."
+        )
+    )
+
     Interactive diagrams must be usable with only the keyboard, as well as with only a touch screen.
 
     Show coordinates in text, and allow the student to type new coordinates.
@@ -480,6 +636,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 ]
 
 #slide(title: "Interactive diagrams: precision")[
+
+    #figure(
+        video(
+            "videos/diagram-snap-and-grab.webm",
+            alt: "A diagram showing a grid with a point at the origin, a circle in the top right quadrant, and lots of small points in a small grid on the left. I grab the larger point and move it around. It snaps to integer grid points, and to the circle. I then try to grab one of the small points, instead grabbing others a few times before getting the right one."
+        )
+    )
 
     Snap to grid points or objects when it makes sense to.
 
@@ -494,6 +657,12 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Explain how to get answers from the other software into the assessment.
     Make this as easy as you can.
 
+]
+
+#slide(title: "Listen to students")[
+    When students tell you an assessment is inaccessible, act.
+
+    Ask students if they had any trouble accessing assessments.
 ]
 
 #slide(title: "Iterating")[
@@ -513,9 +682,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     #link("https://www.mas.ncl.ac.uk/accessible-teaching/")[Accessible teaching for Maths, Stats and Physics]
 
-    - Upload course material in advance.
-    - Make recordings of lectures.
-    - Communicate clearly.
+]
+
+#slide(title: "Accessible conferences and events")[
+
+    Guidance written by me, Elaine Lopez, Jennifer Deane, and others:
+
+    #link("https://www.staff.ncl.ac.uk/christian.perfect/accessibility-checklist-for-events/")[Accessibility checklist for conferences and events]
 
 ]
 

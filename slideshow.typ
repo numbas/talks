@@ -2,6 +2,8 @@
 
 #let rowlist(content) = html.elem("ul", attrs: (class: "rowlist"))[#content.children.filter(x=> x.has("body")).map(x=>html.li(x.body)).join()]
 
+#let video(src, alt: "") = html.elem("video", attrs: (src: src, alt: alt, loop: "", poster: src.replace(regex("\..*?$"),".webp")))
+
 #let freetext = html.elem("div", attrs: (contenteditable: ""))
 
 #let aside(it) = html.aside[#it]

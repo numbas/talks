@@ -148,7 +148,7 @@ setTimeout(() => {
                 e.dataset.wasclosed = "";
             }
         } else {
-            for(e of document.body.querySelectorAll("details[data-wasclosed]")) {
+            for(let e of document.body.querySelectorAll("details[data-wasclosed]")) {
                 e.removeAttribute("open");
                 delete e.dataset.wasclosed;
             }
@@ -170,14 +170,12 @@ function element(name, attr, content) {
 }
 
 function setup_config() {
-    console.log('!!');
     const config_section = document.getElementById('controls');
     for(let sheet of document.styleSheets) {
         for(let rule of sheet.rules) {
             if(!(rule instanceof CSSPropertyRule)) {
                 continue;
             }
-            console.log(rule);
 
             const group = element('div');
             config_section.append(group);
