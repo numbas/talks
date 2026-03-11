@@ -206,17 +206,18 @@ aside {
 
 main {
     overflow: hidden scroll;
+    anchor-name: --main;
     height: 100svh;
     scroll-snap-type: y mandatory;
-            border-left: min(1em, 1svw) solid;
-            border-image: 
-                linear-gradient(
-                    in oklch longer hue to bottom,
-                    var(--start-bg),
-                    var(--end-bg)
-                )
-                1 100%
-            ;
+    border-left: min(1em, 1svw) solid;
+    border-image: 
+        linear-gradient(
+            in oklch longer hue to bottom,
+            var(--start-bg),
+            var(--end-bg)
+        )
+        1 100%
+        ;
 
     & > section {
         container-type: inline-size;
@@ -235,6 +236,16 @@ main {
         --background-color: color-mix(in oklch longer hue,  var(--start-bg), var(--end-bg) calc(100% * var(--slide-number) / var(--num-slides)));      
         background-color: var(--background-color);
         padding: 1svw;
+        
+        & .time-split {
+            position: fixed;
+            left: 0;
+            top: calc(100% * var(--slide-number) / var(--num-slides));
+            width: min(1em,1svw);
+            opacity: 0.2;
+            border: thin solid;
+            position-anchor: --main;
+        }
 
         & mjx-container * {
             line-height: revert;
@@ -537,6 +548,15 @@ dl.grid {
     }
 }
 
+body.speaker-notes section {
+    & > :not(h1,h2,aside) {
+       opacity: 0.5;
+       font-size: 0.5rem;
+    }
+    & > aside {
+        display: revert;
+    }
+}
 
 footer {
     position: absolute;
@@ -688,7 +708,3 @@ footer #url {
     padding: 10mm;
 }
 
-#slide-0 svg {
-    width: 100%;
-    height: 80svh;
-}

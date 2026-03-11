@@ -12,8 +12,8 @@ index.html: talk.typ slideshow.typ $(THUMBNAILS) $(IMAGES) $(CVIDEOS)
 	TYPST_FEATURES=html typst compile $< --format html $@
 
 upload:
-	rsync -avzr ./* chirun:/var/www/chirun.org.uk/talks/$(BRANCH)
-	@echo "The slides are online at https://chirun.org.uk/talks/$(BRANCH)"
+	rsync -avzr ./* numbas:/srv/www/numbas/talks/$(BRANCH)
+	@echo "The slides are online at https://numbas.org.uk/talks/$(BRANCH)"
 
 videos/%.webp: videos/%.webm
 	ffmpeg -nostdin -y -ss 0 -i $< -vf "scale=iw*sar:ih,select=eq(n\,0)" -vframes 1 $@

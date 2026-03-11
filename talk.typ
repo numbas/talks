@@ -1,10 +1,10 @@
-#import "slideshow.typ": slideshow, slide, abbr, freetext, aside, reveal, marker, rowlist, video
+#import "slideshow.typ": slideshow, slide, abbr, freetext, aside, reveal, marker, rowlist, video, slide_time, time_split
 
 #show "e.g.": [_e.g._]
 
 
 #show: doc => slideshow(
-    title: [Accessibility of e-!assessment],
+    title: [Accessibility of maths e-!assessment],
     presenter: "Christian Lawson-Perfect",
     affiliation: "Newcastle University",
     event: "Durham University Education and Pedagogy seminar, 2026-03-18",
@@ -12,6 +12,7 @@
 )
 
 #slide(title: "Abstract")[
+    #slide_time("00:41")
 
     I'll give a brief introduction to the topic of accessibility, then talk about particular access considerations for mathematical e-assessment.
 
@@ -20,8 +21,9 @@
 ]
 
 #slide(title: "About me")[
+    #slide_time("01:10")
 
-    Learning software developer in the digital learning unit of Newcastle University' school of Maths, Stats and Physics.
+    Learning software developer in the digital learning unit of Newcastle University's school of Maths, Stats and Physics.
 
     #html.hr()
 
@@ -34,6 +36,8 @@
 ]
 
 #slide(title: "What does 'accessibility' mean?")[
+    #slide_time("03:12")
+    #time_split()
 
     #reveal[
         #quote(attribution: [#link("https://accessibility.blog.gov.uk/2016/05/16/what-we-mean-when-we-talk-about-accessibility-2/")[Alistair Duggin, Accessibility in government]])[
@@ -46,6 +50,7 @@
 ]
 
 #slide(title: "Our obligations under law")[
+    #slide_time("04:38")
 
     #reveal[
 
@@ -63,7 +68,16 @@
     ]
 ]
 
+#slide(title: "What that means for you")[
+    System developers need to know this in detail.
+
+    Content authors should be familiar with the ideas.
+
+    E-assessment development puts you somewhere in the middle.
+]
+
 #slide(title: "The principle")[
+    #slide_time("06:42")
 
     Let the student show you what they can do.
 
@@ -74,11 +88,14 @@
         Perfect is not possible.
 
         Good is possible.
+
+        I want this presentation to show you that certain aspects of e-assessment questions make them hard or even impossible for some students to access, and to show you that you can remove those barriers.
     ]
 
 ]
 
 #slide(title: "Some access needs")[
+    #slide_time("07:40")
 
     / Sensory:
         #rowlist[
@@ -87,6 +104,7 @@
           - Deaf
           - Visual sensitivity
         ]
+        #aside[These mainly affect perception of the content, and can also make operating the system harder.]
 
     / Cognitive:
         #rowlist[
@@ -97,6 +115,7 @@
           - Autism
           - ADHD
         ]
+        #aside[These mainly affect understanding of content.]
         
     / Physical:
         #rowlist[
@@ -104,12 +123,14 @@
         - Tremors
         - Fatigue
         ]
+        #aside[These mainly make the system harder to operate.]
 
     / Cultural:
         #rowlist[
         - English as an additional language
         - Anxiety
         ]
+        #aside[These mainly affect understanding.]
 
     / Resources:
         #rowlist[
@@ -119,12 +140,13 @@
         - Slow computer
         - Limited time
         ]
-
+        #aside[These mainly affect operability.]
 
     These can be permanent, temporary or situational.
 ]
 
 #slide(title: "Why should you care?")[
+    #slide_time("12:20")
 
     Accessible teaching can:
 
@@ -139,7 +161,27 @@
 
 ]
 
+#slide(title: "Most common adjustment requirements")[
+
+    - Extra time.
+    - Choice of text colour, font and size.
+    - Different format.
+
+    #aside[This talk is really about making these redundant.]
+
+]
+#slide(title: "Most common access barriers")[
+
+    - Imperceptible content: undescribed images, non-semantic decorations, changing content not announced, use of colour.
+    - Inoperable with keyboard: usually interactive diagrams.
+    - Poor explanation.
+
+    #aside[These are from my experience.]
+]
+
 #slide(title: "How WCAG thinks about it")[
+    #slide_time("13:46")
+    #time_split()
 
     The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Accessibility Guidelines] are concerned with whether content is:
 
@@ -156,16 +198,58 @@
 ]
 
 #slide(title: "Perceivable: Can mathematical notation be read?")[
+    #slide_time("14:35")
 
     If you use MathJax, it provides lots of tools to make notation accessible.
 
     #aside[MathJax does the best possible job of automatically adding accessibility features to maths: it adds line breaks, annotations for screen readers, and allows the user to step through expressions a piece at a time.]
+]
 
-    _More on this later_
+#slide(title: "Mathematical notation is a mess")[
+    #slide_time("38:58")
+
+    Mathematical notation is not universal, unambiguous, or even consistent.
+
+    See #link("https://whystartat.xyz")[WhyStartAt.xyz].
+
+    Ensure that students understand the notation you use.
+
+]
+
+#slide(title: "Mathematical notation: Conventions")[
+    #slide_time("39:44")
+
+    If the system forces a particular convention, either use that convention in your other teaching material, or explain it in the assignment.
+
+    e.g. `(a,b)` could mean:
+
+    - The gcd of \\(a\\) and \\(b\\)
+    - A 2D vector
+    - A cyclic permutation
+    - The ideal generated by \\(a\\) and \\(b\\)
+    - The open interval between \\(a\\) and \\(b\\)
+]
+
+#slide(title: "Mathematical notation: Small details")[
+    #slide_time("40:12")
+
+    #figure(
+        image(
+            "images/visually-similar-symbols.webp",
+            alt: "4 v plus 3 nu equals 2 rho plus 5 p. Italic small letter x = 1, upright small letter x = (1,2). f prime of x plus f of x equals 0, but the prime is drawn on top of the bracket around x."
+        )
+    )
+
+    Many students can not reliably notice the small differences in font styles that convey information in maths notation.
+
+    #aside[This can trip them up when entering their answers - you show them a preview with the "wrong" font, but they don't notice.]
+
+    Diacritics convey meaning but are easily missed or confused.
 
 ]
 
 #slide(title: "Perceivable: Horizontal scrolling is tricky")[
+    #slide_time("15:18")
 
   #figure(
     video(
@@ -187,6 +271,7 @@
 ]
 
 #slide(title: "Perceivable: Minimise vertical scrolling")[
+    #slide_time("16:12")
 
     #figure(
       video(
@@ -200,6 +285,8 @@
 ]
 
 #slide(title: "Perceivable: Colour - try not to")[
+    #slide_time("17:07")
+
     #figure(
         image(
             "images/red-text.webp",
@@ -212,6 +299,8 @@
 
 
 #slide(title: "Perceivable: Colour - annotate instead")[
+    #slide_time("17:57")
+
     #figure(
         image(
             "images/underlined-text.webp",
@@ -225,6 +314,7 @@
 ]
 
 #slide(title: "Perceivable: Colour - beware missing contrast")[
+    #slide_time("18:35")
 
     #figure(
         image(
@@ -238,6 +328,7 @@
 ]
 
 #slide(title: "Perceivable: cope with customised display")[
+    #slide_time("19:25")
 
     #figure(
         image(
@@ -253,6 +344,7 @@
 ]
 
 #slide(title: "Perceivable: Data in a table")[
+    #slide_time("20:30")
 
     #figure(
         image(
@@ -265,9 +357,12 @@
 
     Avoid horizontal scrolling
 
+    #aside[I've seen hazy images of data tables pasted in from textbooks. Write them out, or give a proper reference.]
+
 ]
 
 #slide(title: "Perceivable: Text formatting")[
+    #slide_time("21:38")
 
     #figure(
         image(
@@ -283,6 +378,7 @@
 ]
 
 #slide(title: "Perceivable: Answer input")[
+    #slide_time("22:52")
 
     #figure(
         image(
@@ -297,7 +393,9 @@
 
 ]
 
+/*
 #slide(title: "Perceivable: References")[
+    #slide_time("24:00")
 
     #figure(
         image(
@@ -309,8 +407,10 @@
     Make sure referenced values from other sources such as textbooks are accessible.
 
 ]
+*/
 
 #slide(title: "Perceivable: Diagrams")[
+    #slide_time("25:22")
 
     Diagrams must have text descriptions.
 
@@ -320,9 +420,42 @@
 
     Label things and refer to them by that label.
 
+    #aside[This is a whole topic of its own that I don't have time to go into.]
 ]
 
+#slide(title: "Diagrams: Descriptions")[
+    #slide_time("41:10")
+
+    #figure(
+        image(
+            "images/scatter-plot.webp",
+            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60."
+        )
+    )
+
+    Write short alt text, and a longer description of the important information elsewhere.
+
+    There isn't a good automatic solution for describing diagrams.
+
+]
+
+#slide(title: "Diagrams: Write descriptions yourself")[
+    #slide_time("41:42")
+
+    #image(
+            "images/scatter-plot.webp",
+            height: 50%,
+            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60.",
+        )
+
+    #quote["An abstract image featuring a gradient of horizontal green lines fading into a white background, creating a soft contrasting effect. The design is minimalistic with an emphasis on simplicity."]
+
+    Get an LLM to write alt text *AT YOUR PERIL*.
+]
+
+/*
 #slide(title: "Operable: Basic operability")[
+    #slide_time("26:28")
 
     Most e-assessment systems are delivered as web apps.
 
@@ -331,8 +464,10 @@
     Don't mess with the tab key!
 
 ]
+*/
 
 #slide(title: "Operable: Entering answers")[
+    #slide_time("27:13")
 
     #figure(
         image(
@@ -349,6 +484,7 @@
 ]
 
 #slide(title: "Operable: Syntax")[
+    #slide_time("28:42")
 
     Is the syntax well understood? Do they need guidance? 
 
@@ -360,6 +496,7 @@
 ]
 
 #slide(title: "Operable: Numbers")[
+    #slide_time("29:46")
 
     #figure(
         image(
@@ -375,6 +512,7 @@
 ]
 
 #slide(title: "Operable: Special characters")[
+    #slide_time("30:23")
     
     Can their keyboard type the necessary characters?
 
@@ -386,7 +524,6 @@
 
 ]
 
-/*
 #slide(title: "Operable: Timing")[
 
     #figure(
@@ -399,9 +536,9 @@
     An extended or removed time limit is a really common adjustment. Consider just not having one!
 
 ]
-*/
 
 #slide(title: "Operable: Submission")[
+    #slide_time("32:14")
 
     #figure(
         video(
@@ -420,6 +557,7 @@
 
 /*
 #slide(title: "Operable: Allow operator error")[
+    #slide_time("")
 
     Allow students to undo anything they've done, within reason.
 
@@ -454,7 +592,9 @@
 ]
 */
 
+/*
 #slide(title: "Operable: Several sessions")[
+    #slide_time("33:35")
 
     Students have good reasons to complete homework in several sessions.
 
@@ -462,8 +602,10 @@
 
     #aside[This is usually the concern of the system developer, but you should think about it when including any custom interactive elements.]
 ]
+*/
 
 #slide(title: "Understandable")[
+    #slide_time("34:06")
 
     This is the thing that most question authors can actually do something about.
 
@@ -474,16 +616,26 @@
 
 
 #slide(title: "Understandable: Prompt")[
+    #slide_time("34:21")
+
+    #figure(
+        image(
+            "images/bad-prompt.webp",
+            alt: "Part a: (x+1)(x+2) = input box. Part b: Expand the brackets and collect like terms: (x+1)(x+2) = "
+        )
+    )
+
 
     The prompt should tell the student what to do, unambiguously.
 
     It's important to make sure you give enough information.
 
-    Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.
+    #aside[Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.]
 
 ]
 
 #slide(title: "Understandable: Feedback")[
+    #slide_time("35:25")
 
     Can the student make sense of feedback?
 
@@ -500,6 +652,7 @@
 ]
 
 #slide(title: "Understandable: Reading level")[
+    #slide_time("36:32")
 
     WCAG has a "reading level" criterion. \
     But can we assume undergrad maths students have a higher reading level? \
@@ -510,7 +663,9 @@
 
 ]
 
+/*
 #slide(title: "Understandable: Memory")[
+    #slide_time("38:04")
 
     #figure(
         image(
@@ -524,6 +679,7 @@
     They might forget what you've just told them, or misremember.
 
 ]
+*/
 
 /*
 #slide(title: "Understandable: Terminology")[
@@ -558,76 +714,8 @@
 ]
 */
 
-#slide(title: "Mathematical notation")[
-
-    Mathematical notation is not universal, unambiguous, or even consistent.
-
-    See #link("https://whystartat.xyz")[WhyStartAt.xyz].
-
-    Ensure that students understand the notation you use.
-
-]
-
-#slide(title: "Mathematical notation: Conventions")[
-
-    If the system forces a particular convention, either use that convention in your other teaching material, or explain it in the assignment.
-
-    e.g. `(a,b)` could mean:
-
-    - The gcd of \\(a\\) and \\(b\\)
-    - A 2D vector
-    - A cyclic permutation
-    - The ideal generated by \\(a\\) and \\(b\\)
-    - The open interval between \\(a\\) and \\(b\\)
-]
-
-#slide(title: "Mathematical notation: Small details")[
-
-    #figure(
-        image(
-            "images/visually-similar-symbols.webp",
-            alt: "4 v plus 3 nu equals 2 rho plus 5 p. Italic small letter x = 1, upright small letter x = (1,2). f prime of x plus f of x equals 0, but the prime is drawn on top of the bracket around x."
-        )
-    )
-
-    Many students can not reliably notice the small differences in font styles that convey information in maths notation.
-
-    #aside[This can trip them up when entering their answers - you show them a preview with the "wrong" font, but they don't notice.]
-
-    Diacritics convey meaning but are easily missed or confused.
-
-]
-
-#slide(title: "Diagrams: Descriptions")[
-
-    #figure(
-        image(
-            "images/scatter-plot.webp",
-            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60."
-        )
-    )
-
-    Write short alt text, and a longer description of the important information elsewhere.
-
-    There isn't a good automatic solution for describing diagrams.
-
-]
-
-#slide(title: "Diagrams: write descriptions yourself")[
-
-    #image(
-            "images/scatter-plot.webp",
-            width: 40%,
-            height: 50%,
-            alt: "A scatter plot with of score against time taken. The majority of dots lie in a triangle with corners at the origin, time 60 and score 10, and time 60 and score 70. There are also two prominent lines: a horizontal one at score around 25, and a vertical one at time 60.",
-        )
-
-    #quote["An abstract image featuring a gradient of horizontal green lines fading into a white background, creating a soft contrasting effect. The design is minimalistic with an emphasis on simplicity."]
-
-    Get an LLM to write alt text *AT YOUR PERIL*.
-]
-
 #slide(title: "Interactive diagrams: Allow reset")[
+    #slide_time("42:11")
 
     #figure(
         video(
@@ -640,7 +728,9 @@
 
 ]
 
+/*
 #slide(title: "Interactive diagrams: Input devices")[
+    #slide_time("42:42")
 
     #figure(
         video(
@@ -654,8 +744,10 @@
     Show coordinates in text, and allow the student to type new coordinates.
 
 ]
+*/
 
 #slide(title: "Interactive diagrams: precision")[
+    #slide_time("43:16")
 
     #figure(
         video(
@@ -682,12 +774,16 @@
 */
 
 #slide(title: "Listen to students")[
+    #slide_time("43:43")
+    #time_split()
+
     When students tell you an assessment is inaccessible, act.
 
     Ask students if they had any trouble accessing assessments.
 ]
 
 #slide(title: "Iterating")[
+    #slide_time("44:16")
 
     After an assessment has run, look at the answers students gave, for signs that:
 

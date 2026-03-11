@@ -32,6 +32,33 @@
     ]
 }
 
+// note what time this slide was reached in a practice run
+#let last_slide_time = state("last_slide_time", 0)
+
+#let advance(n) = {
+  last_slide_time.update(old => n)
+}
+
+#let lpad(s,n,padder: "0") = padder*(n - str(s).len())+str(s)
+
+#let show_duration(d) = {
+  let s = calc.rem(d,60)
+  let m = (d - s)/60
+  [#html.elem("time")[#lpad(m,2):#lpad(s,2)]]
+}
+
+#let slide_time(ts) = {
+  /*
+  let bits = ts.split(":")
+  let t = int(bits.at(0))*60 + int(bits.at(1))
+  let diff = context show_duration(t - last_slide_time.get())
+  [Time: #context diff]
+  advance(t)
+  */
+}
+
+#let time_split() = html.elem("hr", attrs: (class: "time-split"))
+
 #let slideshow(title: "", presenter: "", affiliation: "", event: "", content) = {
 html.html(lang: "en")[
     #show "-!": sym.hyph.nobreak
