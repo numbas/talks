@@ -36,7 +36,7 @@
 html.html(lang: "en")[
     #show "-!": sym.hyph.nobreak
 
-    #show heading: it => html.h1(it.body)
+    //#show heading: it => html.h1(it.body)
 
     #set quote(block: true)
 

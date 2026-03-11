@@ -15,6 +15,8 @@
 
     I'll give a brief introduction to the topic of accessibility, then talk about particular access considerations for mathematical e-assessment.
 
+    #aside[Ask questions at any point. Please interrupt me if you didn't get something.]
+
 ]
 
 #slide(title: "About me")[
@@ -26,6 +28,8 @@
     Developer of #link("https://numbas.org.uk")[Numbas] and #link("https://chirun.org.uk")[Chirun].
 
     Disabled in a few ways.
+
+    #aside[I'll ask if anyone in the audience wants to declare a disability, and wait about 20 seconds for that to happen or not.]
 
 ]
 
@@ -65,13 +69,12 @@
 
     Help them to feel comfortable while they do that.
 
-]
 
-#slide[
+    #aside[
+        Perfect is not possible.
 
-    Perfect is not possible.
-
-    Good is possible.
+        Good is possible.
+    ]
 
 ]
 
@@ -123,30 +126,40 @@
 
 #slide(title: "Why should you care?")[
 
-Accessible teaching can:
+    Accessible teaching can:
 
-#html.ul(class: "markers")[
-    #marker("🧑‍🦽 ")[Allow students to access teaching!]
-    #marker("🤗 ")[Make students feel welcome.]
-    #marker("🥱 ")[Reduce mental load.]
-    #marker("💰 ")[Be the difference between staying on the course and dropping out.]
-]
+    #html.ul(class: "markers")[
+        #marker("🧑‍🦽 ")[Allow students to access teaching!]
+        #marker("🤗 ")[Make students feel welcome.]
+        #marker("🥱 ")[Reduce mental load.]
+        #marker("💰 ")[Be the difference between staying on the course and dropping out.]
+    ]
+
+    #aside[Some lecturers seem to think that if they don't make adjustments, students will find a way to access the course anyway.]
 
 ]
 
 #slide(title: "How WCAG thinks about it")[
 
-The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Accessibility Guidelines] are concerned with whether content is:
+    The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Accessibility Guidelines] are concerned with whether content is:
 
-- Perceivable
-- Operable
-- Understandable
+    - Perceivable
+    - Operable
+    - Understandable
+
+    #aside[
+        The bulk of the talk is going to be a list of things to think about, like the WCAG guidelines but particularly for maths e-assessment.
+
+        The examples I've illustrated them with are made up for this talk, but they're all based on real questions I've seen.
+    ]
 
 ]
 
 #slide(title: "Perceivable: Can mathematical notation be read?")[
 
     If you use MathJax, it provides lots of tools to make notation accessible.
+
+    #aside[MathJax does the best possible job of automatically adding accessibility features to maths: it adds line breaks, annotations for screen readers, and allows the user to step through expressions a piece at a time.]
 
     _More on this later_
 
@@ -170,7 +183,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     Break up long lines of maths.
 
-    Tables with lots of columns can overflow.
+    Tables with lots of columns can also overflow.
 ]
 
 #slide(title: "Perceivable: Minimise vertical scrolling")[
@@ -289,7 +302,6 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     #figure(
         image(
             "images/reference-table.webp",
-            width: 100%,
             alt: "A very low resolution photo of a table headed \"Dry Measure\"."
         )
     )
@@ -304,7 +316,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     If they contain text, why not put it in the prose too/instead?
 
-    Should be high enough resolution to be legible when zoomed in.
+    They should be high enough resolution to be legible when zoomed in.
 
     Label things and refer to them by that label.
 
@@ -370,27 +382,11 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     Limited mobility makes typing non-alphanumeric characters difficult.
 
-]
-
-#slide(title: "Operable: Mobile keyboards")[
-
     Mobile keyboards like to add spaces and punctuation unless told otherwise.
 
 ]
 
-#slide(title: "Operable: Precision")[
-
-    #figure(
-        image(
-            "images/state-precision.webp",
-            alt: "Write 1/7 as a decimal. Round your answer to 3 decimal places."
-        )
-    )
-
-    State the expected precision, precisely.
-
-]
-
+/*
 #slide(title: "Operable: Timing")[
 
     #figure(
@@ -403,6 +399,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     An extended or removed time limit is a really common adjustment. Consider just not having one!
 
 ]
+*/
 
 #slide(title: "Operable: Submission")[
 
@@ -421,6 +418,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 ]
 
+/*
 #slide(title: "Operable: Allow operator error")[
 
     Allow students to undo anything they've done, within reason.
@@ -428,7 +426,9 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     But beware of feedback.
 
 ]
+*/
 
+/*
 #slide(title: "Operable: Invalid answers")[
 
     #figure(
@@ -443,13 +443,16 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     e.g. if expected answer only has free variable `x`, an answer using `f` is a sign that they've made a syntax error.
 
 ]
+*/
 
+/*
 #slide(title: "Operable: Anticipate mistakes")[
 
     Try to give marks when they make input errors.
     e.g. `sin2x` - you know the student had the right thing in mind, so either prompt them to fix the input or give the marks.
 
 ]
+*/
 
 #slide(title: "Operable: Several sessions")[
 
@@ -457,6 +460,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
     Make sure they can come back to an assessment and carry on where they were.
 
+    #aside[This is usually the concern of the system developer, but you should think about it when including any custom interactive elements.]
 ]
 
 #slide(title: "Understandable")[
@@ -470,11 +474,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 
 #slide(title: "Understandable: Prompt")[
+
     The prompt should tell the student what to do, unambiguously.
 
     It's important to make sure you give enough information.
 
     Applies to handwritten assignments too, but the computer can be more strict in what it accepts, so your instructions need to be more precise, accordingly.
+
 ]
 
 #slide(title: "Understandable: Feedback")[
@@ -484,6 +490,8 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Write in full sentences.
 
     Try not to show the student codes that they don't recognise.
+
+    #aside[Such as codes for marking notes, or error codes.]
 
     Feedback should explain how the score was calculated.
 
@@ -515,10 +523,9 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Minimise what the student needs to keep in their head.
     They might forget what you've just told them, or misremember.
 
-    e.g. multiple statements differing only slightly are difficult to differentiate if you're dyslexic.
-
 ]
 
+/*
 #slide(title: "Understandable: Terminology")[
 
     Not everyone uses the same words for things, e.g. 'brackets' vs 'parentheses'.
@@ -526,13 +533,17 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Make sure students agree with you on what words and symbols mean.
 
 ]
+*/
 
+/*
 #slide(title: "Understandable: Error messages")[
 
     Error messages should tell the student what was wrong, and ideally suggest a way of fixing it.
 
 ]
+*/
 
+/*
 #slide(title: "Understandable: Parts of expressions")[
 
     Sometimes you only want the student to enter part of an expression, giving them a scaffold, necessarily introducing new symbols as placeholders for their answer.
@@ -545,10 +556,11 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Some students will start their answers with `y = `.
 
 ]
+*/
 
 #slide(title: "Mathematical notation")[
 
-    Mathematical notation is not consistent, unambiguous, or universal.
+    Mathematical notation is not universal, unambiguous, or even consistent.
 
     See #link("https://whystartat.xyz")[WhyStartAt.xyz].
 
@@ -595,9 +607,10 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
         )
     )
 
+    Write short alt text, and a longer description of the important information elsewhere.
+
     There isn't a good automatic solution for describing diagrams.
 
-    Write short alt text, and a longer description of the important information elsewhere.
 ]
 
 #slide(title: "Diagrams: write descriptions yourself")[
@@ -615,6 +628,13 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 ]
 
 #slide(title: "Interactive diagrams: Allow reset")[
+
+    #figure(
+        video(
+            "videos/reset-diagram.webm",
+            alt: "Prompt: create a quadrilatetal. A diagram with a button labelled \"Add a point\". I click the button five times, so am stuck with five points."
+        )
+    )
 
     Make it possible to reset interactive diagrams.
 
@@ -650,6 +670,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 ]
 
+/*
 #slide(title: "Using other software")[
 
     e.g. coding in Python or R
@@ -658,6 +679,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
     Make this as easy as you can.
 
 ]
+*/
 
 #slide(title: "Listen to students")[
     When students tell you an assessment is inaccessible, act.
@@ -676,7 +698,7 @@ The #link("https://www.w3.org/WAI/standards-guidelines/wcag/")[Web Content Acces
 
 ]
 
-#slide(title: "Other aspects of accessibility")[
+#slide(title: "Other aspects of accessible teaching")[
 
     Work with Scarlett Spackman in 2024: 
 

@@ -97,6 +97,8 @@ setTimeout(() => {
             const to_section = sections[i+d];
             if(to_section) {
                 to_section.scrollIntoView();
+                scroll_update();
+                restart_videos(to_section, true);
             }
         })
     })
@@ -142,6 +144,7 @@ setTimeout(() => {
     window.addEventListener('resize', size_details);
 
     window.matchMedia("print").addEventListener("change", evt => {
+        size_details();
         if (evt.matches) {
             for(let e of document.body.querySelectorAll("details:not([open])")) {
                 e.setAttribute("open", "");
