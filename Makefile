@@ -31,5 +31,5 @@ images: $(IMAGES)
 videos: $(CVIDEOS)
 
 watch:
-	TYPST_FEATURES=html typst watch talk.typ --format html index.html & python3 /home/christian/bin/httpserver.py $(PORT)
+	TYPST_FEATURES=html typst watch talk.typ --no-serve --format html index.html & python3 /home/christian/bin/httpserver.py $(PORT)
 
